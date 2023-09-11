@@ -1,7 +1,7 @@
 # Integrantes
 
 - Caceres Gonzales, Alonso
-- Espinoza Carrión, Edgar
+- Espinoza Carrión, Edgar F.
 - Nuñez, Alessandra
 - Leite, Josue
 
