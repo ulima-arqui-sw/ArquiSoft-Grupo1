@@ -30,9 +30,10 @@
 - Personas en Búsqueda de Empleo: Individuos en busca de consejos de carrera y orientación profesional para mejorar sus oportunidades laborales.
 
 ### 1.2. Modelo de Negocio (canvas)
-![alt text](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/canvasv1.png)
+![modelo del negocio](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/canvasv1.png)
 
 ### 1.3. Estructura del equipo
+![estructura del equipo](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Estructura%20del%20equipo.png)
 
 ### 1.4. Listado de stakeholders
 - Clientes: Para este proyecto, los clientes interesados son los usuarios finales (profesionales y clientes que pagan por el servicio de asesoría).  
