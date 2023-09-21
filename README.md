@@ -58,7 +58,11 @@
     - **RF10. Sistema de Notificaciones:** Los usuarios deben recibir notificaciones sobre citas programadas, mensajes nuevos y otros eventos relevantes dentro de la plataforma.  
 4. Módulo de creación de sala de conferencias  
     - **RF7. Videoconferencias:** La plataforma debe incluir una función de videoconferencia integrada para las asesorías programadas, permitiendo que usuarios y profesionales se conecten en el horario acordado.  
-    - ??RF La plataforma debe permitir el acceso de invitados a traves de un enlace generado por el mentor. se les pedira que ingresen su nombre y tendran que ser aprobados por el mentor.  
+    - ??RF La plataforma debe permitir el acceso de invitados a traves de un enlace generado por el mentor. se les pedira que ingresen su nombre y tendran que ser aprobados por el mentor. 
+        ![VideoConferencia](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Modulo%20de%20Creacion%20de%20sala%20de%20videoconferencias/Video%20-%20Reservar%20Asesoria.png)
+    - Historial de Reuniones
+        ![Historico de Reuniones](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Modulo%20de%20Creacion%20de%20sala%20de%20videoconferencias/Video%20-%20Historico%20de%20reuniones.png)
+
 5. Módulo de gestión de documentos y grabaciones  
         ![mis archivos](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Módulo%20de%20archivos/imagen_2023-09-20_212831592.png)
     - **Subida de archivos:** Los usuarios deben poder subir archivos en cualquier formato a su carpeta de Archivos. El límite de almacenamiento gratuito por usuario será de 1GB.
