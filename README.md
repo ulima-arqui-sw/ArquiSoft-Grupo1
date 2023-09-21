@@ -60,11 +60,15 @@
     - **RF7. Videoconferencias:** La plataforma debe incluir una función de videoconferencia integrada para las asesorías programadas, permitiendo que usuarios y profesionales se conecten en el horario acordado.  
     - ??RF La plataforma debe permitir el acceso de invitados a traves de un enlace generado por el mentor. se les pedira que ingresen su nombre y tendran que ser aprobados por el mentor.  
 5. Módulo de gestión de documentos y grabaciones  
-    - **Subida de documentos:** Los usuarios deben poder subir archivos en cualquier formato a su carpeta de Archivos. El límite de almacenamiento gratuito por usuario será de 1GB.
-    - **Lectura de documentos:** Los usuarios deben poder abrir y leer en línea archivos en los formatos .pptx, .xlsx, .docx y .txt.
+        ![mis archivos](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Módulo%20de%20archivos/imagen_2023-09-20_212831592.png)
+    - **Subida de archivos:** Los usuarios deben poder subir archivos en cualquier formato a su carpeta de Archivos. El límite de almacenamiento gratuito por usuario será de 1GB.
     - **Opción de fingerprinting (firma digital):** Para cada archivo a subir, deberá haber una opción de fingerprinting como garantía de la integridad y autenticidad.
+        ![subida archivos](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Módulo%20de%20archivos/imagen_2023-09-20_213043086.png)
+    - **Lectura de archivos:** Los usuarios deben poder abrir y leer en línea archivos en los formatos .pptx, .xlsx, .docx y .txt.
+        ![lectura archivos](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Módulo%20de%20archivos/imagen_2023-09-20_213104763.png)
     - **Grabaciones en la nube:** Si el usuario realizó el pago para que la asesoría sea almacenada en la nube, esta se almacenará en una nueva sección en la carpeta de Archivos del usuario.
     - **Gestión de archivos:** Tanto para archivos subidos por el usuario como las grabaciones de las asesorías, los usuarios podrán copiar, pegar, mover entre carpetas, eliminar y crear enlaces para compartir estos archivos o grabaciones.
+        ![gestion archivos](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Módulo%20de%20archivos/imagen_2023-09-20_213004043.png)
 6. Módulo de pagos  
     - **RF4. Carrito de Compras y Pago Integrado:** Los usuarios deben poder agregar servicios al carrito de compras y realizar pagos seguros en línea para reservar citas o adquirir servicios.  
 7. Módulo de chat en tiempo real  
