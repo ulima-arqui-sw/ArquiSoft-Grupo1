@@ -48,17 +48,19 @@
 ### Requerimientos funcionales
 1. Módulo de registro e inicio de sesión  
     - **RF1. Registro de Usuarios:** La plataforma debe permitir que dos tipos de usuarios, clientes y profesionales, se registren proporcionando información personal, de contacto y detalles de su profesión al crear sus cuentas. Además, los profesionales deben poder listar sus servicios en la plataforma, incluyendo descripciones detalladas, tarifas y disponibilidad para que los clientes puedan acceder a esta información al buscar servicios.  
-    - **RF2. Inicio de sesión:** Tanto los usuarios como los profesionales deben tener la capacidad de iniciar sesión en sus cuentas utilizando su correo y contraseña.  
-    - **RF9. Calificaciones y Reseñas:** Los usuarios deben poder calificar y dejar reseñas sobre los profesionales y los servicios ofrecidos, permitiendo que los profesionales respondan a estas reseñas.
+    - **RF2. Inicio de sesión:** Tanto los usuarios como los profesionales deben tener la capacidad de iniciar sesión en sus cuentas utilizando su correo y contraseña.
+    - **RF12. Registro de Usuarios:** El sistema debe enviar un correo electrónico de confirmación al usuario tras la creación de una cuenta.
+    - **RF13. Registro de Usuarios:** El sistema   que el email no esté siendo utilizado en otra cuenta ya ingresada en el sistema, pues solo se permite una cuenta por usuario.
 2. Módulo de búsqueda de profesionales  
-    - **RF3. Búsqueda de Profesionales:** Los usuarios deben tener la posibilidad de buscar profesionales según categorías, ubicación, calificaciones y otros criterios relevantes.  
+    - **RF3. Búsqueda de Profesionales:** Los usuarios deben tener la posibilidad de buscar profesionales según categorías, ubicación, calificaciones y otros criterios relevantes.
+    - **RF9. Calificaciones y Reseñas:** Los usuarios deben poder calificar y dejar reseñas sobre los profesionales y los servicios ofrecidos, permitiendo que los profesionales respondan a estas reseñas.
 3. Módulo de gestión de citas  
     - **RF5. Sistema de Reserva de Citas:** Los usuarios deben poder programar citas con profesionales según la disponibilidad de estos, recibiendo confirmaciones por correo electrónico o mensajes de texto.  
     - **RF6. Gestión de Citas:** Los usuarios y profesionales deben poder ver y administrar sus citas programadas, con la opción de cancelar o reprogramar citas cuando sea necesario.  
     - **RF10. Sistema de Notificaciones:** Los usuarios deben recibir notificaciones sobre citas programadas, mensajes nuevos y otros eventos relevantes dentro de la plataforma.  
 4. Módulo de creación de sala de conferencias  
     - **RF7. Videoconferencias:** La plataforma debe incluir una función de videoconferencia integrada para las asesorías programadas, permitiendo que usuarios y profesionales se conecten en el horario acordado.  
-    - ??RF La plataforma debe permitir el acceso de invitados a traves de un enlace generado por el mentor. se les pedira que ingresen su nombre y tendran que ser aprobados por el mentor. 
+    - **RF11. Videoconferencias:** La plataforma debe permitir el acceso de invitados a traves de un enlace generado por el mentor. se les pedira que ingresen su nombre y tendran que ser aprobados por el mentor. 
         ![VideoConferencia](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Modulo%20de%20Creacion%20de%20sala%20de%20videoconferencias/Video%20-%20Reservar%20Asesoria.png)
     - Historial de Reuniones
         ![Historico de Reuniones](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Modulo%20de%20Creacion%20de%20sala%20de%20videoconferencias/Video%20-%20Historico%20de%20reuniones.png)
@@ -74,6 +76,9 @@
     - **Gestión de archivos:** Tanto para archivos subidos por el usuario como las grabaciones de las asesorías, los usuarios podrán copiar, pegar, mover entre carpetas, eliminar y crear enlaces para compartir estos archivos o grabaciones.
         ![gestion archivos](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Wireframes/Módulo%20de%20archivos/imagen_2023-09-20_213004043.png)
 6. Módulo de pagos  
-    - **RF4. Carrito de Compras y Pago Integrado:** Los usuarios deben poder agregar servicios al carrito de compras y realizar pagos seguros en línea para reservar citas o adquirir servicios.  
+    - **RF4. Carrito de Compras y Pago Integrado:** Los usuarios deben poder agregar servicios al carrito de compras y realizar pagos seguros en línea para reservar citas o adquirir servicios.
+    - **RF14. Pasarela de Pago:** El módulo debe permitir a los usuarios realizar pagos con tarjetas de crédito, débito y PayPal principalmente.
+    - **RF15. Confirmación de Pago:** El sistema debe enviar un mensaje el cual recompila la información del pago realizado por el aprendiz, especificando el monto pagado y algunas cualidades de la reunión.
+
 7. Módulo de chat en tiempo real  
     - **RF8. Chat en Tiempo Real:** Debe existir la capacidad de comunicación en tiempo real a través de chat para que los usuarios y profesionales puedan interactuar antes y después de programar una cita, con notificaciones para mensajes nuevos.  
