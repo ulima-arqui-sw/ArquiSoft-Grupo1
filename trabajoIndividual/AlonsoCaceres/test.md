@@ -14,6 +14,7 @@ Este estudio se llevo a cabo en la distribucion Gentoo linux y con herramientas 
 
 Un framework de C++ para desarrollo web que segun benchmarks su rama "core" es el framwork que mejor rendimiento tiene.
 
+![Drogon](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/trabajoIndividual/AlonsoCaceres/benchmark.png)
 
 #### Requisitos:
 
