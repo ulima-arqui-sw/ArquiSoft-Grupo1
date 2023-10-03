@@ -15,10 +15,14 @@ public class RedisConfig {
     
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
-        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration("redis-13002.c238.us-central1-2.gce.cloud.redislabs.com", 13002);
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+        config.setHostName("redis-13002.c238.us-central1-2.gce.cloud.redislabs.com");
+        config.setPort(13002);
         config.setUsername("default");
         config.setPassword("avwWEnpUoQ5msLiufO4QBgwxytvYZkFB");
-        return new JedisConnectionFactory(config);
+
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(config);
+        return jedisConnectionFactory;
     }
 
     @Bean

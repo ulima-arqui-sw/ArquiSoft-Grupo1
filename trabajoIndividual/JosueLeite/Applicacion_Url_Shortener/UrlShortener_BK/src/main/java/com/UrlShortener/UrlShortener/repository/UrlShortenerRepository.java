@@ -1,12 +1,16 @@
 package com.UrlShortener.UrlShortener.repository;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 import com.UrlShortener.UrlShortener.model.KeyValueEntity;
 
-@Repository
 public interface UrlShortenerRepository {
 
     boolean saveUrl(KeyValueEntity newUrl);
+
+    List<KeyValueEntity> fetchAllUrl();
+
+    String fetchUrl(String idUrl);
+
 
 }

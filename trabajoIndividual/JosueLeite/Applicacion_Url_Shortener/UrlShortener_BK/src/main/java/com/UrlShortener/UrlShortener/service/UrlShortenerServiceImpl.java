@@ -1,5 +1,7 @@
 package com.UrlShortener.UrlShortener.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +16,17 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 
     @Override
     public boolean saveUrl(KeyValueEntity newUrl) {
-    
         return urlShortenerRepository.saveUrl(newUrl);
+    }
+
+    @Override
+    public List<KeyValueEntity> fetchAllUrl() {
+        return urlShortenerRepository.fetchAllUrl();
+    }
+
+    @Override
+    public String fetchUrl(String idUrl) {
+        return urlShortenerRepository.fetchUrl(idUrl);
     }
     
 }
