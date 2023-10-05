@@ -8,10 +8,12 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.UrlShortener.UrlShortener.model.KeyValueEntity;
@@ -19,6 +21,7 @@ import com.UrlShortener.UrlShortener.service.UrlShortenerService;
 import com.google.common.hash.Hashing;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST})
 public class UrlShortenerController {
     
     @Autowired
@@ -38,8 +41,8 @@ public class UrlShortenerController {
             newUrl.setValue(url);
 
             boolean result = urlShortenerService.saveUrl(newUrl);
-
-            if (result) return ResponseEntity.ok("Url almacenada con llave " + idUrl);
+            
+            if (result) return ResponseEntity.ok(idUrl);
             else return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         throw new RuntimeException("URL es invalida " + url);

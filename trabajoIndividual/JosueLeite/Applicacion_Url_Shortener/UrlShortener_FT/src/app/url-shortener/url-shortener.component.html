@@ -1,0 +1,13 @@
+<h2 class="col-md-6 offset-md-3">
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Ingresar la URL a reducir:</label>
+        <input type="text" class="form-control" id="newUrl" [(ngModel)] = "newUrl" name="newUrl">
+    </div>
+    <button class="btn btn-success">Reducir</button>
+</form>
+</h2>
+
+<h3 class="col-md-6 offset-md-3">
+    <div *ngIf="sent">Su url a sido reducida a: {{this.currentUrl}}{{this.responseUrl}}</div>
+</h3>
