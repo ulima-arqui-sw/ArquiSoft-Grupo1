@@ -6,7 +6,7 @@ import { UrlObtainComponent } from './url-obtain/url-obtain.component';
 const routes: Routes = [
   {path: 'shortener', component:UrlShortenerComponent},
   {path: '', redirectTo:'shortener', pathMatch:'full'},
-  {path: 's/:key', component:UrlObtainComponent},
+  {path: 'shortener/:key', component:UrlObtainComponent},
 ];
 
 @NgModule({
