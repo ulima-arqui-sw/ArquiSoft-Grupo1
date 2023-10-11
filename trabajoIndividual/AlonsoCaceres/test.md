@@ -4,11 +4,11 @@
 
 Alonso Cáceres Gonzales
 
-## Herramientas Necesarias
+## 1. Herramientas Necesarias
 
 Este estudio se llevo a cabo en la distribucion Gentoo linux y con herramientas de software Libre.
 
-<em>If it moves, compile it.<em> - [Gentoo](https://www.gentoo.org/)
+<em>If it moves, compile it.</em> - [Gentoo](https://www.gentoo.org/)
 
 ### - Drogon
 
@@ -67,3 +67,18 @@ La documentancion para la instalacion y configuracion de Drogon Framework esta d
 CppCheck es una programa para el analisis estatico de codigo para C/C++. Ofrece analisis unico de codigo para detectar bugs, comportamientos undefinidos y contruccions inseguras de codigo.
 
 [Download CppCheck](https://cppcheck.sourceforge.io/)
+
+## 2. Pruebas
+
+Para realizar las pruebas se siguo los siguientes pasos:
+
+1. Clonar el branch <em>"master"</em> del proyecto Drogon Framework a una carpeta local.
+
+```
+git clone https://github.com/drogonframework/drogon.git
+```
+
+
+2. 
+
+## 3. Resultados
