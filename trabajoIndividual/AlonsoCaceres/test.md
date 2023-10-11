@@ -72,13 +72,31 @@ CppCheck es una programa para el analisis estatico de codigo para C/C++. Ofrece 
 
 Para realizar las pruebas se siguo los siguientes pasos:
 
-1. Clonar el branch <em>"master"</em> del proyecto Drogon Framework a una carpeta local.
+### 1. Clonar el branch <em>"master"</em> del proyecto Drogon Framework a una carpeta local.
 
-```
+```bash
 git clone https://github.com/drogonframework/drogon.git
 ```
 
+### 2. Listar los directorios para corroborar que se clonó el proyecto Drogon localmente.
 
-2. 
+```bash
+ls -l
+```
+tal como se aprecia en la prompt de la terminal, se clono exitosamente la rama principal de Drogon Framework.
+
+```bash
+drwxr-xr-x tori tori 4.0 KB Thu Sep  7 07:52:39 2023 drogon
+```
+
+### 3. Ejecutar el comando
+
+```bash
+cppcheck --force drogon | grep -w error
+```
+
+Esta combinación de comandos ejecuta <em>cppcheck</em> con el parámetro <em>--force</em>, lo que significa que se ejecutará independientemente de si hay errores en alguna configuración.
 
 ## 3. Resultados
+
+## 4. Conclusiones
