@@ -4,7 +4,11 @@
 
 Alonso Cáceres Gonzales
 
-## 1. Herramientas Necesarias
+## 1. Marco Teorico
+
+**Code Smells son indicadores de problemas en el código**: Code Smells son características o patrones de código que pueden indicar problemas en el diseño, la calidad o la mantenibilidad del código fuente. Identificar y abordar code smells es esencial para mejorar la calidad del software.
+
+## 2. Herramientas Necesarias
 
 Este estudio se llevo a cabo en la distribucion Gentoo linux y con herramientas de software Libre.
 
@@ -68,7 +72,7 @@ CppCheck es una programa para el analisis estatico de codigo para C/C++. Ofrece 
 
 [Download CppCheck](https://cppcheck.sourceforge.io/)
 
-## 2. Pruebas
+## 3. Pruebas
 
 Para realizar las pruebas se siguo los siguientes pasos:
 
@@ -97,8 +101,27 @@ cppcheck --force drogon | grep -w error
 
 Esta combinación de comandos ejecuta <em>cppcheck</em> con el parámetro <em>--force</em>, lo que significa que se ejecutará independientemente de si hay errores en alguna configuración.
 
-## 3. Resultados
+Cuando este cppCheck termine de realizar el analisis
+
+## 4. Resultados
+
+La salida de <em>cppcheck</em> contiene varios mensajes de error y advertencia que indican problemas potenciales en el código fuente de la rama principal de Drogon Framework. A continuacion una breve explicacion de cada uno de estos mensajes:
+
+1. **`error: Exception thrown in function declared not to throw exceptions`**: Este error indica que se está lanzando una excepción en una función que se ha declarado como no lanzar excepciones. Esto puede ser un problema si la función no debería generar excepciones, ya que contradice la declaración.
+
+2. **`error: Shifting 32-bit value by 32 bits is undefined behaviour`**: Este error advierte sobre un desplazamiento (shift) de bits que podría resultar en comportamiento indefinido. En este caso, parece que se está tratando de realizar un desplazamiento de 32 bits en una variable de 32 bits, lo que puede generar resultados no definidos.
+
+3. **`error: Uninitialized variable`**: Estos errores indican que hay variables que se utilizan antes de ser inicializadas. Usar variables no inicializadas puede llevar a resultados inesperados o errores en el programa.
+
+4. **`error: The one definition rule is violated, different classes/structs have the same name`**: Este error se refiere a una violación de la regla de "una definición" (One Definition Rule, ODR), que establece que no se deben definir múltiples clases o estructuras con el mismo nombre en el programa.
+
+5. **`note`**: Las líneas que comienzan con "note" a menudo proporcionan información adicional sobre un problema reportado. En este caso, la nota confirma que hay un conflicto de nombres entre diferentes clases o estructuras con el mismo nombre.
+
+## 5. Conclusiones
+
+1. **<em>cppcheck</em> es una herramienta útil para identificar problemas potenciales en el código fuente**, pero aún requerirá una revisión y corrección manual por parte de los desarrolladores para resolver los problemas específicos que encuentra.
 
 
+2. **Los estudios de Code Smells requieren revisión manual y herramientas**: Realizar un estudio de code smells implica tanto el uso de herramientas automáticas de análisis de código como la revisión manual del código. Las herramientas pueden ayudar a identificar problemas, pero la revisión manual es esencial para evaluar la criticidad y comprender el contexto.
 
-## 4. Conclusiones
+3. **La retroalimentación y la contribución son valiosas**: Si se encuentran code smells en proyectos de código abierto como Drogon Framework, proporcionar retroalimentación a los mantenedores del proyecto o contribuir con correcciones y mejoras es beneficioso tanto para la comunidad como para la calidad del software. La participación activa de la comunidad es esencial para el éxito de proyectos de código abierto.
