@@ -1,0 +1,41 @@
+drogon/nosql_lib/redis/src/RedisClientImpl.cc:184:9: error: Exception thrown in function declared not to throw exceptions. [throwInNoexceptFunction]
+        execCommandAsyncWithTimeout(command,
+        ^
+drogon/nosql_lib/redis/src/RedisClientLockFree.cc:153:9: error: Exception thrown in function declared not to throw exceptions. [throwInNoexceptFunction]
+        execCommandAsyncWithTimeout(command,
+        ^
+drogon/third_party/mman-win32/mman.c:72:45: error: Shifting 32-bit value by 32 bits is undefined behaviour [shiftTooManyBits]
+                    (DWORD)0 : (DWORD)((off >> 32) & 0xFFFFFFFFL);
+                                            ^
+drogon/third_party/mman-win32/mman.c:81:49: error: Shifting 32-bit value by 32 bits is undefined behaviour [shiftTooManyBits]
+                    (DWORD)0 : (DWORD)((maxSize >> 32) & 0xFFFFFFFFL);
+                                                ^
+drogon/trantor/trantor/utils/Date.cc:84:17: error: Uninitialized variable: &t [uninitvar]
+    localtime_s(&t, &seconds);
+                ^
+drogon/trantor/trantor/utils/Date.cc:191:17: error: Uninitialized variable: &tm_time [uninitvar]
+    localtime_s(&tm_time, &seconds);
+                ^
+drogon/trantor/trantor/utils/Date.cc:232:17: error: Uninitialized variable: &tm_time [uninitvar]
+    localtime_s(&tm_time, &seconds);
+                ^
+drogon/trantor/trantor/utils/Date.cc:336:17: error: Uninitialized variable: &tm_time [uninitvar]
+    localtime_s(&tm_time, &seconds);
+                ^
+drogon/examples/redis/controllers/WsClient.cc:6:1: error: The one definition rule is violated, different classes/structs have the same name 'ClientContext' [ctuOneDefinitionRuleViolation]
+struct ClientContext
+^
+drogon/examples/redis_chat/controllers/Chat.cc:12:1: note: The one definition rule is violated, different classes/structs have the same name 'ClientContext'
+struct ClientContext
+^
+drogon/examples/redis/controllers/WsClient.cc:6:1: note: The one definition rule is violated, different classes/structs have the same name 'ClientContext'
+struct ClientContext
+^
+drogon/examples/redis_cache/filters/TimeFilter.h:10:1: error: The one definition rule is violated, different classes/structs have the same name 'TimeFilter' [ctuOneDefinitionRuleViolation]
+class TimeFilter : public drogon::HttpFilter<TimeFilter>
+^
+drogon/lib/tests/integration_test/server/TimeFilter.h:10:1: note: The one definition rule is violated, different classes/structs have the same name 'TimeFilter'
+class TimeFilter : public drogon::HttpFilter<TimeFilter>
+^
+drogon/examples/redis_cache/filters/TimeFilter.h:10:1: note: The one definition rule is violated, different classes/structs have the same name 'TimeFilter'
+class TimeFilter : public drogon::HttpFilter<TimeFilter>

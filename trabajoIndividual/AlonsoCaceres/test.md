@@ -99,4 +99,6 @@ Esta combinación de comandos ejecuta <em>cppcheck</em> con el parámetro <em>--
 
 ## 3. Resultados
 
+
+
 ## 4. Conclusiones
