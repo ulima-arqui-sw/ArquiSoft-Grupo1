@@ -36,13 +36,16 @@
 ![estructura del equipo](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Estructura%20del%20equipo.png)
 
 ### 1.4. Listado de stakeholders
-- Clientes: Para este proyecto, los clientes interesados son los usuarios finales (profesionales y clientes que pagan por el servicio de asesoría).  
-- Gestor del negocio: Asegura que la arquitectura del proyecto se alinee con las metas de la empresa.  
-- Arquitecto de software: Define la arquitectura y se asegura que se cumplan los requerimientos establecidos.  
-- Diseñador: Responsable de aplicar la arquitectura del proyecto en referencia a los requerimientos centrados para el mismo.  
-- Implementador e integrador: Desarrolla e integra diferentes elementos y componentes en función del diseño de requerimientos y arquitectura.   
-- Responsable de mantenimiento: Asegura el funcionamiento correcto del proyecto, solucionando cualquier problema que se presente a lo largo de su vida.  
-- Analista: Asegura que el sistema cumpla con los requerimientos de calidad y que se ajuste a lo que espera el cliente y el negocio.  
+
+| Rol  | Encargado | Descripción |
+| --- | --- | ------ |
+| Cliente  | Usuarios | Para este proyecto, los clientes interesados son los usuarios finales (profesionales y clientes que pagan por el servicio de asesoría). |
+| Gestor del negocio  |  | Asegura que la arquitectura del proyecto se alinee con las metas de la empresa. |
+| Arquitecto de software  |  | Define la arquitectura y se asegura que se cumplan los requerimientos establecidos. |
+| Diseñador  |  | Responsable de aplicar la arquitectura del proyecto en referencia a los requerimientos centrados para el mismo. |
+| Implementador e integrador  |  | Desarrolla e integra diferentes elementos y componentes en función del diseño de requerimientos y arquitectura. |
+| Responsable de mantenimiento  |  | Asegura el funcionamiento correcto del proyecto, solucionando cualquier problema que se presente a lo largo de su vida. |
+| Analista  |  | Asegura que el sistema cumpla con los requerimientos de calidad y que se ajuste a lo que espera el cliente y el negocio. |
 
 ## Requerimientos del sistema
 ### Requerimientos funcionales
