@@ -26,11 +26,10 @@
 - Profesionales Independientes: Freelancers y autónomos que pueden requerir asesoramiento en aspectos legales, fiscales, de marketing, tecnología, etc.
 - Emprendedores: Personas que están lanzando sus propios negocios y necesitan orientación en estrategia empresarial, financiación, desarrollo de productos, etc.
 - Estudiantes: Estudiantes universitarios que buscan asesoramiento académico y profesional de expertos en su campo de estudio.
-- Empresas Pequeñas y Medianas: Empresas en crecimiento que necesitan asesoramiento en áreas específicas como gestión de recursos humanos, estrategia de negocios, marketing digital, etc.
-- Personas en Búsqueda de Empleo: Individuos en busca de consejos de carrera y orientación profesional para mejorar sus oportunidades laborales.
+- Otros interesados: Ejm: Personas en busca de consejos de carrera y orientación profesional para mejorar sus oportunidades laborales.
 
 ### 1.2. Modelo de Negocio (canvas)
-![modelo del negocio](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/canvasv1.png)
+![modelo del negocio](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/canvasv2.png)
 
 ### 1.3. Estructura del equipo
 ![estructura del equipo](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Estructura%20del%20equipo.png)
