@@ -130,9 +130,9 @@ El proyecto implementará conexiones asíncronas y síncronas para su correcto f
 - Diagrama de Contexto (C1)  
 ![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC1.png)
 - Diagrama de Contenedores (C2)  
-![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC2.png)
+![diagrama c2](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC2.2.png)
 - Diagrama de Componentes (C3)  
-![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3.png)
+![diagrama c3](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3.2.png)
  
 ### Elección de Tecnología
 - **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues en Angular se han construido bastantes aplicaciones web robustas y dinámicas. 
