@@ -40,12 +40,12 @@
 | Rol  | Encargado | Descripción |
 | --- | --- | ------ |
 | Cliente  | Usuarios | Para este proyecto, los clientes interesados son los usuarios finales (profesionales y clientes que pagan por el servicio de asesoría). |
-| Gestor del negocio  |  | Asegura que la arquitectura del proyecto se alinee con las metas de la empresa. |
-| Arquitecto de software  |  | Define la arquitectura y se asegura que se cumplan los requerimientos establecidos. |
-| Diseñador  |  | Responsable de aplicar la arquitectura del proyecto en referencia a los requerimientos centrados para el mismo. |
-| Implementador e integrador  |  | Desarrolla e integra diferentes elementos y componentes en función del diseño de requerimientos y arquitectura. |
-| Responsable de mantenimiento  |  | Asegura el funcionamiento correcto del proyecto, solucionando cualquier problema que se presente a lo largo de su vida. |
-| Analista  |  | Asegura que el sistema cumpla con los requerimientos de calidad y que se ajuste a lo que espera el cliente y el negocio. |
+| Gestor del negocio  | Alessandra Nuñez | Asegura que la arquitectura del proyecto se alinee con las metas de la empresa. |
+| Arquitecto de software  | Josue Leite | Define la arquitectura y se asegura que se cumplan los requerimientos establecidos. |
+| Diseñador  | Alonso Caceres | Responsable de aplicar la arquitectura del proyecto en referencia a los requerimientos centrados para el mismo. |
+| Implementador e integrador  | Alessandra Nuñez | Desarrolla e integra diferentes elementos y componentes en función del diseño de requerimientos y arquitectura. |
+| Responsable de mantenimiento  | Edgar Espinoza | Asegura el funcionamiento correcto del proyecto, solucionando cualquier problema que se presente a lo largo de su vida. |
+| Analista  | Alonso Caceres | Asegura que el sistema cumpla con los requerimientos de calidad y que se ajuste a lo que espera el cliente y el negocio. |
 
 ## Requerimientos del sistema
 ### Requerimientos funcionales
@@ -127,16 +127,20 @@ El proyecto implementará conexiones asíncronas y síncronas para su correcto f
 - **Base de datos no relacional:** El modelo de datos no relacional se utilizará principalmente para almacenar las grabaciones de las videollamadas o videoconferencias y los documentos que suban los usuarios a su unidad. También se empleará este modelo de datos para la mensajería instantánea que tiene el módulo de chat en tiempo real, ya que en este chat se podrán enviar fotos y documentos, aparte de texto. 
 
 ### Mapeo entre Elementos de Arquitectura
-- Diagrama de Contexto
-
-- Diagrama de contenedores
+- Diagrama de Contexto (C1)  
+![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC1.png)
+- Diagrama de Contenedores (C2)  
+![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC2.png)
+- Diagrama de Componentes (C3)  
+![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3.png)
  
 ### Elección de Tecnología
 - **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues en Angular se han construido bastantes aplicaciones web robustas y dinámicas. 
 - **Backend:** Node.js es una opción sólida para construir aplicaciones en tiempo real (videollamadas y mensajería) y escalables. Se usará Express.js para simplificar el desarrollo. 
-- **Bases de datos:** MongoDB como opción para almacenar datos no estructurados y PostgreSQL para los datos estructurados de los usuarios y sus citas.
+- **Bases de datos:** DynamoDB como opción para almacenar datos no estructurados (metadata de los archivos y grabaciones almacenadas en S3) y PostgreSQL para los datos estructurados de los usuarios, sus pagos y sus citas.
 - **Pasarela de pagos:** Al ser una iniciativa que apunta al mercado internacional, se usarán las pasarelas de pagos Stripe y PayPal.
 - **Almacenamiento en la nube:** Se usará Amazon S3 para almacenar archivos y videos.
+- **Envío de correos:** Se usará Amazon SES, ya que ofrece una alta tasa de entrega de correos por la reputación de IP de AWS, es una solución sólida a gran escala y es confiable.
 - **Videollamadas:** Se usará el servicio de Agora.io para las videollamadas y videoconferencias, al ser mejor que su competidor Twilio.
 - **Escalabilidad y despliegue:** Se desplegará en AWS.
 
