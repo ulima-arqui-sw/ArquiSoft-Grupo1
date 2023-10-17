@@ -103,6 +103,13 @@ ESC-09 | Rendimiento | Mentor y aprendices invitados | El mentor inicia una conf
 ## Decisiones a Nivel de Arquitectura
 
 ### Asignación de Responsabilidades
+- **Módulo de registro e inicio de sesión:** Módulo responsable del registro y autentificación de los usuarios.
+- **Módulo de búsqueda de profesionales:** Módulo responsable de presentar a los usuarios profesionales en la plataforma, permitiendo la búsqueda entre estos.
+- **Módulo de gestión de citas:** Módulo responsable en la coordinación y preparación de las citas con los profesionales.
+- **Módulo de creación de sala de conferencias:** Módulo responsable de la creación de las conferencias, al igual que el aseguramiento de su seguridad.
+- **Módulo de gestión de documentos y grabaciones:** Módulo encargado del almacenamiento de datos relacionados con las conferencias, asegurando su disponibilidad e integridad.
+- **Módulo de pagos:** Módulo encargado de la pasarela de pagos y las implementaciones relacionadas.
+- **Módulo de chat en tiempo real:** Módulo encargado de permitir una comunicación directa entre el profesional y el usuario antes de la cita programada.
 
 ### Modelo de Coordinación
 El proyecto implementará conexiones asíncronas y síncronas para su correcto funcionamiento.
