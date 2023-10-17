@@ -99,6 +99,10 @@ ESC-07 | Seguridad | Usuarios | El usuario sube documentos que contienen informa
 ESC-08 | Usabilidad | Usuarios | El usuario abre la plataforma desde Colibri Web Browser | Plataforma ExpertConnect | Conexión a Internet estable, navegador basado en Chromium | La plataforma se carga correctamente en el navegador al tener soporte para Chromium | La plataforma es funcional y presenta una interfaz de usuario coherente en el navegador
 ESC-09 | Rendimiento | Mentor y aprendices invitados | El mentor inicia una conferencia y se unen cientos de invitados al mismo tiempo | Módulo de videoconferencias de la plataforma, servidores de la plataforma | Conexiones a Internet variadas de los usuarios | Los participantes pueden unirse a la conferencia sin problemas y disfrutan de una experiencia de video y audio fluida | Los recursos del servidor no excedan el 80% de su capacidad máxima
 ### Restricciones 
+- La aplicación se basará en un entorno web únicamente.
+- El sistema se desarrollará con un único lenguaje de programación en mente, el cual será JavaScript.
+- La plataforma deberá ser completada a mediados de diciembre y se deben realizar el desarrollo, las pruebas y el envío a producción.
+
 
 ## Decisiones a Nivel de Arquitectura
 
@@ -118,19 +122,70 @@ El proyecto implementará conexiones asíncronas y síncronas para su correcto f
 - **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos y el módulo de gestión de citas.
 
 ### Modelo de Datos
+- **Base de datos relacional:** El modelo de datos relacional se utilizará para almacenar información personal y de contacto de los mentores y de los aprendices. Asimismo, se usará para almacenar información del módulo de gestión de citas. 
+
+- **Base de datos no relacional:** El modelo de datos no relacional se utilizará principalmente para almacenar las grabaciones de las videollamadas o videoconferencias y los documentos que suban los usuarios a su unidad. También se empleará este modelo de datos para la mensajería instantánea que tiene el módulo de chat en tiempo real, ya que en este chat se podrán enviar fotos y documentos, aparte de texto. 
 
 ### Mapeo entre Elementos de Arquitectura
+- Diagrama de Contexto
 
+- Diagrama de contenedores
+ 
 ### Elección de Tecnología
+- **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues en Angular se han construido bastantes aplicaciones web robustas y dinámicas. 
+- **Backend:** Node.js es una opción sólida para construir aplicaciones en tiempo real (videollamadas y mensajería) y escalables. Se usará Express.js para simplificar el desarrollo. 
+- **Bases de datos:** MongoDB como opción para almacenar datos no estructurados y PostgreSQL para los datos estructurados de los usuarios y sus citas.
+- **Pasarela de pagos:** Al ser una iniciativa que apunta al mercado internacional, se usarán las pasarelas de pagos Stripe y PayPal.
+- **Almacenamiento en la nube:** Se usará Amazon S3 para almacenar archivos y videos.
+- **Videollamadas:** Se usará el servicio de Agora.io para las videollamadas y videoconferencias, al ser mejor que su competidor Twilio.
+- **Escalabilidad y despliegue:** Se desplegará en AWS.
 
 ## Tácticas 
 
 ### Disponibilidad 
+La disponibilidad es sumamente importante considerando que la plataforma brinda un servicio de videoconferencias de manera síncrona. Este servicio puede coordinarse para darse a cualquier hora, desde cualquier parte del mundo, lo que debe estar activo la mayor parte del tiempo posible. 
+
+Se esperan que las medidas de respuesta sean las siguientes:
+- Tiempo de disponibilidad del sistema: 99.9% (Inactivo 8.76h en el año)
+- Tiempo para detectar la falla: Entre 10 a 25 minutos como máximo
+- Tiempo para recuperarse de la falla: Entre 30 minutos a 1.5 horas como máximo.
+
+**Tácticas a emplear:**
+- **Tiempo de espera:** Delimitaciones de los tiempos de esperas, indicando una posible falla al detectar una falla en los tiempos de carga y levantando una excepción.
+- **Rollback:** Una versión del estado anterior, la cual puede ser utilizada para recuperar el sistema en caso de una falla total. Es de alta importancia poner un enfoque en actualizar esta versión constantemente.
+- **Remover de servicio:** En caso de un problema mayor se deberá de remover el servicio por el tiempo presente hasta que el problema se vea solucionado para evitar un empeoramiento del mismo.
 
 ### Mantenibilidad
+En cuanto a la facilidad de mantener el sistema en buen funcionamiento, es esencial que cualquier modificación o mejora se pueda abordar de manera eficaz y sin dificultades. La capacidad de mantenimiento contribuye a un proceso de desarrollo más fluido y a una reducción en el tiempo necesario para implementar nuevas actualizaciones.
+**Tácticas a emplear:**
+- **Modularidad:** Se dividirá la aplicación en módulos lo más independiente posible con el fin de facilitar el desarrollo en uno de ellos sin que termine afectando a los demás. Ejm: módulo usuario, módulo videoconferencia, módulo documentos, etc.
+- **Disminución de acoplamiento:** Se mantendrán las interdependencias de los módulos al mínimo con técnicas de encapsulamiento y refactoring.
 
 ### Interoperabilidad
+La interoperabilidad se refiere a la capacidad de sistemas, aplicaciones o componentes de software para comunicarse, interactuar y funcionar de manera efectiva y armoniosa entre sí, incluso si han sido desarrollados por diferentes proveedores o en distintas plataformas. Es un concepto esencial en el mundo de la tecnología de la información y las comunicaciones, ya que permite que sistemas heterogéneos colaboren y compartan datos de manera eficiente.
+**Tácticas a emplear:**
+- **Servicios Web y API RESTful:** Diseñar interfaces de programación de aplicaciones (API) basadas en REST para permitir la comunicación entre sistemas de manera sencilla.
+- **Middleware de Integración:** Implementar middleware o capas de integración que faciliten la comunicación y la transferencia de datos entre sistemas heterogéneos.
+- **Estandarización de Protocolos y Formatos de Datos:** Utilizar formatos de datos comunes y legibles por humanos para facilitar la comunicación entre sistemas.
+- **Uso de Contenedores y Orquestación de Contenedores:** Utilizar contenedores (como Docker) y orquestadores (como Kubernetes) para crear entornos portátiles y escalables que faciliten la interoperabilidad.
 
 ### Rendimiento
+El rendimiento conlleva el enfoque en la capacidad del sistema en poder manejar y cumplir la carga de trabajo esperada, respondiendo de manera oportuna y manteniendo una estabilidad al hacerlo.
+
+Se esperan que las métricas dé respuesta sean las siguientes:
+Máximo de 5 segundos de demora cada transacción.
+
+**Tácticas a emplear:**
+- **Diseño modular:** Subdividir el sistema en módulos de menor tamaño creados de manera independiente, lo cual de igual manera permite una optimización independiente de cada módulo.
+- **Introducir concurrencia:** Presentar la capacidad de manejar múltiples solicitudes en paralelo, posiblemente reduciendo tiempos de inactividad o bloque en el sistema. 
+- **Aumentar recursos:** Incrementar la capacidad de procesamiento de los sistemas al observar un incremento en los usuarios o los servicios presentados.
 
 ### Seguridad
+La seguridad es un aspecto crítico en cualquier proyecto de desarrollo de software. La falta de medidas de seguridad adecuadas puede exponer sistemas y datos a amenazas como ataques cibernéticos, robo de información, interrupciones del servicio y otros riesgos. A continuación, información sobre las tácticas clave para garantizar la seguridad en el presente proyecto de desarrollo de software:
+
+**Tácticas a emplear:**
+- **Autenticación y Autorización:** Implementa un sólido sistema de autenticación para verificar la identidad de los usuarios. Utiliza mecanismos de autorización para controlar el acceso a las funciones y los datos según los roles y permisos de cada usuario.
+- **Cifrado de Datos:** Utiliza técnicas de cifrado para proteger la confidencialidad de los datos en reposo y en tránsito. El cifrado de extremo a extremo es especialmente importante al trabajar con información sensible.
+- **Pruebas de Seguridad:** Realiza pruebas de seguridad regulares, como pruebas de penetración y evaluaciones de seguridad, para identificar y corregir vulnerabilidades en tu aplicación.
+- **Políticas y Normativas de Seguridad:** Cumple con las políticas y regulaciones de seguridad aplicables a tu industria. Esto puede incluir estándares como el Reglamento General de Protección de Datos (RGPD), HIPAA o PCI DSS.
+- **Seguridad en la Infraestructura:** Asegúrate de que la infraestructura en la que se ejecuta tu software (servidores, redes, almacenamiento) también esté protegida adecuadamente.
