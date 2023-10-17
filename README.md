@@ -98,4 +98,32 @@ ESC-06 | Seguridad | Usuario | El usuario busca ingresar a una cuenta, pero fall
 ESC-07 | Seguridad | Usuarios | El usuario sube documentos que contienen información personal y confidencial. | Módulo de almacenamiento de archivos | Conexión a Internet estable, navegador web actualizado. | La plataforma cifra y almacena los documentos de forma segura. | Los documentos solo son accesibles para el usuario.
 ESC-08 | Usabilidad | Usuarios | El usuario abre la plataforma desde Colibri Web Browser | Plataforma ExpertConnect | Conexión a Internet estable, navegador basado en Chromium | La plataforma se carga correctamente en el navegador al tener soporte para Chromium | La plataforma es funcional y presenta una interfaz de usuario coherente en el navegador
 ESC-09 | Rendimiento | Mentor y aprendices invitados | El mentor inicia una conferencia y se unen cientos de invitados al mismo tiempo | Módulo de videoconferencias de la plataforma, servidores de la plataforma | Conexiones a Internet variadas de los usuarios | Los participantes pueden unirse a la conferencia sin problemas y disfrutan de una experiencia de video y audio fluida | Los recursos del servidor no excedan el 80% de su capacidad máxima
+### Restricciones 
 
+## Decisiones a Nivel de Arquitectura
+
+### Asignación de Responsabilidades
+
+### Modelo de Coordinación
+El proyecto implementará conexiones asíncronas y síncronas para su correcto funcionamiento.
+
+- **Comunicación síncrona:** Será implementada para el módulo de chat en tiempo real, el módulo de videollamadas y finalmente el módulo de registro y autentificación.
+- **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos y el módulo de gestión de citas.
+
+### Modelo de Datos
+
+### Mapeo entre Elementos de Arquitectura
+
+### Elección de Tecnología
+
+## Tácticas 
+
+### Disponibilidad 
+
+### Mantenibilidad
+
+### Interoperabilidad
+
+### Rendimiento
+
+### Seguridad
