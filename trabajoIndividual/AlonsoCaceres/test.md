@@ -18,7 +18,11 @@ Este estudio se llevo a cabo en la distribucion Gentoo linux y con herramientas 
 
 Se trata de un framework de C++ para desarrollo web que segun benchmarks su rama "core" es el framework que mejor rendimiento alcanza. 
 
-![Video Demo](https://ulima-edu-pe.zoom.us/rec/play/OHqwBLQvAfS6vQNOp5WsLLZpAqUrc7KQvxKS0n15C6bF-iOE4y22sT9XJlomlixBk9p3sQmaiVLn1MTw.HgVloU0s42H9pmC6?canPlayFromShare=true&from=my_recording&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Fulima-edu-pe.zoom.us%2Frec%2Fshare%2FOz2wfwGjhPhSw-kG3WSfrdDkO9BmvmRgjnWGB3NXlH2jFWR7yRuaim-G_0bW-830.n6NQOY1Hw0DGEkL2)
+link al Video Demo
+
+```
+https://ulima-edu-pe.zoom.us/rec/share/S4iL9WolFL2zPEKo3MboxQJeBcIuUAHnPZK90Dzmds2tITEobVcwixOakt3_NpS4.sNKP18ys00Pjyk5H
+```
 
 ![Drogon](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/trabajoIndividual/AlonsoCaceres/benchmark.png)
 
