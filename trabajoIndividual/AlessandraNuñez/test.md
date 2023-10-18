@@ -51,3 +51,6 @@ Ejemplo: https://sonarcloud.io/summary/overall?id=Alessandra-NA_evershop-fork
 2. Static Analysis: A Survey of Techniques and Tools
 3. https://docs.sonarcloud.io/
 
+## Enlace a video:
+https://drive.google.com/file/d/1rjoUG-wB73Qog5BP9zYId1mFxFpN15ds/view?usp=drivesdk
+
