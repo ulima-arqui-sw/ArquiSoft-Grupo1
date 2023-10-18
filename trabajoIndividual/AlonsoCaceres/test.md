@@ -115,7 +115,7 @@ La salida de <em>cppcheck</em> contiene varios mensajes de error y advertencia q
 
 4. **`error: The one definition rule is violated, different classes/structs have the same name`**: Este error se refiere a una violación de la regla de "una definición" (One Definition Rule, ODR), que establece que no se deben definir múltiples clases o estructuras con el mismo nombre en el programa.
 
-5. **`note`**: Las líneas que comienzan con "note" a menudo proporcionan información adicional sobre un problema reportado. En este caso, la nota confirma que hay un conflicto de nombres entre diferentes clases o estructuras con el mismo nombre.
+5. **`note`**: Las líneas que comienzan con "note" a menudo proporcionan información adicional sobre un problema reportado. Es asi que la nota confirma que hay un conflicto de nombres entre diferentes clases o estructuras con el mismo nombre.
 
 ## 5. Conclusiones
 
