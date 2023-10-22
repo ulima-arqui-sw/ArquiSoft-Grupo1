@@ -15,12 +15,14 @@
 
 **Estructura de la solución:**  
 - Módulo de registro e inicio de sesión: Los usuarios podrán registrarse e iniciar sesión en la plataforma. Estos usuarios pueden tener dos roles: 'aprendices', quienes solicitan el servicio de asesoría, y 'mentores', profesionales que brindan estos servicios. 
-- Módulo de búsqueda de profesionales: Los 'aprendices' pueden explorar perfiles de los 'mentores', ver sus calificaciones, reseñas y áreas de especialización. Pueden buscar expertos por categoría o palabras clave.  
+- Módulo de búsqueda de profesionales: Los 'aprendices' pueden explorar perfiles de los 'mentores', ver sus calificaciones, reseñas y áreas de especialización. Pueden buscar expertos por categoría o palabras clave. También podrán buscar mentores creando publicaciones detallando la ayuda que necesitan.
 - Módulo de gestión de citas: Los 'aprendices' pueden ver la disponibilidad de los 'mentores' y solicitar una reunión. Esta funcionalidad tendrá la opción para que el usuario añada la cita a su calendario de la plataforma.
 - Módulo de sala de asesorías: La plataforma ofrece una solución de videollamada integrada y segura para las sesiones entre usuarios.
 - Módulo de gestión de documentos y grabaciones: Tanto 'aprendices' como 'mentores' pueden compartir documentos entre sí y subir sus documentos a una carpeta propia almacenada en la nube. Junto a estos documentos, los 'aprendices' también pueden almacenar en la nube grabaciones de las asesorías bajo un costo extra.
 - Módulo de chat en tiempo real: La plataforma ofrece la opción de mensajería instantánea entre 'aprendices' y 'mentores', así como soporte en tiempo real a través de un chat con un especialista.
 - Módulo de pagos: Los pagos se realizan de manera segura a través de la plataforma, y ExpertConnect retiene una comisión por cada sesión de asesoramiento.
+- Módulo de recomendación de mentores y aprendices: El aprendiz tendrá la opción de redactar el problema o el tema con el que necesita ayuda y un algoritmo de recomendaciones le mostrará una lista de mentores que tengan experiencia con aquellos temas.
+- Módulo de resumen de videollamadas: La plataforma generará un resumen en base a la transcripción de la reunión entre aprendiz y mentor donde se recapitularán los puntos importantes hablados, los temas pendientes para la siguiente reunión, entre otros.
 
 **Mercado de la startup**
 - Profesionales Independientes: Freelancers y autónomos que pueden requerir asesoramiento en aspectos legales, fiscales, de marketing, tecnología, etc.
@@ -56,6 +58,7 @@
 2. Módulo de búsqueda de profesionales  
     - **RF3. Búsqueda de Profesionales:** Los usuarios deben tener la posibilidad de buscar profesionales según categorías, ubicación, calificaciones y otros criterios relevantes.
     - **RF9. Calificaciones y Reseñas:** Los usuarios deben poder calificar y dejar reseñas sobre los profesionales y los servicios ofrecidos, permitiendo que los profesionales respondan a estas reseñas.
+    - **RF16. Creación de publicaciones:** Los usuarios deben crear publicaciones a través de un formulario donde podrán detallar el tema que necesitan revisar con los mentores. Estas publicaciones se mostrarán en una sección de la plataforma a la cual los mentores podrán acceso para leer y ponerse en contacto con los aprendices
 3. Módulo de gestión de citas  
     - **RF5. Sistema de Reserva de Citas:** Los usuarios deben poder programar citas con profesionales según la disponibilidad de estos, recibiendo confirmaciones por correo electrónico o mensajes de texto.  
     - **RF6. Gestión de Citas:** Los usuarios y profesionales deben poder ver y administrar sus citas programadas, con la opción de cancelar o reprogramar citas cuando sea necesario.  
@@ -83,7 +86,16 @@
     - **RF15. Confirmación de Pago:** El sistema debe enviar un mensaje el cual recompila la información del pago realizado por el aprendiz, especificando el monto pagado y algunas cualidades de la reunión.
 
 7. Módulo de chat en tiempo real  
-    - **RF8. Chat en Tiempo Real:** Debe existir la capacidad de comunicación en tiempo real a través de chat para que los usuarios y profesionales puedan interactuar antes y después de programar una cita, con notificaciones para mensajes nuevos.  
+    - **RF8. Chat en Tiempo Real:** Debe existir la capacidad de comunicación en tiempo real a través de chat para que los usuarios y profesionales puedan interactuar antes y después de programar una cita, con notificaciones para mensajes nuevos. 
+
+8. Módulo de recomendación de mentores y aprendices
+   - **RF17. Recomendación de mentores:** Luego que los aprendices suban su publicación de búsqueda de asesoría, automáticamente la plataforma usará un algoritmo de recomendación que relacionará el contenido de la publicación con las descripciones de los servicios que los mentores ofrecen. Se le mostrará al aprendiz la lista de mentores.
+   - **RF18. Recomendación de aprendices:** El algoritmo de recomendación correrá también para los usuarios mentores, mostrando en el inicio las publicaciones con mayor relevancia para los mentores de acuerdo a la descripción que llenaron al registrarse.
+     
+9. Módulo de resumen de videollamadas
+    - **RF19. Generación de resumenes:** De la transcripción obtenida de lo conversado en la videollamada y videoconferencia, se generará con un algoritmo un resumen de los temas vistos en la reunión. Cada usuario participante de la reunión tendrá una copia del resumen asociada a su historial de reuniones.
+    - **RF20. Generación de tareas:** De la transcripción, se identificarán las tareas (en caso hayan) que el mentor dejó para el aprendiz. Estas tareas serán mostradas en un tablero tipo Kanban en una sección compartida para el mentor y el aprendiz.
+
   
 ### Escenarios de atributos de calidad
 ID | Atributo | Fuente | Estímulo | Artefacto | Entorno | Respuesta | Medida
@@ -113,17 +125,21 @@ ESC-09 | Rendimiento | Mentor y aprendices invitados | El mentor inicia una conf
 - **Módulo de gestión de documentos y grabaciones:** Módulo encargado del almacenamiento de datos relacionados con las conferencias, asegurando su disponibilidad e integridad.
 - **Módulo de pagos:** Módulo encargado de la pasarela de pagos y las implementaciones relacionadas.
 - **Módulo de chat en tiempo real:** Módulo encargado de permitir una comunicación directa entre el profesional y el usuario antes de la cita programada.
+- **Módulo de recomendación de mentores y aprendices:** Módulo encargado de recomendar mentores y aprendices en base a las publicaciones de búsqueda de asesoría y los servicios que se ofrecen en la plataforma.
+- **Módulo de resumen de videollamadas:** Módulo encargado de convertir las transcripciones de las reuniones en resúmenes y de generar un listado de tareas pendientes.
 
 ### Modelo de Coordinación
 El proyecto implementará conexiones asíncronas y síncronas para su correcto funcionamiento.
 
 - **Comunicación síncrona:** Será implementada para el módulo de chat en tiempo real, el módulo de videollamadas y finalmente el módulo de registro y autentificación.
-- **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos y el módulo de gestión de citas.
+- **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos, el módulo de gestión de citas, el módulo de recomendaciones y el módulo de resúmenes y tareas.
 
 ### Modelo de Datos
-- **Base de datos relacional:** El modelo de datos relacional se utilizará para almacenar información personal y de contacto de los mentores y de los aprendices. Asimismo, se usará para almacenar información del módulo de gestión de citas. 
+- **Base de datos relacional:** El modelo de datos relacional se utilizará para almacenar información personal y de contacto de los mentores y de los aprendices, la información del módulo de gestión de citas, el historial de pagos y de reuniones y los resúmenes de transcripciones y tareas pendientes.
 
-- **Base de datos no relacional:** El modelo de datos no relacional se utilizará principalmente para almacenar las grabaciones de las videollamadas o videoconferencias y los documentos que suban los usuarios a su unidad. También se empleará este modelo de datos para la mensajería instantánea que tiene el módulo de chat en tiempo real, ya que en este chat se podrán enviar fotos y documentos, aparte de texto. 
+- **Base de datos no relacional:** El modelo de datos no relacional se empleará para almacenar los mensajes instantáneos que tiene el módulo de chat en tiempo real, ya que en este chat se podrán enviar fotos y documentos, aparte de texto.
+
+- **Almacenamiento simple de objetos:** Se usará un lugar de almacenamiento para guardar y acceder a los archivos subidos por los usuarios y las grabaciones de las reuniones. Cada objeto tendrá metadatos asociados para poder ser leídos por el backend de la plataforma.
 
 ### Mapeo entre Elementos de Arquitectura
 - Diagrama de Contexto (C1)  
@@ -136,12 +152,18 @@ El proyecto implementará conexiones asíncronas y síncronas para su correcto f
 ### Elección de Tecnología
 - **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues en Angular se han construido bastantes aplicaciones web robustas y dinámicas. 
 - **Backend:** Node.js es una opción sólida para construir aplicaciones en tiempo real (videollamadas y mensajería) y escalables. Se usará Express.js para simplificar el desarrollo. 
-- **Bases de datos:** DynamoDB como opción para almacenar datos no estructurados (metadata de los archivos y grabaciones almacenadas en S3) y PostgreSQL para los datos estructurados de los usuarios, sus pagos y sus citas.
+- **Bases de datos:** DynamoDB como opción para almacenar datos no estructurados (mensajería) y PostgreSQL para los datos estructurados de los usuarios, sus pagos, citas, historial de reuniones, resúmenes de transcripciones y tareas.
 - **Pasarela de pagos:** Al ser una iniciativa que apunta al mercado internacional, se usarán las pasarelas de pagos Stripe y PayPal.
 - **Almacenamiento en la nube:** Se usará Amazon S3 para almacenar archivos y videos.
 - **Envío de correos:** Se usará Amazon SES, ya que ofrece una alta tasa de entrega de correos por la reputación de IP de AWS, es una solución sólida a gran escala y es confiable.
 - **Videollamadas:** Se usará el servicio de Agora.io para las videollamadas y videoconferencias, al ser mejor que su competidor Twilio.
-- **Escalabilidad y despliegue:** Se desplegará en AWS.
+- **Alta disponibilidad:** AWS RDS con MultiAZ y backups.
+- **Balanceo de carga:** Amazon Elastic Load Balancing para el tráfico entre instancias.
+- **Monitoreo:** Amazon CloudWatch y CloudWatch Alarms para el monitoreo y alertas de detección de problemas.
+- **CI/CD:** AWS CodePipeline
+- **Consultas en caché:** Memcached
+- **Cifrado de datos:** AWS Key Management Service para las claves de cifrado de las contraseñas, claves de las APIs, gestionar las claves de RDS.
+- **Despliegue:** Se desplegará en AWS EC2.
 
 ## Tácticas 
 
@@ -154,23 +176,21 @@ Se esperan que las medidas de respuesta sean las siguientes:
 - Tiempo para recuperarse de la falla: Entre 30 minutos a 1.5 horas como máximo.
 
 **Tácticas a emplear:**
-- **Tiempo de espera:** Delimitaciones de los tiempos de esperas, indicando una posible falla al detectar una falla en los tiempos de carga y levantando una excepción.
-- **Rollback:** Una versión del estado anterior, la cual puede ser utilizada para recuperar el sistema en caso de una falla total. Es de alta importancia poner un enfoque en actualizar esta versión constantemente.
-- **Remover de servicio:** En caso de un problema mayor se deberá de remover el servicio por el tiempo presente hasta que el problema se vea solucionado para evitar un empeoramiento del mismo.
+- Despliegue de la plataforma en dos zonas de AWS para evitar un único punto de fallo. Se utilizarán Amazon Elastic Load Balancing para distribuir el tráfico entre las instancias. También se implementará Amazon RDS para una alta disponibilidad con el MultiAZ, mayor escalabilidad y la opción de creación de backups.
+- Se monitoreará la disponibilidad con Amazon CloudWatch y se configurarán alertas con CloudWatch Alarms para detectar problemas antes de que afecten la disponibilidad.
 
 ### Mantenibilidad
 En cuanto a la facilidad de mantener el sistema en buen funcionamiento, es esencial que cualquier modificación o mejora se pueda abordar de manera eficaz y sin dificultades. La capacidad de mantenimiento contribuye a un proceso de desarrollo más fluido y a una reducción en el tiempo necesario para implementar nuevas actualizaciones.
 **Tácticas a emplear:**
-- **Modularidad:** Se dividirá la aplicación en módulos lo más independiente posible con el fin de facilitar el desarrollo en uno de ellos sin que termine afectando a los demás. Ejm: módulo usuario, módulo videoconferencia, módulo documentos, etc.
-- **Disminución de acoplamiento:** Se mantendrán las interdependencias de los módulos al mínimo con técnicas de encapsulamiento y refactoring.
+- Modularidad: Se dividirá la aplicación en módulos lo más independiente posible con el fin de facilitar el desarrollo en uno de ellos sin que termine afectando a los demás. Ejm: módulo usuario, módulo videoconferencia, módulo documentos, etc.
+- Se implementará CI/CD para para facilitar las actualizaciones y despliegues sin interrupciones con AWS CodePipeline
 
 ### Interoperabilidad
 La interoperabilidad se refiere a la capacidad de sistemas, aplicaciones o componentes de software para comunicarse, interactuar y funcionar de manera efectiva y armoniosa entre sí, incluso si han sido desarrollados por diferentes proveedores o en distintas plataformas. Es un concepto esencial en el mundo de la tecnología de la información y las comunicaciones, ya que permite que sistemas heterogéneos colaboren y compartan datos de manera eficiente.
 **Tácticas a emplear:**
-- **Servicios Web y API RESTful:** Diseñar interfaces de programación de aplicaciones (API) basadas en REST para permitir la comunicación entre sistemas de manera sencilla.
-- **Middleware de Integración:** Implementar middleware o capas de integración que faciliten la comunicación y la transferencia de datos entre sistemas heterogéneos.
-- **Estandarización de Protocolos y Formatos de Datos:** Utilizar formatos de datos comunes y legibles por humanos para facilitar la comunicación entre sistemas.
-- **Uso de Contenedores y Orquestación de Contenedores:** Utilizar contenedores (como Docker) y orquestadores (como Kubernetes) para crear entornos portátiles y escalables que faciliten la interoperabilidad.
+- Servicios Web y API RESTful: Diseñar interfaces de programación de aplicaciones (API) basadas en REST para permitir la comunicación entre sistemas de manera sencilla.
+- Middleware de Integración: Implementar middleware o capas de integración que faciliten la comunicación y la transferencia de datos entre sistemas heterogéneos.
+- Estandarización de Protocolos y Formatos de Datos: Utilizar formatos de datos comunes y legibles por humanos para facilitar la comunicación entre sistemas.
 
 ### Rendimiento
 El rendimiento conlleva el enfoque en la capacidad del sistema en poder manejar y cumplir la carga de trabajo esperada, respondiendo de manera oportuna y manteniendo una estabilidad al hacerlo.
@@ -179,16 +199,16 @@ Se esperan que las métricas dé respuesta sean las siguientes:
 Máximo de 5 segundos de demora cada transacción.
 
 **Tácticas a emplear:**
-- **Diseño modular:** Subdividir el sistema en módulos de menor tamaño creados de manera independiente, lo cual de igual manera permite una optimización independiente de cada módulo.
-- **Introducir concurrencia:** Presentar la capacidad de manejar múltiples solicitudes en paralelo, posiblemente reduciendo tiempos de inactividad o bloque en el sistema. 
-- **Aumentar recursos:** Incrementar la capacidad de procesamiento de los sistemas al observar un incremento en los usuarios o los servicios presentados.
+- Monitoreo del rendimiento de base de datos y ajuste de recursos según el uso con Amazon RDS.
+- Se implementará almacenamiento en caché para acelerar consultas de búsqueda frecuentes con Memcached.
 
 ### Seguridad
 La seguridad es un aspecto crítico en cualquier proyecto de desarrollo de software. La falta de medidas de seguridad adecuadas puede exponer sistemas y datos a amenazas como ataques cibernéticos, robo de información, interrupciones del servicio y otros riesgos. A continuación, información sobre las tácticas clave para garantizar la seguridad en el presente proyecto de desarrollo de software:
 
 **Tácticas a emplear:**
 - **Autenticación y Autorización:** Implementa un sólido sistema de autenticación para verificar la identidad de los usuarios. Utiliza mecanismos de autorización para controlar el acceso a las funciones y los datos según los roles y permisos de cada usuario.
-- **Cifrado de Datos:** Utiliza técnicas de cifrado para proteger la confidencialidad de los datos en reposo y en tránsito. El cifrado de extremo a extremo es especialmente importante al trabajar con información sensible.
-- **Pruebas de Seguridad:** Realiza pruebas de seguridad regulares, como pruebas de penetración y evaluaciones de seguridad, para identificar y corregir vulnerabilidades en tu aplicación.
-- **Políticas y Normativas de Seguridad:** Cumple con las políticas y regulaciones de seguridad aplicables a tu industria. Esto puede incluir estándares como el Reglamento General de Protección de Datos (RGPD), HIPAA o PCI DSS.
-- **Seguridad en la Infraestructura:** Asegúrate de que la infraestructura en la que se ejecuta tu software (servidores, redes, almacenamiento) también esté protegida adecuadamente.
+- Se utilizará Amazon CloudWatch Logs para registrar y supervisar eventos de autenticación y autorización.
+- Se implementará el cifrado de datos en reposo con AWS KMS para las claves de cifrado de las contraseñas, claves de las APIs, gestionar las claves de RDS.
+- Se realizarán pruebas de penetración periódicas para identificar vulnerabilidades (OWASP ZAP)
+- Se implementarán autenticaciones de dos factores para los usuarios.
+
