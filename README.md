@@ -201,9 +201,9 @@ La interoperabilidad se refiere a la capacidad de sistemas, aplicaciones o compo
 
 - **Servicios Web y API RESTful:** Diseña interfaces de programación de aplicaciones (API) basadas en REST para permitir la comunicación entre sistemas de manera sencilla. Documenta las API para que otros desarrolladores puedan entender y utilizar tus servicios.
 
-- **Middleware de Integración:** Implementa middleware o capas de integración que faciliten la comunicación y la transferencia de datos entre sistemas heterogéneos. Utiliza servicios como AWS Lambda para realizar tareas de integración.
+- **Middleware de Integración:** Implementación middleware o capas de integración que faciliten la comunicación y la transferencia de datos entre sistemas heterogéneos. Utiliza servicios como AWS Lambda para realizar tareas de integración.
 
-- **Estandarización de Protocolos y Formatos de Datos:** Utiliza formatos de datos comunes y legibles por humanos, como JSON o XML, para facilitar la comunicación entre sistemas. Asegúrate de seguir estándares de la industria cuando sea posible.
+- **Estandarización de Protocolos y Formatos de Datos:** Utilización de formatos de datos comunes y legibles por humanos, como JSON o XML, para facilitar la comunicación entre sistemas. Para asegurar el seguimiento estándares de la industria cuando sea posible.
 
 ### Rendimiento
 El rendimiento conlleva el enfoque en la capacidad del sistema en poder manejar y cumplir la carga de trabajo esperada, respondiendo de manera oportuna y manteniendo una estabilidad al hacerlo.
@@ -213,7 +213,7 @@ Máximo de 5 segundos de demora cada transacción.
 
 **Tácticas a emplear:**
 
-- **Monitoreo del rendimiento de base de datos:** Utiliza Amazon RDS y Amazon CloudWatch para monitorear el rendimiento de la base de datos. Ajusta los recursos de la base de datos según el uso para garantizar un rendimiento óptimo.
+- **Monitoreo del rendimiento de base de datos:** Utilizar Amazon RDS y Amazon CloudWatch para monitorear el rendimiento de la base de datos. Ajustar los recursos de la base de datos según el uso para garantizar un rendimiento óptimo.
 
 - **Almacenamiento en caché con Memcached:** Implementa un sistema de almacenamiento en caché, como Memcached, para acelerar las consultas de búsqueda frecuentes y reducir la carga en la base de datos.
 
@@ -222,11 +222,10 @@ La seguridad es un aspecto crítico en cualquier proyecto de desarrollo de softw
 
 **Tácticas a emplear:**
 
-- **Autenticación y Autorización:** Implementa un sólido sistema de autenticación para verificar la identidad de los usuarios. Utiliza mecanismos de autorización para controlar el acceso a las funciones y los datos según los roles y permisos de cada usuario. Puedes utilizar servicios de AWS Identity and Access Management (IAM) para gestionar permisos.
+- **Autenticación y Autorización:** Implementa un sólido sistema de autenticación para verificar la identidad de los usuarios. Utiliza mecanismos de autorización para controlar el acceso a las funciones y los datos según los roles y permisos de cada usuario. Se puede utilizar servicios de AWS Identity and Access Management (IAM) para gestionar permisos.
 
 - **Cifrado de datos en reposo:** Utiliza AWS Key Management Service (KMS) para administrar las claves de cifrado de contraseñas, claves de APIs y bases de datos. Asegúrate de cifrar datos sensibles en reposo.
 
-- **Pruebas de penetración:** Realiza pruebas de penetración periódicas utilizando herramientas como OWASP ZAP para identificar vulnerabilidades y fortalecer la seguridad del sistema.
+- **Pruebas de penetración:** Realizar pruebas de penetración periódicas utilizando herramientas como OWASP ZAP para identificar vulnerabilidades y fortalecer la seguridad del sistema.
 
-- **Autenticación de dos factores:** Implementa la autenticación de dos factores (2FA) para los usuarios, lo que proporciona una capa adicional de seguridad al requerir un segundo método de autenticación además de la contraseña.
-
+- **Autenticación de dos factores:** Implementar la autenticación de dos factores (2FA) para los usuarios, lo que proporciona una capa adicional de seguridad al requerir un segundo método de autenticación además de la contraseña.
