@@ -143,11 +143,11 @@ El proyecto implementará conexiones asíncronas y síncronas para su correcto f
 
 ### Mapeo entre Elementos de Arquitectura
 - Diagrama de Contexto (C1)  
-![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC1.png)
+![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC1-v2.png)
 - Diagrama de Contenedores (C2)  
-![diagrama c2](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC2.2.png)
+![diagrama c2](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC2-v2.png)
 - Diagrama de Componentes (C3)  
-![diagrama c3](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3.2.png)
+![diagrama c3](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3-v2.png)
  
 ### Elección de Tecnología
 - **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues es un Framework y brinda un marco de trabajo predefinido , lo cual sirve mucho para un proyecto complejo como este donde se necesita algo robusto y dinámico.
