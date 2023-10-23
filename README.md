@@ -150,20 +150,20 @@ El proyecto implementará conexiones asíncronas y síncronas para su correcto f
 ![diagrama c3](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3.2.png)
  
 ### Elección de Tecnología
-- **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues en Angular se han construido bastantes aplicaciones web robustas y dinámicas. 
-- **Backend:** Node.js es una opción sólida para construir aplicaciones en tiempo real (videollamadas y mensajería) y escalables. Se usará Express.js para simplificar el desarrollo. 
-- **Bases de datos:** DynamoDB como opción para almacenar datos no estructurados (mensajería) y PostgreSQL para los datos estructurados de los usuarios, sus pagos, citas, historial de reuniones, resúmenes de transcripciones y tareas.
+- **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues es un Framework y brinda un marco de trabajo predefinido , lo cual sirve mucho para un proyecto complejo como este donde se necesita algo robusto y dinámico.
+- **Backend:** Node.js es una opción sólida para construir aplicaciones en tiempo real (videollamadas y mensajería) y escalables. Se usará Express.js ya que es muy eficiente para aplicaciones que dependen del tiempo de respuesta, por ejemplo, notificaciones, chat entre usuarios , videollamadas.
+- **Bases de datos:** DynamoDB como opción para almacenar datos no estructurados (mensajería) ya que brinda mayor velocidad de lectura de datos y PostgreSQL para los datos estructurados en donde se necesita mayor integridad, por ejemplo data de los usuarios, sus pagos, citas, historial de reuniones, resúmenes de transcripciones y tareas. 
 - **Pasarela de pagos:** Al ser una iniciativa que apunta al mercado internacional, se usarán las pasarelas de pagos Stripe y PayPal.
-- **Almacenamiento en la nube:** Se usará Amazon S3 para almacenar archivos y videos.
+- **Almacenamiento en la nube:** Se usará Amazon S3 debido a su capacidad para manejar grandes cantidades de datos para almacenar archivos y videos, en el mercado es la opción más rentable de todas las que permiten pago por uso.
 - **Envío de correos:** Se usará Amazon SES, ya que ofrece una alta tasa de entrega de correos por la reputación de IP de AWS, es una solución sólida a gran escala y es confiable.
-- **Videollamadas:** Se usará el servicio de Agora.io para las videollamadas y videoconferencias, al ser mejor que su competidor Twilio.
-- **Alta disponibilidad:** AWS RDS con MultiAZ y backups.
-- **Balanceo de carga:** Amazon Elastic Load Balancing para el tráfico entre instancias.
+- **Videollamadas:** Se usará el servicio de Agora.io para las videollamadas y videoconferencias, ya que provee calidad de video según el pago por uso y soporte de UI , a diferencia de sus dos principales competidores Twilio y Dyte.
+- **Alta disponibilidad:** AWS RDS con MultiAZ y backups , se eligió este debido a que da una mejor disopnibilidad y opciones de respaldo a comparación de sus competidores Azure u Oracle.
+- **Balanceo de carga:** Amazon Elastic Load Balancing para el tráfico entre instancias, lo cual permite una distribución equitativa en este tráfico.
 - **Monitoreo:** Amazon CloudWatch y CloudWatch Alarms para el monitoreo y alertas de detección de problemas.
-- **CI/CD:** AWS CodePipeline
-- **Consultas en caché:** Memcached
-- **Cifrado de datos:** AWS Key Management Service para las claves de cifrado de las contraseñas, claves de las APIs, gestionar las claves de RDS.
-- **Despliegue:** Se desplegará en AWS EC2.
+- **CI/CD:** AWS CodePipeline, sus principales competidores no ofrecen este servicio para integrarse con AWS.
+- **Consultas en caché:** Memcached , se eligió este para mantener el entorno en AWS.
+- **Cifrado de datos:** AWS Key Management Service para las claves de cifrado de las contraseñas, claves de las APIs, gestionar las claves de RDS, AWS ofrece este servicio dentro del mismo entorno , lo que lo hace más sencillo que usar servicios de terceros.
+- **Despliegue:** Se desplegará en AWS EC2 por su robustez y costos de pago por uso, el cual en aspecto económico sale con menor presupuesto que usar Azure u Oracle.
 
 ## Tácticas 
 
