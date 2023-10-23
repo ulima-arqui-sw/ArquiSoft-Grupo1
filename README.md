@@ -31,7 +31,7 @@
 - Otros interesados: Ejm: Personas en busca de consejos de carrera y orientación profesional para mejorar sus oportunidades laborales.
 
 ### 1.2. Modelo de Negocio (canvas)
-![modelo del negocio](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/canvasv2.png)
+![modelo del negocio](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/canvasv3.png)
 
 ### 1.3. Estructura del equipo
 ![estructura del equipo](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Estructura%20del%20equipo.png)
@@ -229,3 +229,7 @@ La seguridad es un aspecto crítico en cualquier proyecto de desarrollo de softw
 - **Pruebas de penetración:** Realizar pruebas de penetración periódicas utilizando herramientas como OWASP ZAP para identificar vulnerabilidades y fortalecer la seguridad del sistema.
 
 - **Autenticación de dos factores:** Implementar la autenticación de dos factores (2FA) para los usuarios, lo que proporciona una capa adicional de seguridad al requerir un segundo método de autenticación además de la contraseña.
+
+## Borrador de arquitectura
+
+![arqui](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Diagrama-arquitectura.png)
