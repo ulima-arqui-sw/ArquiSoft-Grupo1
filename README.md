@@ -176,21 +176,34 @@ Se esperan que las medidas de respuesta sean las siguientes:
 - Tiempo para recuperarse de la falla: Entre 30 minutos a 1.5 horas como máximo.
 
 **Tácticas a emplear:**
-- Despliegue de la plataforma en dos zonas de AWS para evitar un único punto de fallo. Se utilizarán Amazon Elastic Load Balancing para distribuir el tráfico entre las instancias. También se implementará Amazon RDS para una alta disponibilidad con el MultiAZ, mayor escalabilidad y la opción de creación de backups.
-- Se monitoreará la disponibilidad con Amazon CloudWatch y se configurarán alertas con CloudWatch Alarms para detectar problemas antes de que afecten la disponibilidad.
+
+- **Despliegue en múltiples zonas de AWS:** Para garantizar la alta disponibilidad, puedes configurar la infraestructura en al menos dos zonas de disponibilidad de AWS. Utiliza servicios como Amazon Elastic Load Balancing (ELB) para distribuir el tráfico entre instancias en diferentes zonas y así evitar un único punto de fallo.
+
+- **Amazon RDS MultiAZ:** Configura Amazon RDS en modo Multi-AZ para asegurarnos de que haya redundancia de datos y alta disponibilidad en caso de fallas.
+
+- **Monitoreo y alertas:** Utiliza Amazon CloudWatch para monitorear el sistema y configura CloudWatch Alarms para detectar problemas antes de que afecten la disponibilidad. Por ejemplo, Se implementaran alarmas para la utilización de recursos, como el uso de CPU o memoria. 
 
 ### Mantenibilidad
+
 En cuanto a la facilidad de mantener el sistema en buen funcionamiento, es esencial que cualquier modificación o mejora se pueda abordar de manera eficaz y sin dificultades. La capacidad de mantenimiento contribuye a un proceso de desarrollo más fluido y a una reducción en el tiempo necesario para implementar nuevas actualizaciones.
+
 **Tácticas a emplear:**
-- Modularidad: Se dividirá la aplicación en módulos lo más independiente posible con el fin de facilitar el desarrollo en uno de ellos sin que termine afectando a los demás. Ejm: módulo usuario, módulo videoconferencia, módulo documentos, etc.
-- Se implementará CI/CD para para facilitar las actualizaciones y despliegues sin interrupciones con AWS CodePipeline
+
+- **Modularidad:** División de la aplicación en módulos independientes, como el módulo de usuario, módulo de videoconferencia y módulo de documentos. Esto facilitara el desarrollo y la modificación de componentes sin afectar a otros.
+
+- **CI/CD con AWS CodePipeline:** Se implementa un flujo de trabajo de Integración Continua/Entrega Continua (CI/CD) con AWS CodePipeline. Esto te permitirá realizar actualizaciones y despliegues de manera automatizada, reduciendo el tiempo de inactividad y facilitando el mantenimiento.
 
 ### Interoperabilidad
+
 La interoperabilidad se refiere a la capacidad de sistemas, aplicaciones o componentes de software para comunicarse, interactuar y funcionar de manera efectiva y armoniosa entre sí, incluso si han sido desarrollados por diferentes proveedores o en distintas plataformas. Es un concepto esencial en el mundo de la tecnología de la información y las comunicaciones, ya que permite que sistemas heterogéneos colaboren y compartan datos de manera eficiente.
+
 **Tácticas a emplear:**
-- Servicios Web y API RESTful: Diseñar interfaces de programación de aplicaciones (API) basadas en REST para permitir la comunicación entre sistemas de manera sencilla.
-- Middleware de Integración: Implementar middleware o capas de integración que faciliten la comunicación y la transferencia de datos entre sistemas heterogéneos.
-- Estandarización de Protocolos y Formatos de Datos: Utilizar formatos de datos comunes y legibles por humanos para facilitar la comunicación entre sistemas.
+
+- **Servicios Web y API RESTful:** Diseña interfaces de programación de aplicaciones (API) basadas en REST para permitir la comunicación entre sistemas de manera sencilla. Documenta las API para que otros desarrolladores puedan entender y utilizar tus servicios.
+
+- **Middleware de Integración:** Implementa middleware o capas de integración que faciliten la comunicación y la transferencia de datos entre sistemas heterogéneos. Utiliza servicios como AWS Lambda para realizar tareas de integración.
+
+- **Estandarización de Protocolos y Formatos de Datos:** Utiliza formatos de datos comunes y legibles por humanos, como JSON o XML, para facilitar la comunicación entre sistemas. Asegúrate de seguir estándares de la industria cuando sea posible.
 
 ### Rendimiento
 El rendimiento conlleva el enfoque en la capacidad del sistema en poder manejar y cumplir la carga de trabajo esperada, respondiendo de manera oportuna y manteniendo una estabilidad al hacerlo.
@@ -199,16 +212,21 @@ Se esperan que las métricas dé respuesta sean las siguientes:
 Máximo de 5 segundos de demora cada transacción.
 
 **Tácticas a emplear:**
-- Monitoreo del rendimiento de base de datos y ajuste de recursos según el uso con Amazon RDS.
-- Se implementará almacenamiento en caché para acelerar consultas de búsqueda frecuentes con Memcached.
+
+- **Monitoreo del rendimiento de base de datos:** Utiliza Amazon RDS y Amazon CloudWatch para monitorear el rendimiento de la base de datos. Ajusta los recursos de la base de datos según el uso para garantizar un rendimiento óptimo.
+
+- **Almacenamiento en caché con Memcached:** Implementa un sistema de almacenamiento en caché, como Memcached, para acelerar las consultas de búsqueda frecuentes y reducir la carga en la base de datos.
 
 ### Seguridad
 La seguridad es un aspecto crítico en cualquier proyecto de desarrollo de software. La falta de medidas de seguridad adecuadas puede exponer sistemas y datos a amenazas como ataques cibernéticos, robo de información, interrupciones del servicio y otros riesgos. A continuación, información sobre las tácticas clave para garantizar la seguridad en el presente proyecto de desarrollo de software:
 
 **Tácticas a emplear:**
-- **Autenticación y Autorización:** Implementa un sólido sistema de autenticación para verificar la identidad de los usuarios. Utiliza mecanismos de autorización para controlar el acceso a las funciones y los datos según los roles y permisos de cada usuario.
-- Se utilizará Amazon CloudWatch Logs para registrar y supervisar eventos de autenticación y autorización.
-- Se implementará el cifrado de datos en reposo con AWS KMS para las claves de cifrado de las contraseñas, claves de las APIs, gestionar las claves de RDS.
-- Se realizarán pruebas de penetración periódicas para identificar vulnerabilidades (OWASP ZAP)
-- Se implementarán autenticaciones de dos factores para los usuarios.
+
+- **Autenticación y Autorización:** Implementa un sólido sistema de autenticación para verificar la identidad de los usuarios. Utiliza mecanismos de autorización para controlar el acceso a las funciones y los datos según los roles y permisos de cada usuario. Puedes utilizar servicios de AWS Identity and Access Management (IAM) para gestionar permisos.
+
+- **Cifrado de datos en reposo:** Utiliza AWS Key Management Service (KMS) para administrar las claves de cifrado de contraseñas, claves de APIs y bases de datos. Asegúrate de cifrar datos sensibles en reposo.
+
+- **Pruebas de penetración:** Realiza pruebas de penetración periódicas utilizando herramientas como OWASP ZAP para identificar vulnerabilidades y fortalecer la seguridad del sistema.
+
+- **Autenticación de dos factores:** Implementa la autenticación de dos factores (2FA) para los usuarios, lo que proporciona una capa adicional de seguridad al requerir un segundo método de autenticación además de la contraseña.
 
