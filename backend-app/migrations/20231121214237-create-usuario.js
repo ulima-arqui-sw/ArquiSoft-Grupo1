@@ -5,9 +5,9 @@ module.exports = {
     await queryInterface.createTable('usuarios', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        default: Sequelize.UUIDV4
       },
       nombre: {
         type: Sequelize.STRING
@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       tipo_documento: {
-        type: Sequelize.STRING
+        type: DataTypes.ENUM('dni', 'pasaporte', 'c_extranjeria'),
       },
       n_documento: {
         type: Sequelize.STRING
@@ -27,11 +27,8 @@ module.exports = {
       contraseña: {
         type: Sequelize.STRING
       },
-      imagen_url: {
-        type: Sequelize.STRING
-      },
       tipo_usuario: {
-        type: Sequelize.STRING
+        type: DataTypes.ENUM('admin', 'profesional', 'usuario'),
       },
       createdAt: {
         allowNull: false,
