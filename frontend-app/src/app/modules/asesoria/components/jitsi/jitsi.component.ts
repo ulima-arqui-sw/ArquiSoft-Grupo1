@@ -1,16 +1,14 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 declare var JitsiMeetExternalAPI: any;
 
 @Component({
   selector: 'app-jitsi',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './jitsi.component.html',
   styleUrl: './jitsi.component.css'
 })
-export class JitsiComponent implements AfterViewInit {
+export class JitsiComponent implements OnInit, AfterViewInit {
+
 
   domain: string = "meet.jit.si"; // For self hosted use your domain
   room: any;
@@ -27,9 +25,9 @@ export class JitsiComponent implements AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.room = 'bwb-bfqi-vmh'; // Set your room name
+    this.room = 'myroom'; // Set your room name
     this.user = {
-      name: 'Akash Verma' // Set your username
+      name: 'ale' // Set your username
     }
   }
 
