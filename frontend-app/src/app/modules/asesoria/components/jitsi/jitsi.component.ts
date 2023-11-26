@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 declare var JitsiMeetExternalAPI: any;
 
 @Component({
@@ -21,11 +21,13 @@ export class JitsiComponent implements OnInit, AfterViewInit {
   isVideoMuted = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
+  
 
   ngOnInit(): void {
-    this.room = 'myroom'; // Set your room name
+    this.room = this.route.snapshot.paramMap.get('idMeeting');
     this.user = {
       name: 'ale' // Set your username
     }

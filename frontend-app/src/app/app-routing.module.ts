@@ -7,7 +7,7 @@ import { MyMeetingsComponent } from './modules/asesoria/components/my-meetings/m
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'meet', component: JitsiComponent },
+  { path: 'join/:idMeeting', component: JitsiComponent },
   { path: 'my-meetings', component: MyMeetingsComponent },
 ];
 

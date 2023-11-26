@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Salas } from './public/db';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend-app';
+  meetingList: any[] = [];
+  constructor() {
+    this.getMeetings()
+  }
+  getMeetings() {
+    const idUsuario = localStorage.getItem('id')
+    if (idUsuario !== null) this.meetingList = Salas.filter((sala) => sala.idHost + idUsuario);
+  }
 }

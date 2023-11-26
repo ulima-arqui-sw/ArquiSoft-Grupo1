@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SesionModule } from './modules/sesion/sesion.module';
+import { AsesoriaModule } from './modules/asesoria/asesoria.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SesionModule } from './modules/sesion/sesion.module';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SesionModule
+    SesionModule,
+    AsesoriaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
