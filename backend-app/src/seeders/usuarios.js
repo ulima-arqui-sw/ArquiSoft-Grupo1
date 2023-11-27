@@ -8,33 +8,73 @@ module.exports = async () => {
       {
         nombre: 'Alessandra',
         apellido: 'Nuñez',
-        tipo_documento: 'DNI',
+        tipo_documento: 'dni',
         n_documento: '11122233',
-        correo: 'a@gmail.com',
-        contraseña: 'contra',
+        correo: 'alessandra@gmail.com',
+        contrasenia: 'contra',
         imagen_url: 'a',
         tipo_usuario: 'mentor'
       },
       {
         nombre: 'Sebastian',
-        apellido: 'Diaz',
-        tipo_documento: 'DNI',
+        apellido: 'Barboza',
+        tipo_documento: 'dni',
         n_documento: '11122233',
-        correo: 's@gmail.com',
-        contraseña: 'contra',
+        correo: 'sebastian@gmail.com',
+        contrasenia: 'contra',
         imagen_url: 'a',
         tipo_usuario: 'aprendiz'
       },
       {
         nombre: 'Juan',
         apellido: 'Valdez',
-        tipo_documento: 'DNI',
+        tipo_documento: 'dni',
         n_documento: '11122233',
-        correo: 'j@gmail.com',
-        contraseña: 'contra',
+        correo: 'juan@gmail.com',
+        contrasenia: 'contra',
         imagen_url: 'a',
         tipo_usuario: 'aprendiz'
       },
+      {
+        nombre: 'Maria',
+        apellido: 'Gonzalez',
+        tipo_documento: 'dni',
+        n_documento: '11122233',
+        correo: 'maria@gmail.com',
+        contrasenia: 'contra',
+        imagen_url: 'a',
+        tipo_usuario: 'aprendiz'
+      },
+      {
+        nombre: 'Pedro',
+        apellido: 'Perez',
+        tipo_documento: 'dni',
+        n_documento: '11122233',
+        correo: 'pedro@gmail.com',
+        contrasenia: 'contra',
+        imagen_url: 'a',
+        tipo_usuario: 'aprendiz'
+      },
+      {
+        nombre: 'Luis',
+        apellido: 'Lopez',
+        tipo_documento: 'dni',
+        n_documento: '11122233',
+        correo: 'luis@gmail.com',
+        contrasenia: 'contra',
+        imagen_url: 'a',
+        tipo_usuario: 'mentor'
+      },
+      {
+        nombre: 'Carlos',
+        apellido: 'Gomez',
+        tipo_documento: 'dni',
+        n_documento: '11122233',
+        correo: 'carlos@gmail.com',
+        contrasenia: 'contra',
+        imagen_url: 'a',
+        tipo_usuario: 'mentor'
+      }
     ]
   
   await Usuario.bulkCreate(users);

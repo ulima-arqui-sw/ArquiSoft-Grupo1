@@ -6,6 +6,7 @@ const db = {
   ...require('./Usuario.js'),
   ...require('./Reunion.js'),
   ...require('./Usuario_Reunion.js'),
+  ...require('./Publicacion.js'),
 };
 
 Object.keys(db).forEach(modelName => {

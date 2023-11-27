@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reunion } from '../../../../interfaces/Reunion';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ReunionService } from '../../../../services/reunion.service';
+import { ReunionService } from '../../../../services/reunion/reunion.service';
 
 @Component({
   selector: 'app-reunion-info',
@@ -17,10 +17,10 @@ export class ReunionInfoComponent {
     this.formInvitar = this.fb.group({
       'correo': ''
     })
-   }
+  }
   redirect(nombreReunion: string) {
     this.router.navigate(['/unirse', nombreReunion.replace(/ /g, '-')]);
-    
+
   }
 
   async invitar() {
@@ -42,7 +42,7 @@ export class ReunionInfoComponent {
 
   showModal() {
     const dialogElement = document.getElementById('dialogInvitar') as HTMLDialogElement;
-    if(dialogElement && typeof dialogElement.showModal === 'function') {
+    if (dialogElement && typeof dialogElement.showModal === 'function') {
       dialogElement.showModal();
     }
   }

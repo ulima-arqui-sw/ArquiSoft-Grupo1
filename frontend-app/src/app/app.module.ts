@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SesionModule } from './modules/sesion/sesion.module';
 import { AsesoriaModule } from './modules/asesoria/asesoria.module';
 import { HttpClientModule } from '@angular/common/http';
+import { InicioModule } from './modules/inicio/inicio.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     SesionModule,
     AsesoriaModule,
-    HttpClientModule
+    HttpClientModule,
+    InicioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

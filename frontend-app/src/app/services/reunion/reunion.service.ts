@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Reunion } from '../interfaces/Reunion';
+import { Reunion } from '../../interfaces/Reunion';
 
 
 @Injectable({
@@ -34,7 +34,7 @@ export class ReunionService {
     const apiUrl = this.apiUrl + '/reunion/agregar-invitado';
     const body = {
       idReunion,
-      correoInvitado :correo
+      correoInvitado: correo
     }
     return this.http.post<any>(apiUrl, body);
   }

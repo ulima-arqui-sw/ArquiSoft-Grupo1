@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReunionService } from './services/reunion.service';
+import { ReunionService } from './services/reunion/reunion.service';
 import { Reunion } from './interfaces/Reunion';
 
 
@@ -10,5 +10,5 @@ import { Reunion } from './interfaces/Reunion';
 })
 export class AppComponent {
   title = 'frontend-app';
-  
+
 }

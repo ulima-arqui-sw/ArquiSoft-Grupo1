@@ -9,8 +9,9 @@ class Publicacion extends Model {
 
 }
 Publicacion.init({
-  nombreReunion: DataTypes.STRING,
-  fecha: DataTypes.DATE
+  titulo: DataTypes.STRING,
+  tipo: DataTypes.STRING,
+  contenido: DataTypes.STRING,
 }, {
   sequelize,
   modelName: 'Publicacion',

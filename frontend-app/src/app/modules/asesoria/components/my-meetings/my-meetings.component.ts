@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reunion } from '../../../../interfaces/Reunion';
-import { ReunionService } from '../../../../services/reunion.service';
+import { ReunionService } from '../../../../services/reunion/reunion.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -20,9 +20,9 @@ export class MyMeetingsComponent {
     this.formCrearReunion = this.fb.group({
       'nombreReunion': ''
     })
-    
+
   }
-  async getMeetings() {   
+  async getMeetings() {
     const idUsuario = localStorage.getItem('id');
     if (idUsuario !== null) {
       this.idUsuario = +idUsuario;
@@ -53,7 +53,7 @@ export class MyMeetingsComponent {
   async crearReunion() {
     const nombre = this.formCrearReunion.get('nombreReunion')?.value;
     try {
-      this.reunionService.crearReunion(nombre, this.idUsuario).subscribe( data => {
+      this.reunionService.crearReunion(nombre, this.idUsuario).subscribe(data => {
         this.getMeetings()
       });
     } catch (error) {
@@ -61,6 +61,6 @@ export class MyMeetingsComponent {
     }
   }
 
-  
+
 
 }

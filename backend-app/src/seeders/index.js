@@ -6,9 +6,12 @@ const main = () => {
     console.log('DB Connected');
     require('./usuarios')()
       .then(() => {
-        db.close().then(() => {
-          process.exit();
-        });
+        require('./publicaciones')()
+          .then(() => {
+            db.close().then(() => {
+              process.exit();
+            });
+          });
       });
   });
 }
