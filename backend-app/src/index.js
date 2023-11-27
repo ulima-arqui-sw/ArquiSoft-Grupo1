@@ -4,6 +4,7 @@ const db = require('./db')
 const app = express();
 var cors = require('cors');
 
+
 // Express global config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
