@@ -1,17 +1,24 @@
-<div class="container">
-  <div class="text-lg font-bold">Mis reuniones</div>
-  <button class="btn btn-sm" onclick="dialogCrear.showModal()">Crear nueva reunión</button>
-  <div>
+<div class="">
+  <div class="flex justify-between">
+    <div class="text-lg font-bold">Mis reuniones</div>
+    <button class="btn btn-sm" onclick="dialogCrear.showModal()">Crear nueva reunión</button>
+  </div>
+  <div *ngIf="listaReuniones.length > 0">
     <app-reunion-info *ngFor="let reunion of listaReuniones" [reunion]="reunion" [misReuniones]="true"></app-reunion-info>
   </div>
-
-  <div class="text-lg font-bold">Invitaciones</div>
-  <div>
-    <app-reunion-info *ngFor="let reunion of listaInvitaciones" [reunion]="reunion" [misReuniones]="false"></app-reunion-info>
+  <div *ngIf="listaReuniones.length == 0">
+    <p class="my-2">No tienes reuniones programadas. 🥺</p>
+  </div>
+  
+  <div class="text-lg font-bold mt-8">Invitaciones</div>
+  <div *ngIf="listaInvitaciones.length > 0">
+    <app-reunion-info *ngFor="let reunion of listaInvitaciones" [reunion]="reunion"
+      [misReuniones]="false"></app-reunion-info>
+  </div>
+  <div *ngIf="listaInvitaciones.length == 0">
+    <p class="my-2">No has sido invitado a ninguna reunión todavía. 😖</p>
   </div>
 </div>
-
-
 
 <dialog id="dialogCrear" class="modal">
   <div class="modal-box">

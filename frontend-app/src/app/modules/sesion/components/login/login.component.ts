@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../../../services/usuario/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private usuarioService: UsuarioService) {
     this.loginForm = this.formBuilder.group({
       id: ['', Validators.required]
     });
@@ -17,6 +18,7 @@ export class LoginComponent {
 
   login() {
     localStorage.setItem('id', this.loginForm.value.id);
+    this.usuarioService.login(parseInt(this.loginForm.value.id));
     this.router.navigate(['/mis-reuniones']);
   }
 }

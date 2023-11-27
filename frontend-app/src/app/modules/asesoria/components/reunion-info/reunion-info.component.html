@@ -1,6 +1,10 @@
-<h2>{{reunion.nombreReunion}}</h2>
-<button class="btn btn-sm btn-primary" (click)="redirect(reunion.nombreReunion)">Ingresar</button>
-<button *ngIf="misReuniones" class="btn btn-sm" (click)="showModal()">Invitar personas</button>
+<div class="border m-2 p-4 flex justify-between">
+  <h2>{{reunion.nombreReunion}}</h2>
+  <div>
+    <button class="btn btn-sm btn-primary mx-2" (click)="redirect(reunion.nombreReunion)">Ingresar</button>
+    <button *ngIf="misReuniones" class="btn btn-sm mx-2" (click)="showModal()">Invitar personas</button>
+  </div>
+</div>
 
 <dialog id="dialogInvitar" class="modal">
   <div class="modal-box">
@@ -19,3 +23,4 @@
     </div>
   </div>
 </dialog>
+

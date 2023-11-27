@@ -31,6 +31,8 @@ export class FeedComponent {
       } catch (error) {
         console.error('Error en getReuniones:', error);
       }
+    } else {
+      this.router.navigate(['/login']);
     }
   }
 

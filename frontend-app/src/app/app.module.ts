@@ -7,10 +7,12 @@ import { SesionModule } from './modules/sesion/sesion.module';
 import { AsesoriaModule } from './modules/asesoria/asesoria.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioModule } from './modules/inicio/inicio.module';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

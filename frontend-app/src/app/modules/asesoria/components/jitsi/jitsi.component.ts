@@ -44,7 +44,7 @@ export class JitsiComponent implements OnInit, AfterViewInit {
       },
       parentNode: document.querySelector('#jitsi-iframe'),
       userInfo: {
-        displayName: this.user.name
+        displayName: localStorage.getItem('nombre')
       }
     }
 

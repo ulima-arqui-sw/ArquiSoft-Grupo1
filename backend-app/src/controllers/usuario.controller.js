@@ -1,25 +1,25 @@
-import { usuario } from "../models/usuario";
+const { Usuario } = require("../models");
 
-export const getUsuario = async (req, res) => {
+const getUsuario = async (req, res) => {
   try {
     const { id } = req.params
-    const Usuario = await usuario.findOne({
+    const usuario = await Usuario.findOne({
       where: {
         id,
       }
     })
 
-    if (!Usuario) return res.status(404).json({ message: 'Usuario no existe' })
-    res.json(Usuario)
+    if (!usuario) return res.status(404).json({ message: 'Usuario no existe' })
+    res.json(usuario)
 
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
 };
 
-export const getUsuarios = async (req, res) => {
+const getUsuarios = async (req, res) => {
   try {
-    const listaUsuarios = await usuario.findAll();
+    const listaUsuarios = await Usuario.findAll();
     res.json(listaUsuarios);
 
   } catch (error) {
@@ -27,18 +27,18 @@ export const getUsuarios = async (req, res) => {
   }
 };
 
-export const getUsuariosByType = async (req, resp) => {
+const getUsuariosByType = async (req, resp) => {
   const correo = req.query.correo
   const contrasenia = req.query.contrasenia
 
   getUser(correo, contrasenia, resp);
 };
 
-export const createUsuario = async (req, res) => {
+const createUsuario = async (req, res) => {
   const { nombre, apellido, correo, contrasenia, tipo_documento, n_documento, tipo_usuario } = req.body
 
   try {
-    const newUsuario = await usuario.create({
+    const newUsuario = await Usuario.create({
       nombre,
       apellido,
       correo,
@@ -55,7 +55,7 @@ export const createUsuario = async (req, res) => {
   }
 };
 
-export const updateUsuario = async (req, res) => {
+const updateUsuario = async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -68,7 +68,7 @@ export const updateUsuario = async (req, res) => {
       tipo_usuario
     } = req.body
 
-    const Usuario = await usuario.findByPk(id)
+    const Usuario = await Usuario.findByPk(id)
     Usuario.nombre = nombre
     Usuario.apellido = apellido
     Usuario.correo = correo
@@ -86,10 +86,10 @@ export const updateUsuario = async (req, res) => {
   }
 };
 
-export const deleteUsuario = async (req, res) => {
+const deleteUsuario = async (req, res) => {
   try {
     const { id } = req.params;
-    await usuario.destroy({
+    await Usuario.destroy({
       where: {
         id,
       }
@@ -103,7 +103,7 @@ export const deleteUsuario = async (req, res) => {
 };
 
 async function getUser(email, contrasena, resp) {
-  const number = await usuario.count({
+  const number = await Usuario.count({
     where: {
       correo,
       contrasenia,
@@ -114,7 +114,7 @@ async function getUser(email, contrasena, resp) {
     console.log("No existe tal usuario el tabla")
     resp.send(invUser)
   } else {
-    const Usuario = await usuario.findAll({
+    const Usuario = await Usuario.findAll({
       where: {
         correo,
         contrasenia,
@@ -125,4 +125,8 @@ async function getUser(email, contrasena, resp) {
   resp.send(Usuario)
   //resp.status(404).json({ message: 'Usuario no existe' })
   //resp.send(invUser)
+}
+
+module.exports = {
+  getUsuario
 }
