@@ -1,21 +1,15 @@
-const { Sequelize } = require('sequelize');
+const Sequelize = require('sequelize');
+const dotenv = require('dotenv');
 
-const sequelizeOpts = {
-  username: 'postgres',
-  port: '5432',
-  password: 'postgres',
-  database: 'postgres',
-  dialect: 'postgres',
-  host: "postgres-1.cx74vpe1f6lb.us-east-1.rds.amazonaws.com",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, // You may need to set this to true depending on your RDS configuration
-    },
-  },
-};
+dotenv.config();
 
-const sequelize = new Sequelize(sequelizeOpts);
+const db = new Sequelize({
+  dialect: process.env.DB_DIALECT,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD
+});
 
-
-module.exports = sequelize;
+module.exports = db
