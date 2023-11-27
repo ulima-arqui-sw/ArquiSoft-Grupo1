@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Salas } from './public/db';
+import { ReunionService } from './services/reunion.service';
+import { Reunion } from './interfaces/Reunion';
+
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,5 @@ import { Salas } from './public/db';
 })
 export class AppComponent {
   title = 'frontend-app';
-  meetingList: any[] = [];
-  constructor() {
-    this.getMeetings()
-  }
-  getMeetings() {
-    const idUsuario = localStorage.getItem('id')
-    if (idUsuario !== null) this.meetingList = Salas.filter((sala) => sala.idHost + idUsuario);
-  }
+  
 }

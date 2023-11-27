@@ -1,25 +1,33 @@
 <div class="container">
   <div class="text-lg font-bold">Mis reuniones</div>
-  <div *ngFor="let meeting of meetingList" class="flex">
-    <h2>{{meeting.title}}</h2>
-    <button class="btn btn-sm btn-primary" (click)="redirect(meeting.id)">Ingresar</button>
-    <button class="btn btn-sm" onclick="my_modal_1.showModal()">Invitar personas</button>
+  <button class="btn btn-sm" onclick="dialogCrear.showModal()">Crear nueva reunión</button>
+  <div>
+    <app-reunion-info *ngFor="let reunion of listaReuniones" [reunion]="reunion" [misReuniones]="true"></app-reunion-info>
+  </div>
+
+  <div class="text-lg font-bold">Invitaciones</div>
+  <div>
+    <app-reunion-info *ngFor="let reunion of listaInvitaciones" [reunion]="reunion" [misReuniones]="false"></app-reunion-info>
   </div>
 </div>
 
-<dialog id="my_modal_1" class="modal">
+
+
+<dialog id="dialogCrear" class="modal">
   <div class="modal-box">
-    <h3 class="font-bold text-lg">Invitar personas</h3>
-    <p class="py-4">Escribe el correo de un usuario para invitarlo.</p>
-    <div class="flex">
-      <input type="text" placeholder="Type here" class="input input-sm input-bordered w-full max-w-xs" />
-      <button class="btn btn-sm">Agregar</button>
-    </div>
+    <h3 class="font-bold text-lg">Crear nueva reunión</h3>
+    <p class="py-4">Establece el nombre para la nueva reunión.</p>
+    <form [formGroup]="formCrearReunion" class="flex">
+      <input formControlName="nombreReunion" type="text" placeholder="" class="input input-sm input-bordered w-full max-w-xs" />
+      
+    </form>
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+        <button class="btn btn-primary" (click)="crearReunion()">Crear</button>
+        <button class="btn">Cancelar</button>
       </form>
     </div>
   </div>
 </dialog>
+

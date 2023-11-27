@@ -7,8 +7,8 @@ import { MyMeetingsComponent } from './modules/asesoria/components/my-meetings/m
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'join/:idMeeting', component: JitsiComponent },
-  { path: 'my-meetings', component: MyMeetingsComponent },
+  { path: 'unirse/:idMeeting', component: JitsiComponent },
+  { path: 'mis-reuniones', component: MyMeetingsComponent },
 ];
 
 @NgModule({

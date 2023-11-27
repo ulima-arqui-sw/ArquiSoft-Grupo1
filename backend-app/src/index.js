@@ -2,11 +2,13 @@ const express = require('express');
 const path = require('path');
 const db = require('./db')
 const app = express();
-
+var cors = require('cors');
 
 // Express global config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
+app.use(require('./routes/index'));
 
 // Routes middleware
 

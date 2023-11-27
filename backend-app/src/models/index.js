@@ -4,6 +4,8 @@ const db = {
   Sequelize: sequelize,
   sequelize,
   ...require('./Usuario.js'),
+  ...require('./Reunion.js'),
+  ...require('./Usuario_Reunion.js'),
 };
 
 Object.keys(db).forEach(modelName => {

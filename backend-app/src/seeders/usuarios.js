@@ -36,5 +36,8 @@ module.exports = async () => {
         tipo_usuario: 'aprendiz'
       },
     ]
+  
   await Usuario.bulkCreate(users);
+
+
 };

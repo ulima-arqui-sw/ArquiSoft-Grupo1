@@ -17,6 +17,6 @@ export class LoginComponent {
 
   login() {
     localStorage.setItem('id', this.loginForm.value.id);
-    this.router.navigate(['/meet']);
+    this.router.navigate(['/mis-reuniones']);
   }
 }
