@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const sequelize = new Sequelize({
+const db = new Sequelize({
   dialect: process.env.DB_DIALECT,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -12,4 +12,4 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD
 });
 
-module.exports = sequelize;
+module.exports = db

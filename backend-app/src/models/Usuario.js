@@ -7,17 +7,23 @@ class usuario extends Model {
     this.belongsToMany(Reunion, { as: 'reunionesInvitadas', through: 'UsuarioReunion', foreignKey: 'idInvitado' });
     this.hasMany(Reunion, { as: 'reuniones', foreignKey: 'idAnfitrion' });
   }
-} 
-  
+}
+
 usuario.init({
   nombre: DataTypes.STRING,
   apellido: DataTypes.STRING,
-  tipo_documento: DataTypes.ENUM,
+  tipo_documento: {
+    type: DataTypes.ENUM,
+    values: ['dni', 'pasaporte', 'c_extranjeria'],
+  },
   n_documento: DataTypes.STRING,
   correo: DataTypes.STRING,
   contrasenia: DataTypes.STRING,
   imagen_url: DataTypes.STRING,
-  tipo_usuario: DataTypes.ENUM
+  tipo_usuario: {
+    type: DataTypes.ENUM,
+    values: ['admin', 'usuario', 'profesional'],
+  },
 }, {
   sequelize,
   modelName: 'usuario',
