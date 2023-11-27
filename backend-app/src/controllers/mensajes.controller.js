@@ -1,11 +1,13 @@
 const { DynamoDBClient, ScanCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb");
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Configura las credenciales y la región
 const client = new DynamoDBClient({
   region: "us-east-1",
   credentials: {
-    accessKeyId: "AKIAUZF45ETXKUOU5D5S", 
-    secretAccessKey: "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" 
+    accessKeyId: process.env.AWS_ACCESS_KEY, 
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY 
   }
 });
 
