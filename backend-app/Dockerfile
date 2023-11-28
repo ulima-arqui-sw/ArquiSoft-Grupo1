@@ -1,15 +1,22 @@
+# Usa una imagen oficial de Node.js
 FROM node:21-bookworm
 
+RUN apt-get update -qq && apt-get install nodejs
+
+# Establece el directorio de trabajo en /app
 WORKDIR /app
 
-COPY package*.json ./
+# Copia los archivos necesarios (incluyendo package.json)
+COPY package*.json ./app
 
-RUN npm install
-
+# Copia el resto de los archivos del proyecto
 COPY . .
 
-# Expose the port that the app will run on
+# Instala las dependencias de la aplicación
+RUN npm install
+
+# Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 4447
 
-# Command to run the application
+# Comando para ejecutar la aplicación
 CMD ["npm", "start"]
