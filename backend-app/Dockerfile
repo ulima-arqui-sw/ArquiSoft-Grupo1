@@ -7,7 +7,7 @@ RUN apt-get update -qq && apt-get install nodejs
 WORKDIR /app
 
 # Copia los archivos necesarios (incluyendo package.json)
-COPY package*.json ./app
+COPY package*.json ./
 
 # Copia el resto de los archivos del proyecto
 COPY . .
