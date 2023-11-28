@@ -296,13 +296,13 @@ https://docs.google.com/spreadsheets/d/1Xu976dNTox09go_x45Mka7bK8sjiIgDE/edit?us
   - CON-6: Implementación de pasarelas de pago seguras y sistemas para gestionar tarifas, comisiones y transacciones financieras.
   - CON-7: Utilizar patrones de diseño eficientes como pool de conexiones, lazy loading, entre otros para optimizar la interacción.
 
+### - ITERACIÓN 1 -
+
 ### Paso 1: Revisar entradas
 
 Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
 --- | --- | --- |---
 Plataforma desde 0. Se busca producir un diseño detallado. | UC-2, UC-3, UC-4 soportan la funcionalidad base | QA-2, QA-4, QA-10, QA-12 | CRN-1, CON-3, CON-4, CON-5, CON-6
-
-### - ITERACIÓN 1 -
 
 ### Paso 2: Establecer objetivo de la iteración
 
@@ -327,8 +327,14 @@ DEC-4 | Interfaz de plataforma en Angular y TailwindCSS | Se usa esta tecnologí
 DEC-5 | MVC en backend | Se usa MVC para tener un mejor manejo de código y por ende mayor modificabilidad
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
+- Amazon EC2: Implementacion de un servicio web externo en la nube, principalmente por la facilidad de implementacion de diversos servicios AWS.
+- Patron de despliegue three-tier: Despliege de la aplicacion en tres capas: presentacion, aplicacion y datos. 
+- Patron de arquitectura MVC: Implementacion del patron MVC para la arquitecruta del backend de la aplicacion web.
 
 ### Paso 6: Bosquejar vistas y registrar decisiones de diseño
+
+- [Asesorias integradas](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/Modulo%20de%20Creacion%20de%20sala%20de%20videoconferencias)
+- [Busqueda de profesioanles](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/M%C3%B3dulo%20de%20busqueda%20de%20profesionales)
 
 ### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
 
@@ -346,8 +352,6 @@ QA-10
 | | CON-4 | | DEC-1, DEC-2
 CON-5
 CON-6
-
-
 
 ### - ITERACIÓN 2 -
 
