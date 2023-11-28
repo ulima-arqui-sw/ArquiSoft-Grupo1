@@ -15,7 +15,7 @@ import { CitasModule } from './modules/citas/citas.module';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    NavbarComponent,  
     ChatComponent,
     CitasComponent
   ],

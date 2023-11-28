@@ -17,4 +17,8 @@ export class ChatComponent {
     //llamar al backend para obtener las conversaciones y asignar a la variable conversations
   }
 
+
+  enviarMensaje(){
+    //llamar al backend para enviar el mensaje
+  }
 }
