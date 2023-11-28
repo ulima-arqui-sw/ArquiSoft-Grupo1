@@ -10,20 +10,34 @@ const s3 = new AWS.S3({
 const bucket = process.env.AWS_S3_BUCKET;
 
 // Subir un objeto al bucket S3
-async function uploadFile(key, body) {
-    await s3.putObject({
-        Body: body,
-        Bucket: bucket,
-        Key: key,
-    }).promise();
+
+const uploadFile = async (req,res) => {
+    try {
+        const { body, key } = req.body;
+        await s3.putObject({
+            Body: body,
+            Bucket: bucket,
+            Key: key
+        }).promise();
+        return res.status(200).json({ message: 'Archivo subido con exito' }); 
+    } catch (error) {
+        return res.status(500).json({ message: error.message })
+    }
 }
 
 // Descargar un archivo del bucket S3
-async function downloadFile(key) {
-    await s3.getObject({
-        Bucket: bucket,
-        Key: key,
-    }).promise();
+
+const downloadFile = async (req, res) => {
+    try {
+        const { key } = req.params
+        const data = await s3.getObject({
+            Bucket: 'bucket',
+            Key: key
+        }).promise();
+        return res.status(200).send(data.Body)
+    } catch (error) {
+        return res.status(500).json({ message: error.message })
+    }
 }
 
 // Eliminar un archivo del bucket S3
@@ -33,3 +47,9 @@ async function downloadFile(key) {
 //         Key: key,
 //     }).promise();
 // }
+
+
+module.exports = {
+    uploadFile,
+    downloadFile,
+}

@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const { getMisReuniones, crearReunion, agregarInvitado, getInvitaciones } = require('../controllers/reuniones.controller');
 const { getPublicaciones } = require('../controllers/publicaciones.controller');
+const { uploadFile, downloadFile } = require('../controllers/archivos.controller');
 const { getUsuario } = require('../controllers/usuario.controller');
 const { checkCachePublicaciones } = require('../middlewares/cache');
 
@@ -15,5 +16,7 @@ router.get('/publicacion/feed/:idUser', checkCachePublicaciones, getPublicacione
 
 router.get('/usuario/obtener-datos/:id', getUsuario)
 
+router.get('/archivo/obtener-archivo/:key', downloadFile)
+router.post('/archivo/subir-archivo/', uploadFile)
 
 module.exports = router;
