@@ -379,12 +379,22 @@ DEC-10 | Uso de solución de videollamadas Agora.io | Por su escalabilidad, serv
 
 ### Paso 2: Establecer objetivo de la iteración
 
+En esta tercera iteración se busca refinar las iteraciones anteriores y continuar abarcando los escenarios de atributos de calidad restantes. En este caso, se elegirá refinar el atributo de Disponibilidad
+
 ### Paso 3: Elegir uno o más elementos del sistema a refinar
 
+Se refinarán el elemento de despliegue: servidor de BD, que fue identificado en la primera iteración
+
 ### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+ID | Decisión de diseño | Fundamento
+--- | --- | ---
+DEC-11 | Escalabilidad vertical | RDS permite aumentar o disminuir la capacidad de la instancia de base de datos en función de la demanda
+DEC-12 | Replicación | RDS ofrece replicación multi-AZ, que implica mantener una copia sincrónica de la base de datos en una zona de disponibilidad secundaria, lo que mejora la disponibilidad y la tolerancia a fallos.
+DEC-13 | Monitoreo y alertas | Utilizar Amazon CloudWatch para monitorear métricas clave y establecer alarmas es importante para asegurar la disponibilidad
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
 
 ### Paso 6: Bosquejar vistas y registrar decisiones de diseño
 
-### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+### Paso 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
