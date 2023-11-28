@@ -323,7 +323,7 @@ ID | Decisión de diseño | Fundamento
 DEC-1 | App front y back serán deployeados en un EC2 | Se escoge Amazon EC2 para aprovechar la facilidad de escalamiento horizontal y vertical y por su facil integración con otros servicios de AWS a usar
 DEC-2 | Base de datos relacional en RDS y uso de DynamoDB | Se creará una instancia de la BD relacional en RDS con el fin de poder aprovechar en futuras iteraciones las ventajas de este servicio de AWS y se usará DynamoDB por su integración con otros servicios
 DEC-3 | Patrón de despliegue three-tier | La interfaz desarrollada en Angular será el nivel de presentación, el backend en NodeJS será el nivel de aplicación y las bases de datos Postgresql y DynamoDB serán el nivel de datos
-DEC-4 | Interfaz de plataforma en Angular y TailwindCSS | Se usa esta tecnología Angular por ser conocida por los desarrolladores + Tailwind para facilitar el UI limpio
+DEC-4 | Interfaz de plataforma en Angular y TailwindCSS | Se usa esta tecnología Angular por ser conocida por los desarrolladores + Tailwind para facilitar el diseño UI
 DEC-5 | MVC en backend | Se usa MVC para tener un mejor manejo de código y por ende mayor modificabilidad
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
@@ -334,7 +334,7 @@ DEC-5 | MVC en backend | Se usa MVC para tener un mejor manejo de código y por 
 
 No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
 --- | --- | --- | ---
-UC-2 | | | SD
+UC-2
 | | UC-3 | | DEC-2, DEC-4
 | | UC-4 | | DEC-2, DEC-4
 | | QA-2 | | DEC-1, DEC-3
@@ -353,9 +353,21 @@ CON-6
 
 ### Paso 2: Establecer objetivo de la iteración
 
+El objetivo de esta iteración será identificar las estructuras que soportan a los elementos de funcionalidad primaria. Para esta iteración, se podrían priorizar por dificultad e importancia los casos de uso, teniendo así los UC 2, 3, 4 y 5.
+
 ### Paso 3: Elegir uno o más elementos del sistema a refinar
 
+Se refinarán las capas de arquitectura que fueron definidas en la iteración anterior.
+
 ### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+ID | Decisión de diseño | Fundamento
+--- | --- | ---
+DEC-6 | Crear modelo de dominio | Se debe crear un modelo inicial documentando las principales entidades y sus relaciones
+DEC-7 | Identificar objetos de dominio y descomponer en módulos | Esto para seguir las practicas de modularidad y reusabilidad
+DEC-8 | Uso de caching | Para agilizar las consultas más usadas (ejm: mentores destacados)
+DEC-9 | S3 para el almacenamiento de archivos | Se almacenarán en un S3 los archivos y grabaciones que los usuarios deseen subir
+DEC-10 | Uso de solución de videollamadas Agora.io | Por su escalabilidad, servidores distribuidos y fácil integración
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
 
