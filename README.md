@@ -233,3 +233,92 @@ La seguridad es un aspecto crítico en cualquier proyecto de desarrollo de softw
 ## Borrador de arquitectura
 
 ![arqui](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Diagrama-arquitectura.png)
+
+## Workshop de Atributos de Calidad (QAW)
+
+### Paso 1: Presentación de la metodología
+
+En esta sección, se empleará el Workshop de Atributos de Calidad (QAW) como metodología de identificación, análisis y priorización de los requisitos de calidad para esta plataforma.
+
+Objetivo de la realización del workshop: Identificar y refinar los atributos de calidad relevantes para la implementación de la plataforma ExpertConnect.
+
+Participantes: Alonso Cáceres (Analista / Diseñador), Edgar Espinoza (Responsable de mantenimiento), Alessandra Nuñez (líder del proyecto, gestor de negocio), Josue Leite (Arquitecto de software).
+
+### Paso 2: Presentación del negocio (misión)
+
+"La misión de ExpertConnect es proporcionar una plataforma en línea que conecte a personas que necesitan asesoramiento con expertos en una amplia gama de disciplinas. Nuestra plataforma busca abordar la creciente demanda de acceso a expertos y asesoramiento especializado en un mundo cada vez más conectado y digitalizado. Estamos comprometidos en brindar un servicio de alta calidad y en garantizar que nuestros usuarios tengan acceso a los servicios de asesoramiento que necesitan de manera fácil y segura 
+
+Para garantizar que nuestra plataforma cumpla con las expectativas de los usuarios y sea exitosa en el mercado, hemos identificado los atributos de calidad más importantes para su implementación. La seguridad es una prioridad para nosotros, por lo que hemos implementado medidas de seguridad para proteger la información de nuestros usuarios. Además, la escalabilidad es importante para garantizar que la plataforma pueda manejar un gran número de usuarios y transacciones. Por último, la facilidad de uso es fundamental para brindar una experiencia de usuario satisfactoria y garantizar que los usuarios puedan acceder fácilmente a los servicios de asesoramiento que necesitan."
+
+### Paso 3: Presentación del Plan de Arquitectura
+
+Presentación general de la idea de arquitectura a emplear en ExpertConnect:
+
+![diagrama c3](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3-v2.png)
+
+### Paso 4: Identificación de drivers de arquitectura
+
+Para ExpertConnect, los principales atributos de calidad que se desea asegurar son los atributos de usabilidad y disponibilidad. Al ser los usuarios de la plataforma de cualquier edad, se busca que cualquier persona pueda usar la plataforma sin necesidad de guías o capacitaciones, de forma intuitiva y facil. Asimismo, la plataforma debe estar disponible la mayor cantidad de tiempo posible, pues las reuniones programadas entre mentores y aprendices pueden darse en cualquier hora del día.
+
+Entre otros, están los atributos de Seguridad, Mantenibilidad y Rendimiento.
+
+### Paso 5 al 8:
+
+https://docs.google.com/spreadsheets/d/1Xu976dNTox09go_x45Mka7bK8sjiIgDE/edit?usp=sharing&ouid=110103374564516016539&rtpof=true&sd=true
+
+## Proceso de Diseño (ADD)
+
+### Drivers de Arquitectura
+- Propósito:
+- Atributos de calidad:
+- Funcionalidad primaria
+  - 
+- Preocupaciones generales
+- Preocupaciones específicas
+- Requerimientos internos
+- Problemas
+- Restricciones
+
+### Paso 1: Revisar entradas
+
+### - ITERACIÓN 1 -
+
+### Paso 2: Establecer objetivo de la iteración
+
+### Paso 3: Elegir uno o más elementos del sistema a refinar
+
+### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
+
+### Paso 6: Bosquejar vistas y registrar decisiones de diseño
+
+### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+### - ITERACIÓN 2 -
+
+### Paso 2: Establecer objetivo de la iteración
+
+### Paso 3: Elegir uno o más elementos del sistema a refinar
+
+### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
+
+### Paso 6: Bosquejar vistas y registrar decisiones de diseño
+
+### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+### - ITERACIÓN 3 -
+
+### Paso 2: Establecer objetivo de la iteración
+
+### Paso 3: Elegir uno o más elementos del sistema a refinar
+
+### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
+
+### Paso 6: Bosquejar vistas y registrar decisiones de diseño
+
+### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
