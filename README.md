@@ -269,31 +269,85 @@ https://docs.google.com/spreadsheets/d/1Xu976dNTox09go_x45Mka7bK8sjiIgDE/edit?us
 ## Proceso de Diseño (ADD)
 
 ### Drivers de Arquitectura
-- Propósito:
-- Atributos de calidad:
+- Propósito: Se busca a través de esta plataforma brindar una solución donde las personas puedan buscar u ofrecer asesorías en distintos campos (idiomas, carreras, emprendimientos, etc), de manera facil y rápida.
+- Atributos de calidad: Del QAW: Disponibilidad, usabilidad, seguridad, mantenibilidad, rendimiento
 - Funcionalidad primaria
-  - 
-- Preocupaciones generales
-- Preocupaciones específicas
-- Requerimientos internos
-- Problemas
-- Restricciones
+  - UC-1: Registro e inicio de sesión
+  - UC-2: Asesorías integradas (videollamadas/videoconferencias)
+  - UC-3: Chat en tiempo real
+  - UC-4: Búsqueda de profesionales
+  - UC-5: Almacenamiento de archivos y grabaciones
+  - UC-6: Pagos integrados
+- Preocupaciones a nivel de arquitectura: 
+  - CRN-1: Establecer una estructura inicial de la plataforma
+  - CRN-2: Definir una arquitectura fácil de escalar y mantener
+  - CRN-3: Implementar una diferenciación de las responsabilidades y capacidades de cada módulo independiente del sistema
+- Requerimientos internos:
+  - Gestión de Logs: Se deben registrar eventos relevantes en logs para dar seguimiento a problemas y cumplir con procesos de auditoría.
+  - Actualizaciones periódicas: Se deben realizar actualizaciones de prevención (o nuevas funcionalidades) y/o correcciones de errores detectados.
+- Problemas: 
+  - Dependencia de sistemas externos: Se pueden dar problemas de disponibilidad en cuanto a las reuniones entre usuarios, pues depende de la disponibilidad de Agora.io. El mismo problema con el uso de Stripe y PayPal.
+- Restricciones:
+  - CON-1: Inicialmente, el sistema debe soportar al menos 1000 usuarios en simultáneo
+  - CON-2: Se debe poder acceder al sistema desde Chrome V3+ , Brave V1.6+, IE8+ ; en las plataformas de Windows, MacOS y Linux.
+  - CON-3: Servidor de base de datos para datos relacionales y base de datos para datos no relacionales
+  - CON-4: La plataforma debe estar disponible y accesible en al menos un 95% del tiempo total del año.
+  - CON-5: La plataforma debe optimizar el rendimiento del sitio para tener tiempos de carga rápidos y respuesta rápida durante las sesiones de asesoramiento.
+  - CON-6: Implementación de pasarelas de pago seguras y sistemas para gestionar tarifas, comisiones y transacciones financieras.
+  - CON-7: Utilizar patrones de diseño eficientes como pool de conexiones, lazy loading, entre otros para optimizar la interacción.
 
 ### Paso 1: Revisar entradas
+
+Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
+--- | --- | --- |---
+Plataforma desde 0. Se busca producir un diseño detallado. | UC-2, UC-3, UC-4 soportan la funcionalidad base | QA-2, QA-4, QA-10, QA-12 | CRN-1, CON-3, CON-4, CON-5, CON-6
 
 ### - ITERACIÓN 1 -
 
 ### Paso 2: Establecer objetivo de la iteración
 
+En base a las entradas especificadas, el objetivo de esta primera iteración es realizar un diseño inicial de la estructura de la plataforma, abarcando los atributos más importantes de disponibilidad, rendimiento y seguridad  
+
 ### Paso 3: Elegir uno o más elementos del sistema a refinar
 
+No hay elementos a refinar, pues se está diseñando el sistema desde 0.
+
+Diagrama de contexto:
+
+![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC1-v2.png)
+
 ### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+ID | Decisión de diseño | Fundamento
+--- | --- | ---
+DEC-1 | App front y back serán deployeados en un EC2 | Se escoge Amazon EC2 para aprovechar la facilidad de escalamiento horizontal y vertical y por su facil integración con otros servicios de AWS a usar
+DEC-2 | Base de datos relacional en RDS y uso de DynamoDB | Se creará una instancia de la BD relacional en RDS con el fin de poder aprovechar en futuras iteraciones las ventajas de este servicio de AWS y se usará DynamoDB por su integración con otros servicios
+DEC-3 | Patrón de despliegue three-tier | La interfaz desarrollada en Angular será el nivel de presentación, el backend en NodeJS será el nivel de aplicación y las bases de datos Postgresql y DynamoDB serán el nivel de datos
+DEC-4 | Interfaz de plataforma en Angular y TailwindCSS | Se usa esta tecnología Angular por ser conocida por los desarrolladores + Tailwind para facilitar el UI limpio
+DEC-5 | MVC en backend | Se usa MVC para tener un mejor manejo de código y por ende mayor modificabilidad
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
 
 ### Paso 6: Bosquejar vistas y registrar decisiones de diseño
 
 ### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
+--- | --- | --- | ---
+UC-2 | | | SD
+| | UC-3 | | DEC-2, DEC-4
+| | UC-4 | | DEC-2, DEC-4
+| | QA-2 | | DEC-1, DEC-3
+QA-4
+QA-10
+| | QA-12 | | DEC-5
+| | CRN-1 | | Todos
+| | | CON-3 | DEC-2
+| | CON-4 | | DEC-1, DEC-2
+CON-5
+CON-6
+
+
 
 ### - ITERACIÓN 2 -
 
