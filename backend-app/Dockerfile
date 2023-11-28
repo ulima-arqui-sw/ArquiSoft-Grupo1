@@ -12,6 +12,8 @@ COPY package*.json ./app
 # Copia el resto de los archivos del proyecto
 COPY . .
 
+RUN pwd
+
 # Instala las dependencias de la aplicación
 RUN npm install
 
