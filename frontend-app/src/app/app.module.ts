@@ -9,12 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { InicioModule } from './modules/inicio/inicio.module';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ChatComponent } from './modules/chat/components/chat/chat.component';
+import { CitasComponent } from './modules/citas/components/citas.component';
+import { CitasModule } from './modules/citas/citas.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ChatComponent
+    ChatComponent,
+    CitasComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { ChatComponent } from './modules/chat/components/chat/chat.component';
     SesionModule,
     AsesoriaModule,
     HttpClientModule,
-    InicioModule
+    InicioModule,
+    CitasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,10 @@
+@Component({
+  selector: 'app-citas',
+  templateUrl: './citas.component.html',
+  styleUrls: ['./citas.component.css']
+})
+
+/* citas.component.css */
+body {
+  margin: 0;
+}
