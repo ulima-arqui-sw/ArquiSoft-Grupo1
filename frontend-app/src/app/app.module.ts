@@ -8,11 +8,13 @@ import { AsesoriaModule } from './modules/asesoria/asesoria.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioModule } from './modules/inicio/inicio.module';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { ChatComponent } from './modules/chat/components/chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

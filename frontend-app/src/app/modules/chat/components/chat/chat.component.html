@@ -1,0 +1,86 @@
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="col-left">
+            <div class="conversations-counter">
+                <p>Todas las conversaciones ({{conversations.length}})</p>
+            </div>
+            <div class="searchIcon">
+                Buscar...
+            </div>
+        </div>
+        <div class="col-right">
+            <div class="chat-header__icon">
+                Icono header
+            </div>
+            <div class="chat-header__icon">
+                ellipsis
+            </div>
+        </div>
+    </div>
+    <div class="chat-body">
+        <div class="conversations-list">
+            <div class="conversation-item" *ngFor="let conversation of conversations">
+                <div class="conversation-item__avatar">
+                    <img src="" alt="">
+                </div>
+                <div class="conversation-item__info">
+                    <div class="conversation-item__info__name">
+
+                    </div>
+                    <div class="conversation-item__info__last-message">
+
+                    </div>
+                </div>
+                <div class="conversation-item__date">
+                    {{conversation.date}}
+                </div>
+            </div>
+        </div>
+        <div class="chat-content" style="background-color: aqua;">
+            <div class="chat-content__header">
+                <div class="chat-content__header__avatar">
+                    <img src="{{user.imagen_url}}" alt="">
+                </div>
+                <div class="chat-content__header__info">
+                    <div class="chat-content__header__info__name">
+                        {{user.nombre}}
+                    </div>
+                    <div class="chat-content__header__info__last-seen">
+                        {{currentConversation.lastSeen}}
+                    </div>
+                </div>
+                <div class="chat-content__header__actions">
+                    <div class="chat-content__header__actions__icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="chat-content__header__actions__icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="chat-content__header__actions__icon">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-content__body">
+                <div class="message-item" *ngFor="let message of currentConversation.message">
+                    <div class="message-item__avatar">
+                        <img src="{{user.imagen_url}}" alt="">
+                    </div>
+                    <div class="message-item__content">
+                        <div class="message-item__content__text">
+
+                        </div>
+                        <div class="message-item__content__date">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-content__footer">
+                <div class="chat-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
