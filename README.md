@@ -296,13 +296,14 @@ https://docs.google.com/spreadsheets/d/1Xu976dNTox09go_x45Mka7bK8sjiIgDE/edit?us
   - CON-6: Implementación de pasarelas de pago seguras y sistemas para gestionar tarifas, comisiones y transacciones financieras.
   - CON-7: Utilizar patrones de diseño eficientes como pool de conexiones, lazy loading, entre otros para optimizar la interacción.
 
+
 ### - ITERACIÓN 1 -
 
 ### Paso 1: Revisar entradas
 
 Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
 --- | --- | --- |---
-Plataforma desde 0. Se busca producir un diseño detallado. | UC-2, UC-3, UC-4 soportan la funcionalidad base | QA-2, QA-4, QA-10, QA-12 | CRN-1, CON-3, CON-4, CON-5, CON-6
+Plataforma desde 0. Se busca producir un diseño detallado. | UC-2, UC-3, UC-4 soportan la funcionalidad base | QA-2, QA-4, QA-12 | CRN-1, CON-3, CON-4, CON-5, CON-6
 
 ### Paso 2: Establecer objetivo de la iteración
 
@@ -345,7 +346,6 @@ UC-2
 | | UC-4 | | DEC-2, DEC-4
 | | QA-2 | | DEC-1, DEC-3
 QA-4
-QA-10
 | | QA-12 | | DEC-5
 | | CRN-1 | | Todos
 | | | CON-3 | DEC-2
@@ -398,20 +398,25 @@ DEC-10 | Uso de solución de videollamadas Agora.io | Por su escalabilidad, serv
 No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
 --- | --- | --- | ---
 UC-1
-| | UC-5 | | DEC-1, DEC-5
-| | QA-6 | | DEC-1, DEC-5
-| | QA-9 | | DEC-2, 
+| | UC-5 | | DEC-9
+| | QA-6 | | DEC-9
+| | QA-9 | |
 QA-11
 QA-13
 QA-15
 QA-16
-| | | CON-3 | DEC-2
-| | CON-4 | | DEC-1, DEC-2
+| | | CON-3 | DEC-6, DEC-7, DEC-8
+| | CON-4 | |
 CON-5
 CON-6
 
-
 ### - ITERACIÓN 3 -
+
+### Paso 1: Revisar entradas
+
+Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
+--- | --- | --- |---
+Enfoque en refinar los ultimos componentes y las iteraciones anteriores. | UC-6 | QA-3, QA-5, QA-10, QA-17 | CRN-2, CRN-3, CON-2, CON-4, CON-5, CON-6
 
 ### Paso 2: Establecer objetivo de la iteración
 
@@ -419,7 +424,9 @@ En esta tercera iteración se busca refinar las iteraciones anteriores y continu
 
 ### Paso 3: Elegir uno o más elementos del sistema a refinar
 
-Se refinarán el elemento de despliegue: servidor de BD, que fue identificado en la primera iteración
+Se da un mayor enfoque al refinamiento de al estructura de modelos en el elemento de despliegue:
+
+- Servidores de almacenamiento de datos anteriormente especificados en la primera iteracion.
 
 ### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
 
@@ -431,6 +438,25 @@ DEC-13 | Monitoreo y alertas | Utilizar Amazon CloudWatch para monitorear métri
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
 
+- Servicio de bases de datos relacional RDS: Implementado principalmente por sus capacidades de escalabilidad.
+- Amazon CloudWatch: Servicio AWS de monitorización y administración conectado a la instancia de Amazon EC2.
+
 ### Paso 6: Bosquejar vistas y registrar decisiones de diseño
 
+- Pagos integrados
+
 ### Paso 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
+--- | --- | --- | ---
+UC-6
+QA-3
+| | QA-5 | | DEC-11, DEC-12
+QA-10
+| | QA-17 | | DEC-13
+| | | CRN-2 | Todos
+| | | CRN-3 | Todos
+| | | CON-2 | 
+| | CON-4 | | DEC-12
+CON-5
+CON-6
