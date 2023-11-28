@@ -353,7 +353,13 @@ QA-10
 CON-5
 CON-6
 
+
 ### - ITERACIÓN 2 -
+### Paso 1: Revisar entradas
+
+Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
+--- | --- | --- |---
+Implementacion de estructuras que den soporte a la funcionalidad primaria. | UC-1, UC-5 soportan las funcionalidades anteriores | QA-6, QA-9, QA-11, QA-13, QA-15, QA-16 | CON-3, CON-4, CON-5, CON-6
 
 ### Paso 2: Establecer objetivo de la iteración
 
@@ -361,7 +367,11 @@ El objetivo de esta iteración será identificar las estructuras que soportan a 
 
 ### Paso 3: Elegir uno o más elementos del sistema a refinar
 
-Se refinarán las capas de arquitectura que fueron definidas en la iteración anterior.
+Se refinarán las capas de arquitectura que fueron definidas en la iteración anterior, buscando asegurar que no existan problemas matores en los siguientes componentes del sistema:
+
+- Asesorías integradas (UC-2)
+- Chat en tiempo real (UC-3)
+- Búsqueda de profesionales (UC-4)
 
 ### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
 
@@ -375,9 +385,31 @@ DEC-10 | Uso de solución de videollamadas Agora.io | Por su escalabilidad, serv
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
 
+- Amazon Simple Storage Service (S3): Servicio de almacenamiento en la nube a travez de buckets ofrecido por AWS. Implementado para el alamcenamiento de archivos de usuarios en el respectivo componente.
+- Agora.io: Servicio de videollamadas que permite a la aplicacion web crear aplicaciones de chat y transmisión en tiempo real. 
+
 ### Paso 6: Bosquejar vistas y registrar decisiones de diseño
 
+- [Registro e inicio de sesión](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/M%C3%B3dulo%20de%20registro%20e%20ingreso)
+- [Almacenamiento de archivos y grabaciones](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/M%C3%B3dulo%20de%20archivos)
+
 ### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
+--- | --- | --- | ---
+UC-1
+| | UC-5 | | DEC-1, DEC-5
+| | QA-6 | | DEC-1, DEC-5
+| | QA-9 | | DEC-2, 
+QA-11
+QA-13
+QA-15
+QA-16
+| | | CON-3 | DEC-2
+| | CON-4 | | DEC-1, DEC-2
+CON-5
+CON-6
+
 
 ### - ITERACIÓN 3 -
 
