@@ -10,7 +10,9 @@ router.get('/reunion/mis-reuniones/:idUser', getMisReuniones)
 router.post('/reunion/crear', crearReunion)
 router.post('/reunion/agregar-invitado', agregarInvitado)
 router.get('/reunion/invitaciones/:idUser', getInvitaciones)
-
+router.get('/', (req, res) => {
+  res.send('Hello World!');
+})
 
 router.get('/publicacion/feed/:idUser', checkCachePublicaciones, getPublicaciones)
 

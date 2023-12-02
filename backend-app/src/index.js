@@ -6,7 +6,7 @@ var cors = require('cors');
 const redis = require('redis');
 const client = redis.createClient(6379)
 
-const PORT = 4447
+const PORT = 3000
 
 // Express global config
 app.use(express.json());
