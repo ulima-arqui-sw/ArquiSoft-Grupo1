@@ -3,7 +3,7 @@ const db = require('./db')
 const app = express();
 var cors = require('cors');
 const redis = require('redis');
-const client = redis.createClient(6379, )
+const client = redis.createClient(6379)
 
 const PORT = 3000
 
