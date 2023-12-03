@@ -5,6 +5,7 @@ const { getPublicaciones } = require('../controllers/publicaciones.controller');
 const { uploadFile, downloadFile } = require('../controllers/archivos.controller');
 const { getUsuario } = require('../controllers/usuario.controller');
 const { checkCachePublicaciones } = require('../middlewares/cache');
+const { enviarCorreo } = require('../controllers/mails.controller');
 
 router.get('/reunion/mis-reuniones/:idUser', getMisReuniones)
 router.post('/reunion/crear', crearReunion)
@@ -18,5 +19,7 @@ router.get('/usuario/obtener-datos/:id', getUsuario)
 
 router.get('/archivo/obtener-archivo/:key', downloadFile)
 router.post('/archivo/subir-archivo/', uploadFile)
+
+router.post('/enviar-correo', enviarCorreo)
 
 module.exports = router;
