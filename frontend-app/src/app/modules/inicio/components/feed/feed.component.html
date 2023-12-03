@@ -16,6 +16,7 @@
     <p>{{publicacion.contenido}}</p>
     <div class="mt-4 flex flex-row-reverse">
       <button class="btn btn-sm btn-outline btn-neutral" (click)="enviarMensaje(publicacion.usuario.id)">Enviar mensaje</button>
+      <button class="btn btn-sm btn-primary btn-neutral mr-2" (click)="enviarCorreo(publicacion.id)">Solicitar conexión</button>
     </div>
   </div>
 </div>
