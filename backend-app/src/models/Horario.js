@@ -1,7 +1,7 @@
 import { DataTypes, Sequelize } from "sequelize";
 import { db } from "../db.js"
 
-const horario = db.define('horarios', {
+const Horario = db.define('horarios', {
   id: {
     primaryKey: true,
     type: DataTypes.UUID,
@@ -31,3 +31,7 @@ const horario = db.define('horarios', {
   freezeTableName: true
 }
 );
+
+module.exports = {
+  Horario
+}

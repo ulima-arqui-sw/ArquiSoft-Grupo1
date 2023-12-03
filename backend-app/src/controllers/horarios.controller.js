@@ -1,9 +1,9 @@
-const { horarios } = require('../models')
+const { Horario } = require('../models')
 
 const getHorario = async (req, res) => {
   try {
     const { id_mentor } = req.params;
-    const horario = await horarios.findAll({
+    const horario = await Horario.findAll({
       where: {
         id_mentor,
       }
@@ -20,7 +20,7 @@ const createHorario = async (req, res) => {
   const { id_mentor, dia_semana, hora_inicio, hora_fin } = req.body
 
   try {
-    const newHorario = await horarios.create({
+    const newHorario = await Horario.create({
       id_mentor,
       dia_semana,
       hora_inicio,
@@ -43,7 +43,7 @@ const updateHorario = async (req, res) => {
       hora_fin
     } = req.body
 
-    const horario = await horarios.findByPk(id)
+    const horario = await Horario.findByPk(id)
     horario.id_mentor = id_mentor
     horario.dia_semana = dia_semana
     hora_inicio = hora_inicio
@@ -62,7 +62,7 @@ const deleteHorario = async (req, res) => {
   try {
     const { id } = req.params
 
-    await horarios.destroy({
+    await Horario.destroy({
       where: {
         id,
       }
