@@ -1,6 +1,20 @@
 <div>
-  <h1>Reserbar Citas</h1>
+  <h1>Reservar Citas</h1>
   <h2>Mostrar Horarios</h2>
-  <form action="">Escribar el nombre del asesor</form>
-  <button>Buscar Asesor</button>
+  
+  <form>
+    <label for="mentor">Nombre del mentor:</label>
+    <input type="text" id="mentor" name="mentor" placeholder="Escribe el nombre del mentor">
+
+    <button type="button" (click)="buscarmentor()">Buscar mentor</button>
+  </form>
+
+  <!-- Aquí podrías mostrar los horarios disponibles -->
+  <div *ngIf="horariosDisponibles.length > 0">
+    <h3>Horarios Disponibles:</h3>
+    <ul>
+      <li *ngFor="let horario of horariosDisponibles">{{ horario }}</li>
+    </ul>
+    <button (click)="solicitarCita()">Solicitar Cita</button>
+  </div>
 </div>
