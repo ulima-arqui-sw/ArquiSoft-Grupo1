@@ -8,8 +8,8 @@ const crypto = require('crypto');
 const client = new DynamoDBClient({
   region: "us-east-1",
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY, 
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY 
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   }
 });
 
@@ -144,7 +144,7 @@ module.exports = { obtenerMensajesEntreUsuarios, guardarMensaje, obtenerTodosLos
 // PARA OBTENER TODOS LOS OBJETOS DE LA TABLA
 /*
 const command = new ScanCommand({
-  TableName: "Mensajes" 
+  TableName: "Mensajes"
 });
 
 // Ejecuta el comando

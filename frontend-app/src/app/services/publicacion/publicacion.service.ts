@@ -13,4 +13,13 @@ export class PublicacionService {
     const apiUrl = this.apiUrl + '/publicacion/feed/' + idUsuario;
     return this.http.get<Publicacion[]>(apiUrl);
   }
+
+  enviarCorreo(idPublicacion: number, idUsuario: number) {
+    const apiUrl = this.apiUrl + '/enviar-correo'
+    const body = {
+      idPublicacion,
+      idUsuario
+    }
+    return this.http.post<any>(apiUrl, body);
+  }
 }

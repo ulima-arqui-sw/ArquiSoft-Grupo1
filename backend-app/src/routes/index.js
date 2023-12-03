@@ -6,6 +6,7 @@ const { uploadFile, downloadFile } = require('../controllers/archivos.controller
 const { getUsuario } = require('../controllers/usuario.controller');
 const { checkCachePublicaciones } = require('../middlewares/cache');
 const { obtenerMensajesEntreUsuarios, guardarMensaje, obtenerTodosLosMensajes, borrarTodosLosMensajes} = require('../controllers/mensajes.controller');
+const { enviarCorreo } = require('../controllers/mails.controller');
 
 router.get('/reunion/mis-reuniones/:idUser', getMisReuniones)
 router.post('/reunion/crear', crearReunion)
@@ -19,6 +20,8 @@ router.get('/usuario/obtener-datos/:id', getUsuario)
 
 router.get('/archivo/obtener-archivo/:key', downloadFile)
 router.post('/archivo/subir-archivo/', uploadFile)
+
+router.post('/enviar-correo', enviarCorreo)
 
 //Obtiene los mensajes entre un usuario y un asesor (requiere por body idUsuario e idAsesor)
 router.post('/chat/obtener-mensajes/:rol', obtenerMensajesEntreUsuarios);

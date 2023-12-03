@@ -39,4 +39,12 @@ export class FeedComponent {
   enviarMensaje(idUsuario: number) {
     this.router.navigate(['/chat', idUsuario]);
   }
+
+  enviarCorreo(idPublicacion: number) {
+    this.publicacionService.enviarCorreo(idPublicacion, this.idUsuario).subscribe(
+      (response) => {
+        alert('Correo enviado exitosamente');
+      }
+    )
+  }
 }
