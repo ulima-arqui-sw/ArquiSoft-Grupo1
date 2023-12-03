@@ -12,6 +12,9 @@ import { ChatComponent } from './modules/chat/components/chat/chat.component';
 import { CitasComponent } from './modules/citas/components/citas.component';
 import { CitasModule } from './modules/citas/citas.module';
 import { SocketIoModule } from 'ngx-socket-io';
+import { MenuComponent } from './modules/archivos/components/menu/menu.component'
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 const config = { url: 'http://localhost:3001/',
  options: {
@@ -23,7 +26,8 @@ const config = { url: 'http://localhost:3001/',
     AppComponent,
     NavbarComponent,  
     ChatComponent,
-    CitasComponent
+    CitasComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ const config = { url: 'http://localhost:3001/',
     HttpClientModule,
     InicioModule,
     CitasModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
