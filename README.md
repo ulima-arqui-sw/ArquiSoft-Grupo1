@@ -455,12 +455,11 @@ DEC-13 | Monitoreo y alertas | Utilizar Amazon CloudWatch para monitorear métri
 
 - Recomendaciones mentor-aprediz con IA, definición de interacción entre módulos
 
-
+![diagrama modulo recomendaciones](https://github.com/ulima-arqui-sw/grupo01/blob/dev/Diagrama-Modulo-Recomendaciones.png)
 
 - Generación de resúmenes y tareas con IA, definición de interacción entre módulos
 
-
-
+![diagrama modulo resumentes](https://github.com/ulima-arqui-sw/grupo01/blob/dev/Diagrama-Modulo-Resumenes.png)
 
 ### Paso 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
 
