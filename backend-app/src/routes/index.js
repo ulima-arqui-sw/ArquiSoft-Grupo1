@@ -7,12 +7,17 @@ const { getUsuario } = require('../controllers/usuario.controller');
 const { checkCachePublicaciones } = require('../middlewares/cache');
 const { obtenerMensajesEntreUsuarios, guardarMensaje, obtenerTodosLosMensajes, borrarTodosLosMensajes} = require('../controllers/mensajes.controller');
 const { enviarCorreo } = require('../controllers/mails.controller');
+const { getHorario, createHorario, deleteHorario, updateHorario } = require('../controllers/horarios.controller')
 
 router.get('/reunion/mis-reuniones/:idUser', getMisReuniones)
 router.post('/reunion/crear', crearReunion)
 router.post('/reunion/agregar-invitado', agregarInvitado)
 router.get('/reunion/invitaciones/:idUser', getInvitaciones)
 
+router.get('/horario/:id_mentor', getHorario)
+router.post('/horario/', createHorario)
+router.put('/horario/:id', updateHorario)
+router.delete('horario/:id', deleteHorario)
 
 router.get('/publicacion/feed/:idUser', checkCachePublicaciones, getPublicaciones)
 
