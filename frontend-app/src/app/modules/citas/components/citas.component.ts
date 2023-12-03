@@ -1,27 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { CitasService } from '../../../services/citas/citas.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-citas',
   templateUrl: './citas.component.html',
-  styleUrl: './citas.component.css'
+  styleUrls: ['./citas.component.css'],
 })
-export class CitasComponent implements OnInit{
-  disponibilidadMentores: any[] = [];
+export class CitasComponent {
+  horariosDisponibles: string[] = [];
 
-
-  constructor(private citasService: CitasService) {}
-
-  ngOnInit() {
-    this.obtenerDisponibilidadMentores();
+  buscarMentor() {
+    this.horariosDisponibles = ['Horario 1', 'Horario 2', 'Horario 3'];
   }
 
-  obtenerDisponibilidadMentores() {
-    this.disponibilidadMentores = this.citasService.obtenerDisponibilidadMentores();
-  }
-
-  solicitarReunion(mentorId: number, fecha: Date) {
-    this.citasService.solicitarReunion(mentorId, fecha);
-    // Puedes agregar lógica adicional después de solicitar la reunión
+  solicitarCita() {
+    console.log('Cita solicitada');
   }
 }

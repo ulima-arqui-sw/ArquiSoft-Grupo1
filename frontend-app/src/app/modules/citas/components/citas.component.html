@@ -6,15 +6,13 @@
     <label for="mentor">Nombre del mentor:</label>
     <input type="text" id="mentor" name="mentor" placeholder="Escribe el nombre del mentor">
 
-    <button type="button">Buscar mentor</button>
+    <button type="button" (click)="buscarMentor()">Buscar mentor</button>
   </form>
-
-  <!-- Aquí podrías mostrar los horarios disponibles -->
-  <div> 0">
+  <div *ngIf="horariosDisponibles.length > 0">
     <h3>Horarios Disponibles:</h3>
     <ul>
-      <li>horario</li>
+      <li *ngFor="let horario of horariosDisponibles">{{ horario }}</li>
     </ul>
-    <button>Solicitar Cita</button>
+    <button (click)="solicitarCita()">Solicitar Cita</button>
   </div>
 </div>
