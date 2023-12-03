@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { UsuarioService } from '../../../services/usuario/usuario.service';
 
 @Component({
@@ -6,33 +6,38 @@ import { UsuarioService } from '../../../services/usuario/usuario.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   idUsuario: number = 0;
   nombreUsuario: string = '';
-  constructor(private usuarioService: UsuarioService) {
-    this.idUsuario = Number(localStorage.getItem('id'));
-    this.obtenerDatosUsuario();
-  }
+
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
-    // Suscríbete a cambios en el estado de autenticación
     this.usuarioService.idUsuario.subscribe(
       (id) => {
         this.idUsuario = id;
-        this.obtenerDatosUsuario();
+        if (this.idUsuario) {
+          this.obtenerDatosUsuario();
+        }
       }
-    )
+    );
+
+    // Llamada inicial al obtener el ID del localStorage
+    this.idUsuario = Number(localStorage.getItem('id'));
+    if (this.idUsuario) {
+      this.obtenerDatosUsuario();
+    }
   }
 
   obtenerDatosUsuario() {
     this.usuarioService.getUsuario(this.idUsuario).subscribe(
       (data) => {
-        this.nombreUsuario = data.nombre;
-        localStorage.setItem('nombre', data.nombre+' '+data.apellido);
+        this.nombreUsuario = `${data.nombre} ${data.apellido}`;
+        localStorage.setItem('nombre', this.nombreUsuario);
       },
       (error) => {
-        
+        // Manejar errores aquí
       }
-    )
+    );
   }
 }

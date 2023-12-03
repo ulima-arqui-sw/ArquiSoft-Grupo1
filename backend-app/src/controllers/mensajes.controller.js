@@ -1,4 +1,4 @@
-const { DynamoDBClient, ScanCommand, GetItemCommand, PutItemCommand , DeleteItemCommand} = require("@aws-sdk/client-dynamodb");
+const { DynamoDBClient, ScanCommand, GetItemCommand, PutItemCommand, DeleteItemCommand } = require("@aws-sdk/client-dynamodb");
 const dotenv = require('dotenv');
 const usuario = require("../models/Usuario");
 dotenv.config();
@@ -16,19 +16,19 @@ const client = new DynamoDBClient({
 //obtener mensajes entre usuario y asesor
 const obtenerMensajesEntreUsuarios = async (req, res) => {
   const { rol } = req.params;
-  const { idUsuario, idMentor } = req.body;
+  const { idAprendiz, idMentor } = req.body;
 
-  if (!idUsuario || !idMentor) return res.status(400).json({ mensaje: 'Faltan datos' });
+  if (!idAprendiz || !idMentor) return res.status(400).json({ mensaje: 'Faltan datos' });
   if (rol !== 'mentor' && rol !== 'aprendiz') return res.status(400).json({ mensaje: 'Rol no válido' });
 
   try {
     if (rol === 'mentor') {
       const command = new ScanCommand({
         TableName: "Mensajes",
-        FilterExpression: "remitente = :idMentor AND destinatario = :idUsuario",
+        FilterExpression: "remitente = :idMentor AND destinatario = :idAprendiz",
         ExpressionAttributeValues: {
           ":idMentor": { N: idMentor.toString() },
-          ":idUsuario": { N: idUsuario.toString() },
+          ":idAprendiz": { N: idAprendiz.toString() },
         },
       });
       const response = await client.send(command);
@@ -37,9 +37,9 @@ const obtenerMensajesEntreUsuarios = async (req, res) => {
 
     const command = new ScanCommand({
       TableName: "Mensajes",
-      FilterExpression: "remitente = :idUsuario AND destinatario = :idMentor",
+      FilterExpression: "remitente = :idAprendiz AND destinatario = :idMentor",
       ExpressionAttributeValues: {
-        ":idUsuario": { N: idUsuario.toString() },
+        ":idAprendiz": { N: idAprendiz.toString() },
         ":idMentor": { N: idMentor.toString() },
       },
     });
@@ -59,12 +59,12 @@ const obtenerMensajesEntreUsuarios = async (req, res) => {
 //guardar un mensaje entre aprendiz y mentor
 const guardarMensaje = async (req, res) => {
   const { rol } = req.params;
-  const { idUsuario, idMentor, contenido } = req.body;
+  const { idAprendiz, idMentor, contenido } = req.body;
 
-  if (!idUsuario || !idMentor) {
+  if (!idAprendiz || !idMentor) {
     return res.status(400).json({ mensaje: 'Faltan datos' });
   }
-  
+
   if (rol !== 'mentor' && rol !== 'aprendiz') {
     return res.status(400).json({ mensaje: 'Rol no válido' });
   }
@@ -73,31 +73,34 @@ const guardarMensaje = async (req, res) => {
     let remitente, destinatario;
     if (rol === 'mentor') {
       remitente = idMentor;
-      destinatario = idUsuario;
+      destinatario = idAprendiz;
     } else {
-      remitente = idUsuario;
+      remitente = idAprendiz;
       destinatario = idMentor;
     }
 
 
-    const command = new PutItemCommand( { 
+    const combinedId = `${idAprendiz}${idMentor}`;
+    const command = new PutItemCommand({
       TableName: "Mensajes",
       Item: {
+        IdConversacion: { N: combinedId.toString() },
         IdMensaje: { S: crypto.randomBytes(16).toString("hex") },
         contenido: { S: contenido },
         remitente: { N: remitente.toString() },
         destinatario: { N: destinatario.toString() },
         fecha: { S: new Date().toISOString() }
-      },
+      }
     });
 
-    console.log("COMMAND", command); 
+
+    console.log("COMMAND", command);
     const response = await client.send(command);
 
     return res.json({ mensaje: 'Mensaje guardado correctamente', response });
   } catch (error) {
     console.error('Error al guardar el mensaje:', error);
-    return res.status(500).json({ mensaje: 'Error al guardar el mensaje' });
+    return res.status(500).json({ mensaje: error });
   }
 };
 
@@ -116,7 +119,7 @@ const borrarTodosLosMensajes = async (req, res) => {
         });
         await client.send(command);
       });
-    } );
+    });
 
     return res.json({ mensaje: 'Mensajes borrados correctamente', response });
   } catch (error) {
@@ -132,7 +135,7 @@ const obtenerTodosLosMensajes = async (req, res) => {
     });
     const response = await client.send(command).then(response => {
       return res.json(response.Items);
-    } );
+    });
 
   } catch (error) {
     console.log(error);

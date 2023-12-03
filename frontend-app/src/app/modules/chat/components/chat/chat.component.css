@@ -69,7 +69,8 @@
 }
 
 .messageContent{
-    height: 70%;
+    height: 80%;
+    overflow-y: scroll;
     width: 100%;
 }
 
@@ -81,7 +82,6 @@
     align-items: center;
     padding: 0 1rem;
     background-color: aquamarine;
-    padding: 2%;
     border-radius: 5px;
 }
 
