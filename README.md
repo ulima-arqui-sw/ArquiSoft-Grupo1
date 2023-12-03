@@ -132,7 +132,7 @@ ESC-09 | Rendimiento | Mentor y aprendices invitados | El mentor inicia una conf
 El proyecto implementará conexiones asíncronas y síncronas para su correcto funcionamiento.
 
 - **Comunicación síncrona:** Será implementada para el módulo de chat en tiempo real, el módulo de videollamadas y finalmente el módulo de registro y autentificación.
-- **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos, el módulo de gestión de citas, el módulo de recomendaciones y el módulo de resúmenes y tareas.
+- **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos, el módulo de gestión de citas, el módulo de recomendaciones y el módulo de resúmenes y tareas. Esta comunicación asíncrona se dará también para los módulos de resúmenes y de recomendaciones, se enviarán notificaciones por correo cuando los resultados de cada módulo están listos. El módulo de recomendaciones se llama justo después de crear una publicación en la plataforma y el módulo de resúmenes y tareas se llama luego de terminar una reunión.
 
 ### Modelo de Datos
 - **Base de datos relacional:** El modelo de datos relacional se utilizará para almacenar información personal y de contacto de los mentores y de los aprendices, la información del módulo de gestión de citas, el historial de pagos y de reuniones y los resúmenes de transcripciones y tareas pendientes.
@@ -321,10 +321,17 @@ Diagrama de contexto:
 
 ID | Decisión de diseño | Fundamento
 --- | --- | ---
-DEC-1 | App front y back serán deployeados en un EC2 | Se escoge Amazon EC2 para aprovechar la facilidad de escalamiento horizontal y vertical y por su facil integración con otros servicios de AWS a usar
-DEC-2 | Base de datos relacional en RDS y uso de DynamoDB | Se creará una instancia de la BD relacional en RDS con el fin de poder aprovechar en futuras iteraciones las ventajas de este servicio de AWS y se usará DynamoDB por su integración con otros servicios
-DEC-3 | Patrón de despliegue three-tier | La interfaz desarrollada en Angular será el nivel de presentación, el backend en NodeJS será el nivel de aplicación y las bases de datos Postgresql y DynamoDB serán el nivel de datos
-DEC-4 | Interfaz de plataforma en Angular y TailwindCSS | Se usa esta tecnología Angular por ser conocida por los desarrolladores + Tailwind para facilitar el diseño UI
+DEC-1 | App front y back serán deployeados en un EC2 | Se escoge Amazon EC2 para aprovechar la facilidad de escalamiento horizontal y vertical, al igual que la facilidad de implementación en diferentes instancias. Finalmente, una de las grandes ventajas al uso de EC2 es la rentabilidad del servicio y la confianza que el proveedor brinda en este enfoque.
+DEC-2 | Base de datos relacional en RDS y uso de DynamoDB | Se creará una instancia de la BD relacional en RDS con el fin de poder aprovechar en futuras iteraciones las ventajas de este servicio de AWS al igual que las facilidades de integración con otros sistemas y los servicios de escalabilidad proveídos por Amazon. 
+DynamoDB se resalta como una base de datos no relacional con enfoque en la escalabilidad y funcionalidad de alto rendimiento.
+DEC-3 | Patrón de despliegue three-tier | Implementación de un patrón Three-tier por sus ventajas en mantenibilidad y escalabilidad al dividir el desarrollo entre capas.
+
+La interfaz desarrollada en Angular será el nivel de presentación. Esta herramienta está altamente documentada, lo cual facilita su implementacion.
+
+El backend es desarrollado en NodeJS y  será el nivel de aplicación. Se selecciona esta aplicación por la implementación de uno de los motores más eficientes de JavaScript.
+
+Finalmente, las bases de datos PostgreSQL y DynamoDB serán el nivel de datos. 
+DEC-4 | Interfaz de plataforma en Angular y TailwindCSS | Se usa esta tecnología Angular por ser conocida por los desarrolladores + Tailwind para facilitar el diseño UI. Una de las ventajas principales en el uso de Angular es su estructura de componentes enfocada en el diseño de interfaces escalables.
 DEC-5 | MVC en backend | Se usa MVC para tener un mejor manejo de código y por ende mayor modificabilidad
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
@@ -377,11 +384,10 @@ Se refinarán las capas de arquitectura que fueron definidas en la iteración an
 
 ID | Decisión de diseño | Fundamento
 --- | --- | ---
-DEC-6 | Crear modelo de dominio | Se debe crear un modelo inicial documentando las principales entidades y sus relaciones
-DEC-7 | Identificar objetos de dominio y descomponer en módulos | Esto para seguir las practicas de modularidad y reusabilidad
-DEC-8 | Uso de caching | Para agilizar las consultas más usadas (ejm: mentores destacados)
-DEC-9 | S3 para el almacenamiento de archivos | Se almacenarán en un S3 los archivos y grabaciones que los usuarios deseen subir
-DEC-10 | Uso de solución de videollamadas Agora.io | Por su escalabilidad, servidores distribuidos y fácil integración
+DEC-7 | Descomponer en módulos | Esta decisión brinda una oportunidad para la implementación de las prácticas de modularidad y reusabilidad. Al dividir una aplicación en módulos, se puede crear un sistema más modular y reutilizable.
+DEC-8 | Uso de caching | Implementado con el objetivo principal de agilizar las consultas más usadas en el sistema, como por ejemplo el sistema de recuperación de consultas y reuniones.
+DEC-9 | S3 para el almacenamiento de archivos | Se almacenarán en un S3 los archivos y grabaciones que los usuarios deseen subir. Las principales ventajas de uso de S3 es la alta escalabilidad que el sistema presenta, al igual que el aseguramiento de resistencia y seguridad brindado al ser un servicio presente en AWS.
+DEC-10 | Uso de solución de videollamadas Agora.io | Por su escalabilidad, servidores distribuidos y fácil integración. Esta implementación nos asegura un alto nivel de rendimiento, escalabilidad y seguridad por parte del proveedor.
 
 ### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
 
@@ -432,7 +438,7 @@ Se da un mayor enfoque al refinamiento de al estructura de modelos en el element
 
 ID | Decisión de diseño | Fundamento
 --- | --- | ---
-DEC-11 | Escalabilidad vertical | RDS permite aumentar o disminuir la capacidad de la instancia de base de datos en función de la demanda
+DEC-11 | Escalabilidad horizontal | RDS permite aumentar o disminuir la cantidad de instancias del backend en función de la demanda.
 DEC-12 | Replicación | RDS ofrece replicación multi-AZ, que implica mantener una copia sincrónica de la base de datos en una zona de disponibilidad secundaria, lo que mejora la disponibilidad y la tolerancia a fallos.
 DEC-13 | Monitoreo y alertas | Utilizar Amazon CloudWatch para monitorear métricas clave y establecer alarmas es importante para asegurar la disponibilidad
 
@@ -440,10 +446,21 @@ DEC-13 | Monitoreo y alertas | Utilizar Amazon CloudWatch para monitorear métri
 
 - Servicio de bases de datos relacional RDS: Implementado principalmente por sus capacidades de escalabilidad.
 - Amazon CloudWatch: Servicio AWS de monitorización y administración conectado a la instancia de Amazon EC2.
+- Amazon Simple Email Service para el envío de notificaciones por correo electrónico a usuarios de la plataforma
+- Lambda de recomendaciones mentor-aprediz con IA
+- Lambda de generación de resúmenes y tareas con IA
+
 
 ### Paso 6: Bosquejar vistas y registrar decisiones de diseño
 
-- Pagos integrados
+- Recomendaciones mentor-aprediz con IA, definición de interacción entre módulos
+
+
+
+- Generación de resúmenes y tareas con IA, definición de interacción entre módulos
+
+
+
 
 ### Paso 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
 
