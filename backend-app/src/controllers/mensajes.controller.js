@@ -1,6 +1,8 @@
-const { DynamoDBClient, ScanCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBClient, ScanCommand, GetItemCommand, PutItemCommand , DeleteItemCommand} = require("@aws-sdk/client-dynamodb");
 const dotenv = require('dotenv');
+const usuario = require("../models/Usuario");
 dotenv.config();
+const crypto = require('crypto');
 
 // Configura las credenciales y la región
 const client = new DynamoDBClient({
@@ -11,6 +13,134 @@ const client = new DynamoDBClient({
   }
 });
 
+//obtener mensajes entre usuario y asesor
+const obtenerMensajesEntreUsuarios = async (req, res) => {
+  const { rol } = req.params;
+  const { idUsuario, idMentor } = req.body;
+
+  if (!idUsuario || !idMentor) return res.status(400).json({ mensaje: 'Faltan datos' });
+  if (rol !== 'mentor' && rol !== 'aprendiz') return res.status(400).json({ mensaje: 'Rol no válido' });
+
+  try {
+    if (rol === 'mentor') {
+      const command = new ScanCommand({
+        TableName: "Mensajes",
+        FilterExpression: "remitente = :idMentor AND destinatario = :idUsuario",
+        ExpressionAttributeValues: {
+          ":idMentor": { N: idMentor.toString() },
+          ":idUsuario": { N: idUsuario.toString() },
+        },
+      });
+      const response = await client.send(command);
+      return res.json(response.Items);
+    }
+
+    const command = new ScanCommand({
+      TableName: "Mensajes",
+      FilterExpression: "remitente = :idUsuario AND destinatario = :idMentor",
+      ExpressionAttributeValues: {
+        ":idUsuario": { N: idUsuario.toString() },
+        ":idMentor": { N: idMentor.toString() },
+      },
+    });
+
+    console.log("COMMAND", command);
+
+    const response = await client.send(command);
+    return res.json(response.Items);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ mensaje: 'Error al obtener los mensajes' });
+  }
+}
+
+
+
+//guardar un mensaje entre aprendiz y mentor
+const guardarMensaje = async (req, res) => {
+  const { rol } = req.params;
+  const { idUsuario, idMentor, contenido } = req.body;
+
+  if (!idUsuario || !idMentor) {
+    return res.status(400).json({ mensaje: 'Faltan datos' });
+  }
+  
+  if (rol !== 'mentor' && rol !== 'aprendiz') {
+    return res.status(400).json({ mensaje: 'Rol no válido' });
+  }
+
+  try {
+    let remitente, destinatario;
+    if (rol === 'mentor') {
+      remitente = idMentor;
+      destinatario = idUsuario;
+    } else {
+      remitente = idUsuario;
+      destinatario = idMentor;
+    }
+
+
+    const command = new PutItemCommand( { 
+      TableName: "Mensajes",
+      Item: {
+        IdMensaje: { S: crypto.randomBytes(16).toString("hex") },
+        contenido: { S: contenido },
+        remitente: { N: remitente.toString() },
+        destinatario: { N: destinatario.toString() },
+        fecha: { S: new Date().toISOString() }
+      },
+    });
+
+    console.log("COMMAND", command); 
+    const response = await client.send(command);
+
+    return res.json({ mensaje: 'Mensaje guardado correctamente', response });
+  } catch (error) {
+    console.error('Error al guardar el mensaje:', error);
+    return res.status(500).json({ mensaje: 'Error al guardar el mensaje' });
+  }
+};
+
+const borrarTodosLosMensajes = async (req, res) => {
+  try {
+    const command = new ScanCommand({
+      TableName: "Mensajes",
+    });
+    const response = await client.send(command).then(response => {
+      response.Items.forEach(async (item) => {
+        const command = new DeleteItemCommand({
+          TableName: "Mensajes",
+          Key: {
+            IdMensaje: { S: item.IdMensaje.S }
+          }
+        });
+        await client.send(command);
+      });
+    } );
+
+    return res.json({ mensaje: 'Mensajes borrados correctamente', response });
+  } catch (error) {
+    console.error('Error al borrar los mensajes:', error);
+    return res.status(500).json({ mensaje: 'Error al borrar los mensajes' });
+  }
+}
+
+const obtenerTodosLosMensajes = async (req, res) => {
+  try {
+    const command = new ScanCommand({
+      TableName: "Mensajes",
+    });
+    const response = await client.send(command).then(response => {
+      return res.json(response.Items);
+    } );
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ mensaje: 'Error al obtener los mensajes' });
+  }
+}
+
+module.exports = { obtenerMensajesEntreUsuarios, guardarMensaje, obtenerTodosLosMensajes, borrarTodosLosMensajes };
 // PARA OBTENER TODOS LOS OBJETOS DE LA TABLA
 /*
 const command = new ScanCommand({
@@ -75,3 +205,4 @@ client.send(command)
     console.error("Error al insertar el objeto:", error);
   });
 */
+

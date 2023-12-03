@@ -1,24 +1,33 @@
-import { Component } from '@angular/core';
-import { Conversation } from '../../../../interfaces/Conversation';
-import { Usuario } from '../../../../interfaces/Usuario';
+import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from '../../../../services/websocket/websocket.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit{
 
-  conversations : Conversation[] = [];
-  currentConversation: Conversation = {} as Conversation;
-  user: Usuario = {} as Usuario;
+  messages: string[] = [];
+  messageText: string = "";
+  user: string = "";
 
-  constructor() { 
-    //llamar al backend para obtener las conversaciones y asignar a la variable conversations
+  constructor( private webSocketService: WebsocketService) {   }
+
+  ngOnInit(): void {
+    this.webSocketService.onMensaje().subscribe((data: any) => {
+      this.messages.push(data);
+    });
+
+    
   }
 
 
   enviarMensaje(){
-    //llamar al backend para enviar el mensaje
+
+    if(this.messageText.trim() != ""){
+      this.webSocketService.enviarMensaje(this.messageText);
+      this.messageText = "";
+    }
   }
 }

@@ -4,6 +4,12 @@ const app = express();
 var cors = require('cors');
 const redis = require('redis');
 const client = redis.createClient(6379)
+const { iniciarSocketIO } = require('./controllers/websocket.controller');
+
+const server = require('http').createServer(app);
+iniciarSocketIO(server);
+
+
 
 const PORT = 3000
 
@@ -27,6 +33,8 @@ app.listen(PORT, async () => {
     console.log(err);
   }
 });
+
+
 
 
 module.exports = client

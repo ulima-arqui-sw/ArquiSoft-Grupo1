@@ -11,6 +11,12 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ChatComponent } from './modules/chat/components/chat/chat.component';
 import { CitasComponent } from './modules/citas/components/citas.component';
 import { CitasModule } from './modules/citas/citas.module';
+import { SocketIoModule } from 'ngx-socket-io';
+
+const config = { url: 'http://localhost:3001/',
+ options: {
+  transports: ['websocket'],
+ } };
 
 @NgModule({
   declarations: [
@@ -28,7 +34,8 @@ import { CitasModule } from './modules/citas/citas.module';
     AsesoriaModule,
     HttpClientModule,
     InicioModule,
-    CitasModule
+    CitasModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]
