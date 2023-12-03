@@ -6,6 +6,8 @@ import { UsuarioService } from '../../../services/usuario/usuario.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
+
+
 export class NavbarComponent implements OnInit {
   idUsuario: number = 0;
   nombreUsuario: string = '';
