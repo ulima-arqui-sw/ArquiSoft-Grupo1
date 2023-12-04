@@ -11,8 +11,7 @@ export class ArchivosService {
 
   uploadFile(fileData: FormData): Observable<any>{
     const apiUrl = this.apiUrl + '/archivo/subir-archivo'
-
-    return this.http.post<any>(this.apiUrl, fileData); 
+    return this.http.post<any>(apiUrl, fileData); 
   }
 
 }
