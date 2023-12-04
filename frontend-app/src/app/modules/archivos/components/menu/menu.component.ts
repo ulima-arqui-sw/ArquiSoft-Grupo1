@@ -51,7 +51,7 @@ export class MenuComponent {
       this.archivosService.uploadFile(fileData).subscribe(
         (response) => {
           console.log('Archivo subido sin problemas');
-          this.cdr.detectChanges();
+          window.location.reload();
         },
         (error) => {
           console.error('Error al subir archivo:', error);
