@@ -26,3 +26,6 @@ yarn-error.log*
 
 # Ignore all .env files
 **/.env
+
+# Ignore upload files
+**/uploadFileDump

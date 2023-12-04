@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const router = Router();
+const multer = require('multer');
+const upload = multer({ dest: 'uploadFileDump/' });
 const { getMisReuniones, crearReunion, agregarInvitado, getInvitaciones } = require('../controllers/reuniones.controller');
 const { getPublicaciones } = require('../controllers/publicaciones.controller');
 const { uploadFile, downloadFile } = require('../controllers/archivos.controller');
@@ -24,7 +26,7 @@ router.get('/publicacion/feed/:idUser', checkCachePublicaciones, getPublicacione
 router.get('/usuario/obtener-datos/:id', getUsuario)
 
 router.get('/archivo/obtener-archivo/:key', downloadFile)
-router.post('/archivo/subir-archivo/', uploadFile)
+router.post('/archivo/subir-archivo', upload.any(), uploadFile)
 
 router.post('/enviar-correo', enviarCorreo)
 

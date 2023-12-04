@@ -1,29 +1,40 @@
 const AWS = require("aws-sdk");
 const dotenv = require('dotenv');
 dotenv.config();
+const fs = require('fs');
 
 //Configurar credenciales de S3
 const s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY, 
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION
 });
 const bucket = process.env.AWS_S3_BUCKET;
 
 // Subir un objeto al bucket S3
 
 const uploadFile = async (req,res) => {
-    try {
-        const { body, key } = req.body;
+    // console.log('Request body:', req.body);
+    // console.log('Uploaded files:', req.files);
+    // console.log('-----------------------')
+    // console.log('File Title:', req.body.fileTitle);
+    // console.log('File:', req.files[0]);
+    // console.log('-----------------------')
+    const fileBuffer = fs.readFileSync(req.files[0].path);
+    // console.log('File Buffer:', fileBuffer);
+
+    try {   
         await s3.putObject({
-            Body: body,
+            Body: fileBuffer,
             Bucket: bucket,
-            Key: key
+            Key: req.body.fileTitle,
         }).promise();
         return res.status(200).json({ message: 'Archivo subido con exito' }); 
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
 }
+
 
 // Descargar un archivo del bucket S3
 
