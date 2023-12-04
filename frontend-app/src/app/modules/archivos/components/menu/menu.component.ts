@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +9,16 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  number: number[] = [];
 
-  constructor(private router: Router) {
-    this.number = [1,2,3,4,5];
+  constructor(private router: Router, public dialog: MatDialog) {
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(PopUpComponent, {
+      height: '40%',
+      width: '60%'
+    });
+  }
+
 }
+
