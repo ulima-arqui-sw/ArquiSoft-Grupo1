@@ -1,28 +1,44 @@
 const socketIO = require('socket.io');
-const http = require('http');
 
 function iniciarSocketIO(server) {
-  const io = socketIO(server);
+  const io = socketIO(server, {
+    cors: {
+      origin: 'http://localhost:4200', // Reemplaza con el origen de tu aplicación Angular
+      methods: ['GET', 'POST'],
+      allowedHeaders: ['my-custom-header'],
+      credentials: true,
+    }
+  });
 
-  for (let i = 0; i < 5; i++) {
-    const sala = io.of(`/sala${i}`);
-    
-    sala.on('connection', (socket) => {
-      console.log(`Nuevo cliente conectado a la sala ${i}`);
-      
-      socket.on('mensaje_sala', (data) => {
-        console.log(`Mensaje recibido en la sala ${i}:`, data);
-        sala.emit('nuevo_mensaje', { mensaje: 'Hola a todos en la sala!' });
-      });
+  io.on('connection', (socket) => {
+    console.log('Nuevo cliente conectado a Socket.IO');
 
-      socket.on('disconnect', () => {
-        console.log('Cliente desconectado de la sala');
-      });
+    socket.on('join_room', (roomName) => {
+      socket.join(roomName);
 
-      // Aquí puedes manejar más eventos específicos de esta sala
+      const socketsInRoom = io.sockets.adapter.rooms.get(roomName);
+      const numUsersInRoom = socketsInRoom ? socketsInRoom.size : 0;
+
+      console.log(`Usuarios conectados a la sala ${roomName}: ${numUsersInRoom}`);
     });
-  }
+
+    socket.on('disconnect', () => {
+      console.log('Cliente desconectado de Socket.IO');
+    });
+
+    // En el servidor Socket.IO (backend)
+    socket.on('nuevo-mensaje', (data) => {
+      console.log('EMITER DESDE EL FRONTEND ');
+      // Realizar acciones con los datos recibidos
+      //emitir a todos los clientes conectados
+      socket.broadcast.emit('nuevo-mensaje', data);
+      
+    });
+
+
+  });
+
+
 }
 
 module.exports = { iniciarSocketIO };
- 

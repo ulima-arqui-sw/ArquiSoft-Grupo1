@@ -14,6 +14,7 @@ export class ChatComponent implements OnInit {
   usuario: Usuario = {} as Usuario;
   messageText: string = "";
   conversacionActual: any[] = [];
+  
 
   //datos del receptor
   idReceptor = 0;
@@ -28,23 +29,26 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     const idUsuario = parseInt(localStorage.getItem('id') || '0');
 
+    this.webSocketService.mensajeEnviado.subscribe((data: any) => {
+      console.log("MENSAJE RECIBIDO", data);
+      this.actualizarConversacion();
+    });
+
     //Obtener id del mentor por url actual
     this.activatedRoute.params.subscribe(params => {
       this.idReceptor = params['idUsuario'].toString();
-      console.log("ID RECEPTOR", this.idReceptor);
-      console.log("ID REMITENTE", idUsuario)
     });
 
     // Obtener datos del usuario
     this.usuarioService.getUsuario(idUsuario).subscribe((usuario: Usuario) => {
         this.usuario = usuario;
-        console.log("USUARIO", this.usuario);
+        //console.log("USUARIO", this.usuario);
         this.obtenerConversacion();
       });
 
       this.usuarioService.getUsuario(this.idReceptor).subscribe((usuario: Usuario) => {
         this.nombreReceptor = `${usuario.nombre} ${usuario.apellido}`;
-        console.log("NOMBRE RECEPTOR", this.nombreReceptor);
+        //console.log("NOMBRE RECEPTOR", this.nombreReceptor);
       });
 
       // Obtener conversacion
@@ -52,18 +56,48 @@ export class ChatComponent implements OnInit {
   }
 
   obtenerConversacion() {
-    this.webSocketService.getConversation(this.usuario.id, this.idReceptor, this.usuario.tipo_usuario).subscribe((data: any) => {
+    this.webSocketService.getConversation(this.usuario.id, this.idReceptor).subscribe((data: any) => {
+      console.log("USUARIO", this.usuario.id);
+      console.log("ID RECEPTOR", this.idReceptor);
       console.log("CONVERSACION", data);
       this.conversacionActual = data;
+      this.conversacionActual = this.ordenarMensajesPorFecha(this.conversacionActual);
+      
     });
       
   }
 
-
-  enviarMensaje() {
-    if (this.messageText.trim() != "") {
-      this.webSocketService.enviarMensaje(this.messageText);
+  enviarMensaje(messageText: string) {
+      console.log("MENSAJE", messageText);
+      this.webSocketService.enviarMensaje(this.usuario.id, parseInt(this.idReceptor.toString()), messageText);
       this.messageText = "";
+      this.actualizarConversacion();
+  }
+
+  actualizarConversacion() {
+    this.webSocketService.getConversation(this.usuario.id, this.idReceptor).subscribe((data: any) => {
+      this.conversacionActual = data;    
+      this.conversacionActual = this.ordenarMensajesPorFecha(this.conversacionActual);
+    });
+  }
+
+   ordenarMensajesPorFecha = (array: any) => {
+    return array.sort((a: any, b: any) => {
+      const fechaA = new Date(a.Fecha.S);
+      const fechaB = new Date(b.Fecha.S);
+      return fechaA.getTime() - fechaB.getTime();
+    });
+  };
+
+  
+  esRemitente(id: number) {
+    //console.log("ID PARA VALIDAR", id);
+    if(id == this.usuario.id){
+      //console.log("ES REMITENTE");
+      return true;
+    }
+    else{
+      return false;
     }
   }
 }

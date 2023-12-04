@@ -13,96 +13,70 @@ const client = new DynamoDBClient({
   }
 });
 
-//obtener mensajes entre usuario y asesor
+// Obtener mensajes entre usuarios
 const obtenerMensajesEntreUsuarios = async (req, res) => {
-  const { rol } = req.params;
   const { idAprendiz, idMentor } = req.body;
-
-  if (!idAprendiz || !idMentor) return res.status(400).json({ mensaje: 'Faltan datos' });
-  if (rol !== 'mentor' && rol !== 'aprendiz') return res.status(400).json({ mensaje: 'Rol no válido' });
-
-  try {
-    if (rol === 'mentor') {
-      const command = new ScanCommand({
-        TableName: "Mensajes",
-        FilterExpression: "remitente = :idMentor AND destinatario = :idAprendiz",
-        ExpressionAttributeValues: {
-          ":idMentor": { N: idMentor.toString() },
-          ":idAprendiz": { N: idAprendiz.toString() },
-        },
-      });
-      const response = await client.send(command);
-      return res.json(response.Items);
-    }
-
-    const command = new ScanCommand({
-      TableName: "Mensajes",
-      FilterExpression: "remitente = :idAprendiz AND destinatario = :idMentor",
-      ExpressionAttributeValues: {
-        ":idAprendiz": { N: idAprendiz.toString() },
-        ":idMentor": { N: idMentor.toString() },
-      },
-    });
-
-    console.log("COMMAND", command);
-
-    const response = await client.send(command);
-    return res.json(response.Items);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ mensaje: 'Error al obtener los mensajes' });
-  }
-}
-
-
-
-//guardar un mensaje entre aprendiz y mentor
-const guardarMensaje = async (req, res) => {
-  const { rol } = req.params;
-  const { idAprendiz, idMentor, contenido } = req.body;
 
   if (!idAprendiz || !idMentor) {
     return res.status(400).json({ mensaje: 'Faltan datos' });
   }
 
-  if (rol !== 'mentor' && rol !== 'aprendiz') {
-    return res.status(400).json({ mensaje: 'Rol no válido' });
+  try {
+    const combinedId1 = `${idAprendiz}-${idMentor}`;
+    const combinedId2 = `${idMentor}-${idAprendiz}`;
+
+    // Buscar los mensajes usando cualquiera de las claves combinadas
+    const params = {
+      TableName: "Mensajes",
+      FilterExpression: "IdConversacion = :id1 OR IdConversacion = :id2",
+      ExpressionAttributeValues: {
+        ":id1": { S: combinedId1 },
+        ":id2": { S: combinedId2 }
+      }
+    };
+
+    const response = await client.send(new ScanCommand(params));
+
+    return res.json(response.Items);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ mensaje: 'Error al obtener los mensajes' });
   }
+};
+
+// Guardar un mensaje entre aprendiz y mentor
+const guardarMensaje = async (req, res) => {
+  const { remitente, destinatario, contenido } = req.body;
+  const combinedId = `${remitente}-${destinatario}`;
 
   try {
-    let remitente, destinatario;
-    if (rol === 'mentor') {
-      remitente = idMentor;
-      destinatario = idAprendiz;
-    } else {
-      remitente = idAprendiz;
-      destinatario = idMentor;
-    }
-
-
-    const combinedId = `${idAprendiz}${idMentor}`;
-    const command = new PutItemCommand({
+    const params = {
       TableName: "Mensajes",
       Item: {
-        IdConversacion: { N: combinedId.toString() },
+        IdConversacion: { S: combinedId },
         IdMensaje: { S: crypto.randomBytes(16).toString("hex") },
-        contenido: { S: contenido },
-        remitente: { N: remitente.toString() },
-        destinatario: { N: destinatario.toString() },
-        fecha: { S: new Date().toISOString() }
+        Contenido: { S: contenido },
+        Remitente: { N: remitente.toString() },
+        Destinatario: { N: destinatario.toString() },
+        Fecha: { S: new Date().toISOString() }
       }
+    };
+
+    const response = await client.send(new PutItemCommand(params));
+
+    return res.json({ 
+      mensaje: 'Mensaje guardado correctamente',
+      contenido: contenido,
+      response: response
     });
 
-
-    console.log("COMMAND", command);
-    const response = await client.send(command);
-
-    return res.json({ mensaje: 'Mensaje guardado correctamente', response });
   } catch (error) {
     console.error('Error al guardar el mensaje:', error);
     return res.status(500).json({ mensaje: error });
   }
 };
+
+
 
 const borrarTodosLosMensajes = async (req, res) => {
   try {

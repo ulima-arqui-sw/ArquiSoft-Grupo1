@@ -1,40 +1,43 @@
 const express = require('express');
-const db = require('./db')
+const db = require('./db');
 const app = express();
-var cors = require('cors');
+const cors = require('cors');
 const redis = require('redis');
-const client = redis.createClient(6379)
+const client = redis.createClient(6379);
 const { iniciarSocketIO } = require('./controllers/websocket.controller');
 
-const server = require('http').createServer(app);
-iniciarSocketIO(server);
+const http = require('http');
+const PORT = 3000;
 
+// Configuración de CORS
+const corsOptions = {
+  origin: 'http://localhost:4200', // Reemplaza con el origen de tu aplicación Angular
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 200 // Algunos navegadores antiguos (IE11, varias versiones de UC Browser) no admiten cors preflight requests sin esta opción
+};
 
-
-const PORT = 3000
 
 // Express global config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
+app.use(cors(corsOptions));
 app.use(require('./routes/index'));
 
+const server = http.createServer(app); // Crear el servidor HTTP
 
-// Routes middleware
-
-app.listen(PORT, async () => {
-  
+server.listen(PORT, async () => {
   console.log('Server running in port', PORT);
-  // true significa que se eliminarán las tablas y se volverán a crear cada que se inicie la app
+
+  // Iniciar Socket.IO pasando el servidor HTTP
+  iniciarSocketIO(server);
+
   try {
-    await client.connect()
+    await client.connect();
     await db.sync({ force: false });
   } catch (err) {
     console.log(err);
   }
 });
 
-
-
-
-module.exports = client
+module.exports = client;

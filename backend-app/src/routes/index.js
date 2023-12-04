@@ -29,10 +29,10 @@ router.post('/archivo/subir-archivo/', uploadFile)
 router.post('/enviar-correo', enviarCorreo)
 
 //Obtiene los mensajes entre un usuario y un asesor (requiere por body idUsuario e idAsesor)
-router.post('/chat/obtener-mensajes/:rol', obtenerMensajesEntreUsuarios);
+router.post('/chat/obtener-mensajes/', obtenerMensajesEntreUsuarios);
 
 //Guarda un mensaje entre un usuario y un asesor (requiere por body idUsuario, idAsesor y contenido)
-router.post('/chat/guardar-mensaje/:rol', guardarMensaje);
+router.post('/chat/guardar-mensaje/', guardarMensaje);
 router.get('/chat/obtener', obtenerTodosLosMensajes);
 
 router.delete('/chat/eliminar', borrarTodosLosMensajes); //prueba para eliminar todos los mensajes de la tabla

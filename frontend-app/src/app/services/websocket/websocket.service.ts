@@ -1,58 +1,44 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, EventEmitter } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebsocketService {
-  private socket!: Socket;
+  private socket: Socket;
   private apiUrl = 'http://localhost:3000';
 
-  constructor(
-    private http: HttpClient,
-    
-  ) { }
+  // EventEmitter para notificar a los componentes cuando se envía un mensaje
+  mensajeEnviado: EventEmitter<any> = new EventEmitter();
 
-  connect(url: string): void {
-    this.socket = io(url);
+  constructor(private http: HttpClient) {
+    this.socket = io(this.apiUrl);
 
-    // Ejemplo: Escuchar mensajes del servidor
-    this.socket.on('mensaje_desde_servidor', (data: any) => {
-      console.log('Mensaje recibido desde el servidor:', data);
+    // Escuchar eventos desde el servidor
+    this.socket.on('nuevo-mensaje', (data: any) => {
+      // Notificar a los componentes sobre un nuevo mensaje recibido
+      this.mensajeEnviado.emit(data);
     });
   }
 
-  enviarMensaje(mensaje: string) {
-    if (this.socket) {
-      this.socket.emit('mensaje_desde_cliente', mensaje);
-    } else {
-      console.error('El socket no está conectado.');
-    }
+  getConversation(idAprendiz: number, idMentor: number) {
+    this.socket.emit('join_room', 'nombre_de_la_sala');
+    const apiUrl = this.apiUrl + '/chat/obtener-mensajes/';
+    return this.http.post(apiUrl, { idAprendiz, idMentor });
   }
 
-  onMensaje(): Observable<any> {
-    return new Observable<any>(observer => {
-      if (this.socket) {
-        this.socket.on('mensaje_desde_servidor', (data: any) => observer.next(data));
-      } else {
-        console.error('El socket no está conectado.');
-      }
-    });
-  }
-
-  // Ejemplo: Obtener conversación
-  getConversation(idAprendiz: number, idMentor: number, rol: string){
-    console.log("ROL EN EL SERVICE", rol);
-    console.log("ID APRENDIZ EN EL SERVICE", idAprendiz);
-    console.log("ID MENTOR EN EL SERVICE", idMentor);
-    const apiUrl = this.apiUrl + '/chat/obtener-mensajes/' + rol ;
-    if(rol == 'aprendiz'){
-      return this.http.post(apiUrl, {idAprendiz, idMentor});
-    }
-    else{
-      return this.http.post(apiUrl, {idMentor, idAprendiz});
+  enviarMensaje(remitente: number, destinatario: number, contenido: string) {
+    const apiUrl = this.apiUrl + '/chat/guardar-mensaje';
+    try {
+      this.http.post(apiUrl, { remitente, destinatario, contenido }).subscribe((data: any) => {
+        // Emitir evento 'mensaje_sala' al servidor
+        this.socket.emit('nuevo-mensaje', data);
+        console.log("evento emitido", data);
+      });
+    } catch (error) {
+      console.log("ERROR AL GUARDAR MENSAJE", error);
     }
   }
+  
 }
