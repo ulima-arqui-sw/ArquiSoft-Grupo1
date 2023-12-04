@@ -5,7 +5,6 @@ import { MenuComponent } from './components/menu/menu.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonModule } from '@angular/material/button';
-import { PopUpComponent } from './components/pop-up/pop-up.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -14,7 +13,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
-    PopUpComponent
   ],
   imports: [
     CommonModule,

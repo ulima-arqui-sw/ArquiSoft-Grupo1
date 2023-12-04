@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-menu',
@@ -13,11 +12,14 @@ export class MenuComponent {
   constructor(private router: Router, public dialog: MatDialog) {
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(PopUpComponent, {
-      height: '40%',
-      width: '60%'
-    });
+  hasFile: boolean = false;
+  
+  fileChanged(event: any) {
+    this.hasFile = event.target.files.length > 0;
+  }
+
+  uploadFile() {
+    
   }
 
 }

@@ -1,7 +1,8 @@
 
 <div class="mt-8 grid grid-cols-10">
-    <h2 class="text-2xl font-bold mb-4 col-span-8">Tus archivos almacenados:</h2>
-    <button mat-raised-button (click)="openDialog()">Subir Archivo</button>
+    <h2 class="text-2xl font-bold mb-4 col-span-6">Tus archivos almacenados:</h2>
+    <input class="col-span-2" type="file" id="fileUpload" name="fileUpload" (change)="fileChanged($event)">
+    <button mat-raised-button name="uploadBtn" (click)="uploadFile()" [disabled]="!hasFile">Subir Archivo</button>
 </div>
 
 
@@ -14,7 +15,7 @@
             <div class="m-4">
                 <span class="font-bold">File Name</span>
             </div>
-            <button mat-raised-button (click)="openDialog()">Descargar</button>
+            <button mat-raised-button>Descargar</button>
         </div>
     </div>
 </div>
