@@ -35,6 +35,20 @@ const uploadFile = async (req,res) => {
     }
 }
 
+const getKeys = async (req, res) => {
+    try{
+        const response = await s3.listObjectsV2({
+            Bucket: bucket,
+        }).promise();
+
+        const keys = response.Contents.map(object => object.Key);
+        console.log('Keys in S3 bucket:', keys);
+        return res.status(200).send(keys)
+    } catch (error) {
+        return res.status(500).json({ message: error.message })
+    }
+}
+
 
 // Descargar un archivo del bucket S3
 
@@ -63,4 +77,5 @@ const downloadFile = async (req, res) => {
 module.exports = {
     uploadFile,
     downloadFile,
+    getKeys
 }

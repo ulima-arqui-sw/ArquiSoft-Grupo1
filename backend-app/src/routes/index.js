@@ -4,7 +4,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploadFileDump/' });
 const { getMisReuniones, crearReunion, agregarInvitado, getInvitaciones } = require('../controllers/reuniones.controller');
 const { getPublicaciones } = require('../controllers/publicaciones.controller');
-const { uploadFile, downloadFile } = require('../controllers/archivos.controller');
+const { uploadFile, downloadFile, getKeys } = require('../controllers/archivos.controller');
 const { getUsuario } = require('../controllers/usuario.controller');
 const { checkCachePublicaciones } = require('../middlewares/cache');
 const { obtenerMensajesEntreUsuarios, guardarMensaje, obtenerTodosLosMensajes, borrarTodosLosMensajes} = require('../controllers/mensajes.controller');
@@ -27,6 +27,7 @@ router.get('/usuario/obtener-datos/:id', getUsuario)
 
 router.get('/archivo/obtener-archivo/:key', downloadFile)
 router.post('/archivo/subir-archivo', upload.any(), uploadFile)
+router.get('/archivo/obtener-keys/', getKeys)
 
 router.post('/enviar-correo', enviarCorreo)
 

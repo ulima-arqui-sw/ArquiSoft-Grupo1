@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArchivosService } from '../../../../services/archivos/archivos.service';
 
@@ -9,13 +9,24 @@ import { ArchivosService } from '../../../../services/archivos/archivos.service'
 })
 export class MenuComponent {
 
-  constructor(private router: Router, private archivosService: ArchivosService) {
+  constructor(private router: Router, private archivosService: ArchivosService, private cdr: ChangeDetectorRef) {
     this.idUsuario = Number(localStorage.getItem('id'))
   }
 
   hasFile: boolean = false;
   selectedFile: File | null = null;;
   idUsuario: number = 0;
+  keys: string[] = [];
+
+  ngOnInit(): void {
+
+    this.archivosService.getKeys().subscribe((keys: string[]) => {
+      this.keys = keys;
+      this.cdr.detectChanges();
+      console.log('Bucket Keys:', this.keys);
+    }
+    )
+  }
 
   fileChanged(event: any) {
     this.selectedFile = event.target.files[0];
