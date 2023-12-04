@@ -27,7 +27,7 @@ router.get('/usuario/obtener-datos/:id', getUsuario)
 
 router.get('/archivo/obtener-archivo/:key', downloadFile)
 router.post('/archivo/subir-archivo', upload.any(), uploadFile)
-router.get('/archivo/obtener-keys/', getKeys)
+router.get('/archivo/obtener-keys/:id', getKeys)
 
 router.post('/enviar-correo', enviarCorreo)
 

@@ -37,8 +37,12 @@ const uploadFile = async (req,res) => {
 
 const getKeys = async (req, res) => {
     try{
+        const { id } = req.params
+        const userId = id + "_"
+        console.log('UserId:', userId)
         const response = await s3.listObjectsV2({
             Bucket: bucket,
+            Prefix: userId 
         }).promise();
 
         const keys = response.Contents.map(object => object.Key);

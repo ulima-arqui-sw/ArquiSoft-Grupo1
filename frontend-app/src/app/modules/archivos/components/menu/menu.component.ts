@@ -19,8 +19,9 @@ export class MenuComponent {
   keys: string[] = [];
 
   ngOnInit(): void {
+    this.idUsuario = Number(localStorage.getItem('id'));
 
-    this.archivosService.getKeys().subscribe((keys: string[]) => {
+    this.archivosService.getKeys(this.idUsuario).subscribe((keys: string[]) => {
       this.keys = keys;
       this.cdr.detectChanges();
       console.log('Bucket Keys:', this.keys);

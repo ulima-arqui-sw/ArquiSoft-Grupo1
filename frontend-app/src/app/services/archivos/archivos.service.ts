@@ -14,8 +14,8 @@ export class ArchivosService {
     return this.http.post<any>(apiUrl, fileData); 
   }
 
-  getKeys(): Observable<string[]> {
-    const apiUrl = this.apiUrl + '/archivo/obtener-keys/'
+  getKeys(userId: number): Observable<string[]> {
+    const apiUrl = this.apiUrl + '/archivo/obtener-keys/' + userId
     return this.http.get<string[]>(apiUrl);
   }
 
