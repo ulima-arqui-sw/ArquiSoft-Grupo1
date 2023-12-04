@@ -15,7 +15,7 @@
             <div class="m-4">
                 <span class="font-bold">{{key.split("_")[1].split("_")[0]}}</span>
             </div>
-            <button mat-raised-button>Descargar</button>
+            <button mat-raised-button name="downloadBtn" (click)="downloadFile(key)">Descargar</button>
         </div>
     </div>
 </div>

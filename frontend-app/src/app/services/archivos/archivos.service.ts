@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class ArchivosService {
   private apiUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
 
-  uploadFile(fileData: FormData): Observable<any>{
+  uploadFile(fileData: FormData): Observable<any> {
     const apiUrl = this.apiUrl + '/archivo/subir-archivo'
     return this.http.post<any>(apiUrl, fileData); 
   }
@@ -19,4 +19,8 @@ export class ArchivosService {
     return this.http.get<string[]>(apiUrl);
   }
 
+  downloadFile(key: string): Observable<Blob> {
+    const apiUrl = this.apiUrl + '/archivo/obtener-archivo/' + key
+    return this.http.get(apiUrl, {responseType: 'blob'})
+  }
 }

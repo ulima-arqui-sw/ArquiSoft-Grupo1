@@ -56,11 +56,14 @@ const downloadFile = async (req, res) => {
     try {
         const { key } = req.params
         const data = await s3.getObject({
-            Bucket: 'bucket',
+            Bucket: bucket,
             Key: key
         }).promise();
+        res.setHeader('Content-Type', data.ContentType);
+        res.setHeader('Content-Disposition', `attachment; filename="${key}"`); 
         return res.status(200).send(data.Body)
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ message: error.message })
     }
 }

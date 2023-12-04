@@ -50,12 +50,31 @@ export class MenuComponent {
       this.archivosService.uploadFile(fileData).subscribe(
         (response) => {
           console.log('Archivo subido sin problemas');
+          this.cdr.detectChanges();
         },
         (error) => {
           console.error('Error al subir archivo:', error);
         }
       );
     }
+  }
+
+  downloadFile(key:string) {
+    this.archivosService.downloadFile(key).subscribe(
+      (response: Blob) => {
+        console.log(response)
+        const blobUrl = URL.createObjectURL(response);
+        const anchor = document.createElement('a');
+
+        anchor.href = blobUrl;
+        anchor.download = key.split("_")[1].split("_")[0];
+        anchor.click();
+        URL.revokeObjectURL(blobUrl);
+      },
+      (error) => {
+        console.error('Error al descargar archivo:', error);
+      }
+    )
   }
 
 }
