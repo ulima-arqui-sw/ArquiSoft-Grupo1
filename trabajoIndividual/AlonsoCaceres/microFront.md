@@ -34,4 +34,14 @@ Los microfrontends pueden estar escritos en diferentes lenguajes y utilizar dife
 - **Coordinación de Versiones:** La gestión de versiones puede ser un desafío, ya que diferentes microfrontends pueden tener dependencias entre sí.
 - **Consistencia de Estilo y Experiencia del Usuario:** Garantizar una apariencia y experiencia coherentes en toda la aplicación puede requerir esfuerzos adicionales.
 
-# A Continuacion una Demo usando NextJs con Single-Spa
+# A Continuacion una Demo usando NextJs
+
+```
+https://github.com/DarkShadow76/biblioapp/blob/master/components/Header.js
+```
+
+### Video Demo
+
+```
+https://ulima-edu-pe.zoom.us/rec/share/fmnbnA5-jTkO_jlEOKNoMGEl3AbkNj5wT_sV0RuZz3PGnIrfcC4cJcM0b0eu8fI8.8quNClp15SdJxunQ?startTime=1701646883000
+```
