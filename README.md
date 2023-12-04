@@ -476,3 +476,9 @@ QA-10
 | | CON-4 | | DEC-12
 CON-5
 CON-6
+
+# Implementación
+
+El siguiente enlace contiene los detalles de la implementacion realizada:
+https://docs.google.com/document/d/19_A_arOq9e6fP0sHb20XpbFRhMhAcHZYJ0r_XNaEnr8/edit?usp=sharing
+
