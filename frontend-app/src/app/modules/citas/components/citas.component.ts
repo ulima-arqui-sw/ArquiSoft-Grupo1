@@ -9,7 +9,19 @@ export class CitasComponent {
   horariosDisponibles: string[] = [];
 
   buscarMentor() {
-    this.horariosDisponibles = ['Horario 1', 'Horario 2', 'Horario 3'];
+    fetch('http://localhost:3000/horarios')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error en la solicitud: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this.horariosDisponibles = data;
+      })
+      .catch((error) => {
+        console.error('Error en la solicitud:', error);
+      });
   }
 
   solicitarCita() {

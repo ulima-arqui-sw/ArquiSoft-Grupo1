@@ -7,6 +7,7 @@ import { MyMeetingsComponent } from './modules/asesoria/components/my-meetings/m
 import { FeedComponent } from './modules/inicio/components/feed/feed.component';
 import { ChatComponent } from './modules/chat/components/chat/chat.component';
 import { MenuComponent } from './modules/archivos/components/menu/menu.component';
+import { CitasComponent } from './modules/citas/components/citas.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'archivos', component: MenuComponent },
   { path: 'feed', component: FeedComponent },
   { path: 'chat/:idUsuario', component: ChatComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: 'reservarCita', component: CitasComponent}
 ];
 
 @NgModule({
