@@ -1,0 +1,46 @@
+<div class="chat-container" style="margin: auto;">
+    <div class="col-left">
+        <div class="iconBox">
+            <img src="https://i.pinimg.com/474x/eb/da/17/ebda17e08e45aa83fc8eed8586060790.jpg" alt="150x150">
+            <p >{{usuario.nombre}}</p>
+        </div>
+
+        <div class="chat-list" >
+            <div class="item">
+                <img src="https://images7.memedroid.com/images/UPLOADED928/61eaa2fcc21dc.jpeg" alt="150x150">
+                <p style="font-size: smaller; text-align: center;">Estás conversando con <strong>{{this.nombreReceptor}}</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-right">
+        
+        <div class="messageContent">
+            <p *ngIf="conversacionActual.length === 0">
+                Por el momento no has iniciado una conversación...
+            </p>
+            <div *ngFor="let mensaje of conversacionActual">
+                <div
+                    class="messageBox"
+                    [ngClass]="{
+                        'messageBoxRemitente': esRemitente(mensaje.Remitente.N),
+                        'messageBoxDestinatario': esRemitente(mensaje.Destinatario.N)
+                    }"
+                    style="margin-bottom: 5px;"
+                >
+                    <p *ngIf="esRemitente(mensaje.Remitente.N)" style="font-size: smaller; font-style: oblique; font-weight: bolder;">Tú</p>
+                    <p *ngIf="esRemitente(mensaje.Destinatario.N)" style="font-size: smaller; font-style: oblique; font-weight: bolder; color: grey;">{{this.nombreReceptor}}</p>
+                    <p style="font-size: small;">{{ mensaje.Contenido.S }}</p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="newMessageBox">
+            <input type="text" placeholder="Escribe un mensaje..." class="newMessageInput" [(ngModel)]="messageText"/>
+            <button class="btn btn-active" (click)="enviarMensaje(messageText)">Enviar mensaje</button>
+        </div>
+
+    </div>
+
+</div>

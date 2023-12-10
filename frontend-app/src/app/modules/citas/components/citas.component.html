@@ -1,0 +1,19 @@
+<div class="p-8">
+  <h1 class="text-4xl font-bold mb-4">Reservar Citas</h1>
+  <h2 class="text-2xl font-semibold mb-4">Mostrar Horarios</h2>
+
+  <form class="mb-8">
+    <label for="mentor" class="block text-sm font-medium text-gray-700">Nombre del mentor:</label>
+    <input type="text" id="mentor" name="mentor" placeholder="Escribe el nombre del mentor" class="mt-1 p-2 border rounded-md">
+
+    <button type="button" (click)="buscarMentor()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md">Buscar mentor</button>
+  </form>
+
+  <div *ngIf="horariosDisponibles.length > 0">
+    <h3 class="text-xl font-semibold mb-4">Horarios Disponibles:</h3>
+    <ul class="list-disc ml-6">
+      <li *ngFor="let horario of horariosDisponibles" class="text-gray-700">{{ horario }}</li>
+    </ul>
+    <button (click)="solicitarCita()" class="mt-4 bg-green-500 text-white px-4 py-2 rounded-md">Solicitar Cita</button>
+  </div>
+</div>

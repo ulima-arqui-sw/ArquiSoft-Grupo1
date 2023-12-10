@@ -1,0 +1,26 @@
+<div class="border m-2 p-4 flex justify-between">
+  <h2>{{reunion.nombreReunion}}</h2>
+  <div>
+    <button class="btn btn-sm btn-primary mx-2" (click)="redirect(reunion.nombreReunion)">Ingresar</button>
+    <button *ngIf="misReuniones" class="btn btn-sm mx-2" (click)="showModal()">Invitar personas</button>
+  </div>
+</div>
+
+<dialog id="dialogInvitar" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Invitar personas</h3>
+    <p class="py-4">Escribe el correo de un usuario para invitarlo.</p>
+    <form [formGroup]="formInvitar" class="flex">
+      <input formControlName="correo" type="text" placeholder="Type here"
+        class="input input-sm input-bordered w-full max-w-xs" />
+      <button class="btn btn-sm" (click)="invitar()">Invitar</button>
+    </form>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+

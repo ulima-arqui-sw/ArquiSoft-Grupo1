@@ -109,6 +109,18 @@ ESC-06 | Seguridad | Usuario | El usuario busca ingresar a una cuenta, pero fall
 ESC-07 | Seguridad | Usuarios | El usuario sube documentos que contienen información personal y confidencial. | Módulo de almacenamiento de archivos | Conexión a Internet estable, navegador web actualizado. | La plataforma cifra y almacena los documentos de forma segura. | Los documentos solo son accesibles para el usuario.
 ESC-08 | Usabilidad | Usuarios | El usuario abre la plataforma desde Colibri Web Browser | Plataforma ExpertConnect | Conexión a Internet estable, navegador basado en Chromium | La plataforma se carga correctamente en el navegador al tener soporte para Chromium | La plataforma es funcional y presenta una interfaz de usuario coherente en el navegador
 ESC-09 | Rendimiento | Mentor y aprendices invitados | El mentor inicia una conferencia y se unen cientos de invitados al mismo tiempo | Módulo de videoconferencias de la plataforma, servidores de la plataforma | Conexiones a Internet variadas de los usuarios | Los participantes pueden unirse a la conferencia sin problemas y disfrutan de una experiencia de video y audio fluida | Los recursos del servidor no excedan el 80% de su capacidad máxima
+ESC-10 | Rendimiento | Usuarios | Durante promociones, miles de usuarios acceden simultáneamente a la plataforma en busca de ofertas. | Plataforma ExpertConnect | Producción en vivo de la plataforma | Los participantes deben hacer una pequeña cola para entrar a la página | La carga de la plataforma se mantiene en menos de 5 segundos para todos los usuarios durante el pico de tráfico
+ESC-11 | Seguridad | Usuarios | Los usuarios intentan cargar archivos con información sensisible. | Módulo de almacenamiento de archivos | Operacion bajo los estandares de normalidad | El sistema detecta datos sensibles almacenados en la plataforma | Aviso y confirmación al usuario de que está almacenando datos sensibles y que podrían afectar su seguridad
+ESC-12 | Mantenibilidad | Equipo de desarrollo | Necesidad de migración de mensajes al implementar descentralización de datos | Módulo de chat en tiempo real | Operacion bajo los estandares de normalidad | El sistema debe ser apto para migraciones masivas de datos | El sistema sigue apto con la base de datos actual hasta que se complete la migración 
+ESC-13 | Usabilidad | Usuario | El usuario intenta encontrar la función de chat en la aplicación | Plataforma expertConnect | Producción en vivo de la plataforma | La función de chat se muestra claramente en la interfaz sin necesidad de instrucciones adicionales | El usuario puede acceder y utilizar la función de chat en menos de 30 segundos
+ESC-14 | Disponibilidad | Sistema de almacenamiento | Falla total del servidor de almacenamiento en la nube debido a una interrupción del proveedor | Estrategia de respaldo y redundancia en lanube | Entorno de producción en la nube | El sistema activa automáticamente la replicación de datos en otro servidor de almacenamiento redundante dentro de la misma nube | Restauración de datos en menos de 20 minutos sin pérdida significativa de la información
+ESC-15 | Seguridad | Carga de archivos | Archivos cargados con virus o malware | Sistema de escaneo de archivos | Módulo de almacenamiento de archivos | El sistema realiza un escaneo de archivos y detecta cualquier presencia de virus o malware | Alerta inmediata al usuario y eliminación del archivo infectado
+ESC-16 | Mantenibilidad | Actualización de seguridad disponible | Publicación de una nueva actualización de seguridad | Sistema de gestión de actualizaciones | Entorno de producción en la nube | El sistema programa e implementa la actualización de seguridad sin interrumpir la funcionalidad del sistema | Todas las instancias del sistema se actualizan en un plazo de 24 horas desde la publicación de la actualización
+ESC-17 | Rendimiento | Aumento inesperado de tráfico | Pico repentino en tráfico de usuarios | Sistema de monitoreo de tráfico | Entorno de producción en la nube | El sistema monitorea el tráfico en tiempo real y detecta la sobrecarga | Implementación de escalabilidad automática para gestionar el tráfico adicional sin afectar el rendimiento general
+ESC-18 | Seguridad | Tráfico anormal | Inicio repentino de un tráfico anormalmente alto (posible DDOS) | Sistema de monitoreo de tráfico  | Entorno de producción en la nube | El sistema detecta patrones de tráfico anormales y filtra el tráfico malicioso | Redirección de solicitudes legítimas hacia servidores funcionales
+ESC-19 | Mantenibilidad | Uso de recursos en la nube | Aumento inesperado de costos por recursos | Sistema de monitoreo de costos y recursos en la nube | Plataforma y servicios en la nube | El sistema alerta a los administradores sobre el incremento de costos y analiza el uso de recursos para optimizar la eficiencia | Reducción de costos en un plazo menor a 24 horas al identificar y ajustar los recursos poco utilizados o ineficientes en la nube
+ESC-20 | Seguridad | Intento de acceso no autorizado | Intento de acceso a datos sensibles por parte de un usuario no autorizado | Módulo de autenticación  | Producción en vivo de la plataforma | El sistema detecta el intento de acceso no autorizado a datos sensibles e inmediatamente bloquea el acceso | Notificación al equipo de seguridad y un registro del intento de acceso , así como del bloqueo.
+
 ### Restricciones 
 - La aplicación se basará en un entorno web únicamente.
 - El sistema se desarrollará con un único lenguaje de programación en mente, el cual será JavaScript.
@@ -132,7 +144,7 @@ ESC-09 | Rendimiento | Mentor y aprendices invitados | El mentor inicia una conf
 El proyecto implementará conexiones asíncronas y síncronas para su correcto funcionamiento.
 
 - **Comunicación síncrona:** Será implementada para el módulo de chat en tiempo real, el módulo de videollamadas y finalmente el módulo de registro y autentificación.
-- **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos, el módulo de gestión de citas, el módulo de recomendaciones y el módulo de resúmenes y tareas.
+- **Comunicación asíncrona:** Será implementada para el módulo de pagos, el módulo de almacenamiento de grabaciones y archivos, el módulo de gestión de citas, el módulo de recomendaciones y el módulo de resúmenes y tareas. Esta comunicación asíncrona se dará también para los módulos de resúmenes y de recomendaciones, se enviarán notificaciones por correo cuando los resultados de cada módulo están listos. El módulo de recomendaciones se llama justo después de crear una publicación en la plataforma y el módulo de resúmenes y tareas se llama luego de terminar una reunión.
 
 ### Modelo de Datos
 - **Base de datos relacional:** El modelo de datos relacional se utilizará para almacenar información personal y de contacto de los mentores y de los aprendices, la información del módulo de gestión de citas, el historial de pagos y de reuniones y los resúmenes de transcripciones y tareas pendientes.
@@ -152,7 +164,7 @@ El proyecto implementará conexiones asíncronas y síncronas para su correcto f
 ### Elección de Tecnología
 - **Frontend:** Angular y Angular Material para la interfaz de usuario. Se eligió esta opción pues es un Framework y brinda un marco de trabajo predefinido , lo cual sirve mucho para un proyecto complejo como este donde se necesita algo robusto y dinámico.
 - **Backend:** Node.js es una opción sólida para construir aplicaciones en tiempo real (videollamadas y mensajería) y escalables. Se usará Express.js ya que es muy eficiente para aplicaciones que dependen del tiempo de respuesta, por ejemplo, notificaciones, chat entre usuarios , videollamadas.
-- **Bases de datos:** DynamoDB como opción para almacenar datos no estructurados (mensajería) ya que brinda mayor velocidad de lectura de datos y PostgreSQL para los datos estructurados en donde se necesita mayor integridad, por ejemplo data de los usuarios, sus pagos, citas, historial de reuniones, resúmenes de transcripciones y tareas. 
+- **Bases de datos:** DynamoDB como opción para almacenar datos no estructurados (mensajería) ya que brinda mayor velocidad de lectura de datos y PostgreSQL para los datos estructurados en donde se necesita mayor integridad. Por un lado con DynamoDB nos brindará la escalabilidad y rendimiento al poder trabajar con el módulo de chat, ya que es altamente escalable y está diseñado para manejar cargas de trabajo variables. Así también para este módulo la cantidad de mensajes y demanda lectura/escritura pueden ser volátiles , por lo que una base de datos no relacional es más adecuado. Asimismo, los mensajes pueden variar en estructura, por lo que si se utiliza DynamoDB podremos almacenar datos estructurados o semi estructurados, lo que da más flexibilidad al módulo para implementar mejoras o manetenimiento.
 - **Pasarela de pagos:** Al ser una iniciativa que apunta al mercado internacional, se usarán las pasarelas de pagos Stripe y PayPal.
 - **Almacenamiento en la nube:** Se usará Amazon S3 debido a su capacidad para manejar grandes cantidades de datos para almacenar archivos y videos, en el mercado es la opción más rentable de todas las que permiten pago por uso.
 - **Envío de correos:** Se usará Amazon SES, ya que ofrece una alta tasa de entrega de correos por la reputación de IP de AWS, es una solución sólida a gran escala y es confiable.
@@ -233,3 +245,252 @@ La seguridad es un aspecto crítico en cualquier proyecto de desarrollo de softw
 ## Borrador de arquitectura
 
 ![arqui](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/Diagrama-arquitectura.png)
+
+## Workshop de Atributos de Calidad (QAW)
+
+### Paso 1: Presentación de la metodología
+
+En esta sección, se empleará el Workshop de Atributos de Calidad (QAW) como metodología de identificación, análisis y priorización de los requisitos de calidad para esta plataforma.
+
+Objetivo de la realización del workshop: Identificar y refinar los atributos de calidad relevantes para la implementación de la plataforma ExpertConnect.
+
+Participantes: Alonso Cáceres (Analista / Diseñador), Edgar Espinoza (Responsable de mantenimiento), Alessandra Nuñez (líder del proyecto, gestor de negocio), Josue Leite (Arquitecto de software).
+
+### Paso 2: Presentación del negocio (misión)
+
+"La misión de ExpertConnect es proporcionar una plataforma en línea que conecte a personas que necesitan asesoramiento con expertos en una amplia gama de disciplinas. Nuestra plataforma busca abordar la creciente demanda de acceso a expertos y asesoramiento especializado en un mundo cada vez más conectado y digitalizado. Estamos comprometidos en brindar un servicio de alta calidad y en garantizar que nuestros usuarios tengan acceso a los servicios de asesoramiento que necesitan de manera fácil y segura 
+
+Para garantizar que nuestra plataforma cumpla con las expectativas de los usuarios y sea exitosa en el mercado, hemos identificado los atributos de calidad más importantes para su implementación. La seguridad es una prioridad para nosotros, por lo que hemos implementado medidas de seguridad para proteger la información de nuestros usuarios. Además, la escalabilidad es importante para garantizar que la plataforma pueda manejar un gran número de usuarios y transacciones. Por último, la facilidad de uso es fundamental para brindar una experiencia de usuario satisfactoria y garantizar que los usuarios puedan acceder fácilmente a los servicios de asesoramiento que necesitan."
+
+### Paso 3: Presentación del Plan de Arquitectura
+
+Presentación general de la idea de arquitectura a emplear en ExpertConnect:
+
+![diagrama c3](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC3-v2.png)
+
+### Paso 4: Identificación de drivers de arquitectura
+
+Para ExpertConnect, los principales atributos de calidad que se desea asegurar son los atributos de usabilidad y disponibilidad. Al ser los usuarios de la plataforma de cualquier edad, se busca que cualquier persona pueda usar la plataforma sin necesidad de guías o capacitaciones, de forma intuitiva y facil. Asimismo, la plataforma debe estar disponible la mayor cantidad de tiempo posible, pues las reuniones programadas entre mentores y aprendices pueden darse en cualquier hora del día.
+
+Entre otros, están los atributos de Seguridad, Mantenibilidad y Rendimiento.
+
+### Paso 5 al 8:
+
+https://docs.google.com/spreadsheets/d/1Xu976dNTox09go_x45Mka7bK8sjiIgDE/edit?usp=sharing&ouid=110103374564516016539&rtpof=true&sd=true
+
+## Proceso de Diseño (ADD)
+
+### Drivers de Arquitectura
+- Propósito: Se busca a través de esta plataforma brindar una solución donde las personas puedan buscar u ofrecer asesorías en distintos campos (idiomas, carreras, emprendimientos, etc), de manera facil y rápida.
+- Atributos de calidad: Del QAW: Disponibilidad, usabilidad, seguridad, mantenibilidad, rendimiento
+- Funcionalidad primaria
+  - UC-1: Registro e inicio de sesión
+  - UC-2: Asesorías integradas (videollamadas/videoconferencias)
+  - UC-3: Chat en tiempo real
+  - UC-4: Búsqueda de profesionales
+  - UC-5: Almacenamiento de archivos y grabaciones
+  - UC-6: Pagos integrados
+- Preocupaciones a nivel de arquitectura: 
+  - CRN-1: Establecer una estructura inicial de la plataforma
+  - CRN-2: Definir una arquitectura fácil de escalar y mantener
+  - CRN-3: Implementar una diferenciación de las responsabilidades y capacidades de cada módulo independiente del sistema
+- Requerimientos internos:
+  - Gestión de Logs: Se deben registrar eventos relevantes en logs para dar seguimiento a problemas y cumplir con procesos de auditoría.
+  - Actualizaciones periódicas: Se deben realizar actualizaciones de prevención (o nuevas funcionalidades) y/o correcciones de errores detectados.
+- Problemas: 
+  - Dependencia de sistemas externos: Se pueden dar problemas de disponibilidad en cuanto a las reuniones entre usuarios, pues depende de la disponibilidad de Agora.io. El mismo problema con el uso de Stripe y PayPal.
+- Restricciones:
+  - CON-1: Inicialmente, el sistema debe soportar al menos 1000 usuarios en simultáneo
+  - CON-2: Se debe poder acceder al sistema desde Chrome V3+ , Brave V1.6+, IE8+ ; en las plataformas de Windows, MacOS y Linux.
+  - CON-3: Servidor de base de datos para datos relacionales y base de datos para datos no relacionales
+  - CON-4: La plataforma debe estar disponible y accesible en al menos un 95% del tiempo total del año.
+  - CON-5: La plataforma debe optimizar el rendimiento del sitio para tener tiempos de carga rápidos y respuesta rápida durante las sesiones de asesoramiento.
+  - CON-6: Implementación de pasarelas de pago seguras y sistemas para gestionar tarifas, comisiones y transacciones financieras.
+  - CON-7: Utilizar patrones de diseño eficientes como pool de conexiones, lazy loading, entre otros para optimizar la interacción.
+
+
+### - ITERACIÓN 1 -
+
+### Paso 1: Revisar entradas
+
+Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
+--- | --- | --- |---
+Plataforma desde 0. Se busca producir un diseño detallado. | UC-2, UC-3, UC-4 soportan la funcionalidad base | QA-2, QA-4, QA-12 | CRN-1, CON-3, CON-4, CON-5, CON-6
+
+### Paso 2: Establecer objetivo de la iteración
+
+En base a las entradas especificadas, el objetivo de esta primera iteración es realizar un diseño inicial de la estructura de la plataforma, abarcando los atributos más importantes de disponibilidad, rendimiento y seguridad  
+
+### Paso 3: Elegir uno o más elementos del sistema a refinar
+
+No hay elementos a refinar, pues se está diseñando el sistema desde 0.
+
+Diagrama de contexto:
+
+![diagrama c1](https://github.com/DarkShadow76/ArquiSoft-Grupo1/blob/master/DiagramaC1-v2.png)
+
+### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+ID | Decisión de diseño | Fundamento
+--- | --- | ---
+DEC-1 | App front y back serán deployeados en un EC2 | Se escoge Amazon EC2 para aprovechar la facilidad de escalamiento horizontal y vertical, al igual que la facilidad de implementación en diferentes instancias. Finalmente, una de las grandes ventajas al uso de EC2 es la rentabilidad del servicio y la confianza que el proveedor brinda en este enfoque.
+DEC-2 | Base de datos relacional en RDS y uso de DynamoDB | Se creará una instancia de la BD relacional en RDS con el fin de poder aprovechar en futuras iteraciones las ventajas de este servicio de AWS al igual que las facilidades de integración con otros sistemas y los servicios de escalabilidad proveídos por Amazon. 
+DynamoDB se resalta como una base de datos no relacional con enfoque en la escalabilidad y funcionalidad de alto rendimiento.
+DEC-3 | Patrón de despliegue three-tier | Implementación de un patrón Three-tier por sus ventajas en mantenibilidad y escalabilidad al dividir el desarrollo entre capas.
+
+La interfaz desarrollada en Angular será el nivel de presentación. Esta herramienta está altamente documentada, lo cual facilita su implementacion.
+
+El backend es desarrollado en NodeJS y  será el nivel de aplicación. Se selecciona esta aplicación por la implementación de uno de los motores más eficientes de JavaScript.
+
+Finalmente, las bases de datos PostgreSQL y DynamoDB serán el nivel de datos. 
+DEC-4 | Interfaz de plataforma en Angular y TailwindCSS | Se usa esta tecnología Angular por ser conocida por los desarrolladores + Tailwind para facilitar el diseño UI. Una de las ventajas principales en el uso de Angular es su estructura de componentes enfocada en el diseño de interfaces escalables.
+DEC-5 | MVC en backend | Se usa MVC para tener un mejor manejo de código y por ende mayor modificabilidad
+
+### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
+- Amazon EC2: Implementacion de un servicio web externo en la nube, principalmente por la facilidad de implementacion de diversos servicios AWS.
+- Patron de despliegue three-tier: Despliege de la aplicacion en tres capas: presentacion, aplicacion y datos. 
+- Patron de arquitectura MVC: Implementacion del patron MVC para la arquitecruta del backend de la aplicacion web.
+
+### Paso 6: Bosquejar vistas y registrar decisiones de diseño
+
+- [Asesorias integradas](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/Modulo%20de%20Creacion%20de%20sala%20de%20videoconferencias)
+- [Busqueda de profesioanles](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/M%C3%B3dulo%20de%20busqueda%20de%20profesionales)
+
+### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
+--- | --- | --- | ---
+UC-2
+| | UC-3 | | DEC-2, DEC-4
+| | UC-4 | | DEC-2, DEC-4
+| | QA-2 | | DEC-1, DEC-3
+QA-4
+| | QA-12 | | DEC-5
+| | CRN-1 | | Todos
+| | | CON-3 | DEC-2
+| | CON-4 | | DEC-1, DEC-2
+CON-5
+CON-6
+
+
+### - ITERACIÓN 2 -
+### Paso 1: Revisar entradas
+
+Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
+--- | --- | --- |---
+Implementacion de estructuras que den soporte a la funcionalidad primaria. | UC-1, UC-5 soportan las funcionalidades anteriores | QA-6, QA-9, QA-11, QA-13, QA-15, QA-16 | CON-3, CON-4, CON-5, CON-6
+
+### Paso 2: Establecer objetivo de la iteración
+
+El objetivo de esta iteración será identificar las estructuras que soportan a los elementos de funcionalidad primaria. Para esta iteración, se podrían priorizar por dificultad e importancia los casos de uso, teniendo así los UC 2, 3, 4 y 5.
+
+### Paso 3: Elegir uno o más elementos del sistema a refinar
+
+Se refinarán las capas de arquitectura que fueron definidas en la iteración anterior, buscando asegurar que no existan problemas matores en los siguientes componentes del sistema:
+
+- Asesorías integradas (UC-2)
+- Chat en tiempo real (UC-3)
+- Búsqueda de profesionales (UC-4)
+
+### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+ID | Decisión de diseño | Fundamento
+--- | --- | ---
+DEC-7 | Descomponer en módulos | Esta decisión brinda una oportunidad para la implementación de las prácticas de modularidad y reusabilidad. Al dividir una aplicación en módulos, se puede crear un sistema más modular y reutilizable.
+DEC-8 | Uso de caching | Implementado con el objetivo principal de agilizar las consultas más usadas en el sistema, como por ejemplo el sistema de recuperación de consultas y reuniones.
+DEC-9 | S3 para el almacenamiento de archivos | Se almacenarán en un S3 los archivos y grabaciones que los usuarios deseen subir. Las principales ventajas de uso de S3 es la alta escalabilidad que el sistema presenta, al igual que el aseguramiento de resistencia y seguridad brindado al ser un servicio presente en AWS.
+DEC-10 | Uso de solución de videollamadas Agora.io | Por su escalabilidad, servidores distribuidos y fácil integración. Esta implementación nos asegura un alto nivel de rendimiento, escalabilidad y seguridad por parte del proveedor.
+
+### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
+
+- Amazon Simple Storage Service (S3): Servicio de almacenamiento en la nube a travez de buckets ofrecido por AWS. Implementado para el alamcenamiento de archivos de usuarios en el respectivo componente.
+- Agora.io: Servicio de videollamadas que permite a la aplicacion web crear aplicaciones de chat y transmisión en tiempo real. 
+
+### Paso 6: Bosquejar vistas y registrar decisiones de diseño
+
+- [Registro e inicio de sesión](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/M%C3%B3dulo%20de%20registro%20e%20ingreso)
+- [Almacenamiento de archivos y grabaciones](https://github.com/ulima-arqui-sw/grupo01/tree/dev/Wireframes/M%C3%B3dulo%20de%20archivos)
+
+### PASO 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
+--- | --- | --- | ---
+UC-1
+| | UC-5 | | DEC-9
+| | QA-6 | | DEC-9
+| | QA-9 | |
+QA-11
+QA-13
+QA-15
+QA-16
+| | | CON-3 | DEC-6, DEC-7, DEC-8
+| | CON-4 | |
+CON-5
+CON-6
+
+### - ITERACIÓN 3 -
+
+### Paso 1: Revisar entradas
+
+Propósito | Funcionalidad primaria | Escenarios de calidad (del QAW) | Restricciones y preocupaciones
+--- | --- | --- |---
+Enfoque en refinar los ultimos componentes y las iteraciones anteriores. | UC-6 | QA-3, QA-5, QA-10, QA-17 | CRN-2, CRN-3, CON-2, CON-4, CON-5, CON-6
+
+### Paso 2: Establecer objetivo de la iteración
+
+En esta tercera iteración se busca refinar las iteraciones anteriores y continuar abarcando los escenarios de atributos de calidad restantes. En este caso, se elegirá refinar el atributo de Disponibilidad
+
+### Paso 3: Elegir uno o más elementos del sistema a refinar
+
+Se da un mayor enfoque al refinamiento de al estructura de modelos en el elemento de despliegue:
+
+- Servidores de almacenamiento de datos anteriormente especificados en la primera iteracion.
+
+### Paso 4: Elegir uno o más conceptos de diseño que satisfacen el driver seleccionado
+
+ID | Decisión de diseño | Fundamento
+--- | --- | ---
+DEC-11 | Escalabilidad horizontal | RDS permite aumentar o disminuir la cantidad de instancias del backend en función de la demanda.
+DEC-12 | Replicación | RDS ofrece replicación multi-AZ, que implica mantener una copia sincrónica de la base de datos en una zona de disponibilidad secundaria, lo que mejora la disponibilidad y la tolerancia a fallos.
+DEC-13 | Monitoreo y alertas | Utilizar Amazon CloudWatch para monitorear métricas clave y establecer alarmas es importante para asegurar la disponibilidad
+
+### Paso 5: Instanciar elementos de arquitectura, asignar responsabilidades y definir interfaces
+
+- Servicio de bases de datos relacional RDS: Implementado principalmente por sus capacidades de escalabilidad.
+- Amazon CloudWatch: Servicio AWS de monitorización y administración conectado a la instancia de Amazon EC2.
+- Amazon Simple Email Service para el envío de notificaciones por correo electrónico a usuarios de la plataforma
+- Lambda de recomendaciones mentor-aprediz con IA
+- Lambda de generación de resúmenes y tareas con IA
+
+
+### Paso 6: Bosquejar vistas y registrar decisiones de diseño
+
+- Recomendaciones mentor-aprediz con IA, definición de interacción entre módulos
+
+![diagrama modulo recomendaciones](https://github.com/ulima-arqui-sw/grupo01/blob/dev/Diagrama-Modulo-Recomendaciones.png)
+
+- Generación de resúmenes y tareas con IA, definición de interacción entre módulos
+
+![diagrama modulo resumentes](https://github.com/ulima-arqui-sw/grupo01/blob/dev/Diagrama-Modulo-Resumenes.png)
+
+### Paso 7: Analizar el diseño actual, revisar objetivo de la iteración y logro del propósito de diseño
+
+No Abordado | Parcialmente Abordado | Completamente Abordado | Decisión de diseño
+--- | --- | --- | ---
+UC-6
+QA-3
+| | QA-5 | | DEC-11, DEC-12
+QA-10
+| | QA-17 | | DEC-13
+| | | CRN-2 | Todos
+| | | CRN-3 | Todos
+| | | CON-2 | 
+| | CON-4 | | DEC-12
+CON-5
+CON-6
+
+# Implementación
+
+El siguiente enlace contiene los detalles de la implementacion realizada:
+https://docs.google.com/document/d/19_A_arOq9e6fP0sHb20XpbFRhMhAcHZYJ0r_XNaEnr8/edit?usp=sharing
+

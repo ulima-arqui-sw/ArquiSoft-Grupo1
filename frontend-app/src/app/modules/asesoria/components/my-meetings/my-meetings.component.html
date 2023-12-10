@@ -1,0 +1,40 @@
+<div class="">
+  <div class="flex justify-between">
+    <div class="text-lg font-bold">Mis reuniones</div>
+    <button class="btn btn-sm" onclick="dialogCrear.showModal()">Crear nueva reunión</button>
+  </div>
+  <div *ngIf="listaReuniones.length > 0">
+    <app-reunion-info *ngFor="let reunion of listaReuniones" [reunion]="reunion" [misReuniones]="true"></app-reunion-info>
+  </div>
+  <div *ngIf="listaReuniones.length == 0">
+    <p class="my-2">No tienes reuniones programadas. 🥺</p>
+  </div>
+  
+  <div class="text-lg font-bold mt-8">Invitaciones</div>
+  <div *ngIf="listaInvitaciones.length > 0">
+    <app-reunion-info *ngFor="let reunion of listaInvitaciones" [reunion]="reunion"
+      [misReuniones]="false"></app-reunion-info>
+  </div>
+  <div *ngIf="listaInvitaciones.length == 0">
+    <p class="my-2">No has sido invitado a ninguna reunión todavía. 😖</p>
+  </div>
+</div>
+
+<dialog id="dialogCrear" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Crear nueva reunión</h3>
+    <p class="py-4">Establece el nombre para la nueva reunión.</p>
+    <form [formGroup]="formCrearReunion" class="flex">
+      <input formControlName="nombreReunion" type="text" placeholder="" class="input input-sm input-bordered w-full max-w-xs" />
+      
+    </form>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-primary" (click)="crearReunion()">Crear</button>
+        <button class="btn">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+

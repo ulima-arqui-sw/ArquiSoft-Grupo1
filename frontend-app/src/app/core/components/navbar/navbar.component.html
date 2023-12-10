@@ -1,0 +1,10 @@
+<div class="navbar bg-base-100 drop-shadow-md mb-8 bg-gradient-to-r from-cyan-500 to-blue-500 p-6 flex justify-between">
+  <a class="cursor-pointer font-bold text-3xl italic text-white -mt-1">ExpertConnect</a>
+  <div class="flex flex-row-reverse">
+    <a *ngIf="idUsuario == 0" [routerLink]="['/login']" class="cursor-pointer text-white mx-2">Login</a>
+    <a *ngIf="idUsuario > 0" [routerLink]="['/mis-reuniones']" class="cursor-pointer text-white mx-2">Mis reuniones</a>
+    <a *ngIf="idUsuario > 0" [routerLink]="['/archivos']" class="cursor-pointer text-white mx-2">Archivos</a>
+    <a *ngIf="idUsuario > 0" [routerLink]="['/feed']" class="cursor-pointer text-white mx-2">Inicio</a>
+    <p *ngIf="nombreUsuario" class="text-white mx-2 font-semibold mr-8">¡Hola, {{nombreUsuario}}!</p>
+  </div>
+</div>

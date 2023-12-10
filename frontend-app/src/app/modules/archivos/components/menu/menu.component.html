@@ -1,0 +1,27 @@
+
+<div class="mt-8 grid grid-cols-10">
+    <h2 class="text-2xl font-bold mb-4 col-span-6">Tus archivos almacenados:</h2>
+    <input class="col-span-2" type="file" id="fileUpload" name="fileUpload" (change)="fileChanged($event)">
+    <button mat-raised-button name="uploadBtn" (click)="uploadFile()" [disabled]="!hasFile">Subir Archivo</button>
+</div>
+
+
+<div class="mt-8 grid md:grid-cols-3 lg:grid-cols-5 gap-10"> 
+
+    <div *ngFor="let key of keys">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg text-center pb-8">
+
+            <img src="assets/images/files-icon.jpg" alt="file" class="w-1/3 h-30 sm:h-48 mx-auto object-center object-contain">
+            <div class="m-4">
+                <span class="font-bold">{{key.split("_")[1].split("_")[0]}}</span>
+            </div>
+            <button mat-raised-button name="downloadBtn" (click)="downloadFile(key)">Descargar</button>
+        </div>
+    </div>
+</div>
+
+<!-- 
+<div *ngFor="let archivo of listaArchivos" class="border m-2 p-4 flex">
+
+</div> 
+-->
